@@ -7,13 +7,6 @@
 	"content": "Chapter 1 Kubernetes A few things I learned about Kubernetes\n Wildcard Certs  How to secure your cluster\u0026rsquo;s services using TLS    "
 },
 {
-	"uri": "https://hkiang01.github.io/apis/",
-	"title": "APIs",
-	"tags": [],
-	"description": "",
-	"content": "Chapter 2 APIs A few things I learned about APIs\n FastAPI  The only library worth considering    "
-},
-{
 	"uri": "https://hkiang01.github.io/",
 	"title": "Some reading material",
 	"tags": [],
