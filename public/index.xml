@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Some reading material on Some reading materal</title>
+    <link>https://hkiang01.github.io/</link>
+    <description>Recent content in Some reading material on Some reading materal</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sat, 17 Oct 2020 15:56:47 -0500</lastBuildDate><atom:link href="https://hkiang01.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Wildcard certs</title>
+      <link>https://hkiang01.github.io/kubernetes/wildcard-certs/</link>
+      <pubDate>Sat, 17 Oct 2020 15:58:10 -0500</pubDate>
+      
+      <guid>https://hkiang01.github.io/kubernetes/wildcard-certs/</guid>
+      <description>Once you have NGINX set up, each of your services can sit behind an Ingress with a host resembling something close to myservice.mydomain.com. That&amp;rsquo;s great and all, but you&amp;rsquo;ll find that your connections aren&amp;rsquo;t secured until you configure TLS.
+Some understanding You&amp;rsquo;ll need to pass a DNS-01 challenge. The challenge itself is run by servers from a certificate authority (CA) such as Let&amp;rsquo;s Encrypt. Those serveres expect your web server to be reachable from whatever IP address your domain points to.</description>
+    </item>
+    
+  </channel>
+</rss>
