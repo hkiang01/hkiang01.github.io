@@ -19,6 +19,9 @@ I can write in Markdown, create [Mermaid](https://learn.netlify.app/en/shortcode
 
 ## Articles
 
+### [Philosophy](./philosophy)
+- [A few things I believe are true](./philosophy)
+
 ### [Kubernetes](./kubernetes)
 - [Wildcard Certs](./kubernetes/wildcard-certs)
   - How to secure your cluster's services using TLS

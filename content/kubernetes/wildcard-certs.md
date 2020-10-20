@@ -4,6 +4,8 @@ date: 2020-10-17T15:58:10-05:00
 draft: false
 ---
 
+This is NOT representative of what I do at work (mostly for my home hobby cluster).
+
 Once you have [NGINX](https://docs.nginx.com/nginx-ingress-controller/installation/installation-with-helm/) set up, each of your services can sit behind an [Ingress](https://kubernetes.io/docs/concepts/services-networking/ingress/) with a host resembling something close to *myservice.mydomain.com*.
 That's great and all, but you'll find that your connections aren't secured until you configure [TLS](https://kubernetes.io/docs/concepts/services-networking/ingress/#tls).
 

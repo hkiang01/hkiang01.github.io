@@ -13,5 +13,6 @@ hugo serve
 ## deploy
 
 ```bash
+rm -rf ./public/*
 ./deploy.sh
 ```

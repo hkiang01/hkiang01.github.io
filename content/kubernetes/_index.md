@@ -1,12 +1,12 @@
 +++
 title = "Kubernetes"
 date = 2020-10-17T15:56:47-05:00
-weight = 5
+weight = 2
 chapter = true
-pre = "<b>1. </b>"
+pre = "<b>2. </b>"
 +++
 
-### Chapter 1
+### Chapter 2
 
 # Kubernetes
 
