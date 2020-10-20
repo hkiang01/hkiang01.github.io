@@ -13,7 +13,7 @@ That's great and all, but you'll find that your connections aren't secured until
 
 You'll need to pass a [DNS-01 challenge](https://letsencrypt.org/docs/challenge-types/#dns-01-challenge).
 The challenge itself is run by servers from a certificate authority (CA) such as [Let's Encrypt](https://letsencrypt.org/).
-Those serveres expect your web server to be reachable from whatever IP address your domain points to.
+Those servers expect your web server to be reachable from whatever IP address your domain points to.
 
 
 ## Clusters with a public IP
