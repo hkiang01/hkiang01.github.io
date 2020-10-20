@@ -3,6 +3,11 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>https://hkiang01.github.io/philosophy/</loc>
+    <lastmod>2020-10-17T15:56:47-05:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://hkiang01.github.io/kubernetes/</loc>
     <lastmod>2020-10-17T15:56:47-05:00</lastmod>
   </url>

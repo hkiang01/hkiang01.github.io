@@ -1,17 +1,24 @@
 [
 {
+	"uri": "https://hkiang01.github.io/philosophy/",
+	"title": "Philosophy",
+	"tags": [],
+	"description": "",
+	"content": "Chapter 1 Philosophy A few things I believe are true, but are just my personal opinions really\n  This looks better on mobile vs desktop\n  If you automate common tasks you perform, you become your own force multiplier (see Eliminating Toil in the Google SRE book).\n  A feature doesn\u0026rsquo;t exist unless there\u0026rsquo;s a test for it, because manually testing over and over again is just not worth it\n  Tests should only be written against well-known standards, e.g., REST APIs, and avoid being tightly bound to implementation if possible\n  As long as your code has a deadline, it will never be \u0026ldquo;perfect\u0026rdquo; (limited time budget).\n  Even if your code doesn\u0026rsquo;t have a deadline, it will never be \u0026ldquo;perfect\u0026rdquo; (limited incentive).\n  Companies will never over-provision human resources, just like they will never over-provision cloud resources (or at least shouldn\u0026rsquo;t).\n  \u0026ldquo;Agile\u0026rdquo; means something different to everyone, so the term itself doesn\u0026rsquo;t really mean anything. Everyone has an opinion, especially Deloitte.\n  Working near a waterfall is peaceful, but working in one is a path to the dark side.\n  If you can pass \u0026lt;insert regulation\u0026gt; audits and still get your job done, you\u0026rsquo;re winning, especially if you can also squeeze in ad-hoc work items during your sprint in a \u0026lt;insert regulation\u0026gt; compliant fashion.\n  Story estimations are only necessary to those who lack or never have had an understanding of the code bases they work with, or within large, centrally-planned companies.\n  A \u0026ldquo;Best Practice\u0026rdquo; often really refers to the best way the team lead knows how to do something at that point in time, which will change (and should at some point change if they promote continuous learning)\n  Always be learning\n  Posture! Your lower back should be flush with your chair.\n  "
+},
+{
 	"uri": "https://hkiang01.github.io/kubernetes/",
 	"title": "Kubernetes",
 	"tags": [],
 	"description": "",
-	"content": "Chapter 1 Kubernetes A few things I learned about Kubernetes\n Wildcard Certs  How to secure your cluster\u0026rsquo;s services using TLS    "
+	"content": "Chapter 2 Kubernetes A few things I learned about Kubernetes\n Wildcard Certs  How to secure your cluster\u0026rsquo;s services using TLS    "
 },
 {
 	"uri": "https://hkiang01.github.io/",
 	"title": "Some reading material",
 	"tags": [],
 	"description": "",
-	"content": "Blog My name is Harrison Kiang and this is my blog. I work with Kubernetes and Machine Learning.\nI have been meaning to make a blog for awhile now. I finally found a way to do it without it being too much of a drag. This was built with Hugo Learn Theme. It looks nice and allows me to just focus on content creation and automates away a lot of the overhead. I can write in Markdown, create Mermaid diagrams, etc.\nArticles Kubernetes  Wildcard Certs  How to secure your cluster\u0026rsquo;s services using TLS    "
+	"content": "Blog My name is Harrison Kiang and this is my blog. I work with Kubernetes and Machine Learning.\nI have been meaning to make a blog for awhile now. I finally found a way to do it without it being too much of a drag. This was built with Hugo Learn Theme. It looks nice and allows me to just focus on content creation and automates away a lot of the overhead. I can write in Markdown, create Mermaid diagrams, etc.\nArticles Philosophy  A few things I believe are true  Kubernetes  Wildcard Certs  How to secure your cluster\u0026rsquo;s services using TLS    "
 },
 {
 	"uri": "https://hkiang01.github.io/kubernetes/wildcard-certs/",
