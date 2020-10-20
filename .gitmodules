@@ -1,3 +1,7 @@
 [submodule "themes/hugo-theme-learn"]
 	path = themes/hugo-theme-learn
 	url = https://github.com/matcornic/hugo-theme-learn.git
+[submodule "public"]
+	path = public
+	url = https://github.com/hkiang01/hkiang01.github.io.git
+	branch = master
