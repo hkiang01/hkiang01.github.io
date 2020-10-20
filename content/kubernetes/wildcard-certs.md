@@ -147,3 +147,5 @@ kubectl apply mydomain-com-wildcard-tls.yaml
 ```
 
 12. You can now guard your service using your newly created cert. Here's an example of [TLS termination](https://kubernetes.github.io/ingress-nginx/examples/tls-termination/) using [ingress-nginx](ingress-nginx/README.md)
+
+13. Oh yeah, you probably want to delete your NGINX web server instance so as not keeping your TLS secrets "exposed"....
