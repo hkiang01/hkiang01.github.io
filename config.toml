@@ -1,7 +1,6 @@
 baseURL = "https://hkiang01.github.io"
 languageCode = "en-us"
 title = "Some reading materal"
-googleAnalytics = "UA-180981920-1"
 
 # Change the default theme to be use when building the site with Hugo
 theme = "hugo-theme-learn"
