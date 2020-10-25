@@ -86,7 +86,7 @@ kubectl apply -f keycloak.yaml
 
 Let's make sure it's up and running:
 
-```zsh
+```txt
 kubectl get all -n keycloak
 NAME                            READY   STATUS    RESTARTS   AGE
 pod/keycloak-6bc5f6d94c-bdbln   1/1     Running   0          3m25s
@@ -163,12 +163,30 @@ Let's configure the chart to use the keycloak image.
 We can accomplish this with the follwing in values.yaml at the root of the chart.
 
 ```yaml
+# values.yaml
 image:
   repository: quay.io/keycloak/keycloak
   pullPolicy: IfNotPresent
   # Overrides the image tag whose default is the chart appVersion.
   tag: "11.0.2"
 ```
+
+And configure our credentials:
+
+{{% notice warning %}}
+You should never store secrets in plaintext in your repo history.
+The snippet below is for demonstration purposes only.
+{{% /notice %}}
+
+```yaml
+username: admin
+password: supersecretpassword
+```
+
+{{% notice tip %}}
+You can use [Sealed Secrets for Kubernetes](https://github.com/bitnami-labs/sealed-secrets) and store secrets in encrypted form in your chart's templates.
+See [Usage](https://github.com/bitnami-labs/sealed-secrets#usage) to get started.
+{{% /notice %}}
 
 The container environment variables, ports, and probes will have to be copied over as well.
 ```yaml
@@ -181,9 +199,9 @@ The container environment variables, ports, and probes will have to be copied ov
           imagePullPolicy: {{ .Values.image.pullPolicy }}
           env:
           - name: KEYCLOAK_USER
-            value: "admin"
+            value: {{ .Values.username }}
           - name: KEYCLOAK_PASSWORD
-            value: "admin"
+            value: {{ .Values.password }}
           - name: PROXY_ADDRESS_FORWARDING
             value: "true"
           ports:
@@ -234,7 +252,7 @@ dependencies:
 
 Pull the dependency:
 
-```zsh
+```txt
 helm dependency update ./keycloak
 
 ...Successfully got an update from the "bitnami" chart repository
@@ -256,8 +274,11 @@ The snippet below is for demonstration purposes only.
 ```yaml
 # values.yaml
 postgresql:
+  postgresqlUsername: postgres
   postgresqlPassword: secretpassword
   postgresqlDatabase: keycloak
+  service:
+    port: 5432
 ```
 
 {{% notice tip %}}
@@ -266,6 +287,63 @@ You can use [Sealed Secrets for Kubernetes](https://github.com/bitnami-labs/seal
 See [Usage](https://github.com/bitnami-labs/sealed-secrets#usage) to get started.
 {{% /notice %}}
 
+Now we have to make Keycloak talk to Postgres.
+
+```yaml
+# templates/deployment.yaml
+          env:
+          - name: KEYCLOAK_USER
+            value: {{ .Values.username }}
+          - name: KEYCLOAK_PASSWORD
+            value: {{ .Values.password }}
+          - name: PROXY_ADDRESS_FORWARDING
+            value: "true"
+          - name: DB_VENDOR
+            value: postgres
+          - name: DB_ADDR
+            value: {{ include "keycloak.fullname" . }}-postgresql
+          - name: DB_PORT
+            value: {{ .Values.postgresql.service.port | quote }}
+          - name: DB_DATABASE
+            value: {{ .Values.postgresql.postgresqlDatabase }}
+          - name: DB_USER
+            value: {{ .Values.postgresql.postgresqlUsername }}
+          - name: DB_PASSWORD
+            value: {{ .Values.postgresql.postgresqlPassword }}
+```
+
+Deploy the chart
+
+```zsh
+helm -n keycloak upgrade --install keycloak ./keycloak
+Release "keycloak" has been upgraded. Happy Helming!
+NAME: keycloak
+LAST DEPLOYED: Sun Oct 25 01:02:10 2020
+NAMESPACE: keycloak
+STATUS: deployed
+REVISION: 5
+TEST SUITE: None
+NOTES:
+1. Get the application URL by running these commands:
+  export POD_NAME=$(kubectl get pods --namespace keycloak -l "app.kubernetes.io/name=keycloak,app.kubernetes.io/instance=keycloak" -o jsonpath="{.items[0].metadata.name}")
+  echo "Visit http://127.0.0.1:8080 to use your application"
+  kubectl --namespace keycloak port-forward $POD_NAME 8080:80
+```
+
+
+By following the instructions from the output above, you should be able to access an instance of keycloak backed by Postgres!
+
+To validate that your instance is backed by Postgres, you can tail the logs of the Keycloak pod:
+
+```txt
+kubectl -n keycloak logs -f -l=app.kubernetes.io/name=keycloak
+=========================================================================
+
+  Using PostgreSQL database
+
+=========================================================================
+
+```
 
 
 [Keycloak]: https://www.keycloak.org/
