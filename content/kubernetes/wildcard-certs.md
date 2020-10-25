@@ -1,6 +1,7 @@
 ---
 title: "Wildcard certs"
 date: 2020-10-17T15:58:10-05:00
+weight: 2
 draft: false
 ---
 

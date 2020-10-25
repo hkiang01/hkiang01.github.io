@@ -23,5 +23,7 @@ I can write in Markdown, create [Mermaid](https://learn.netlify.app/en/shortcode
 - [A few things I believe are true](./philosophy)
 
 ### [Kubernetes](./kubernetes)
+- [Keycloak](./kubernetes/keycloak)
+  - Secure your applications with an open source Identity Managment solution
 - [Wildcard Certs](./kubernetes/wildcard-certs)
-  - How to secure your cluster's services using TLS
+  - How to secure your cluster's services using TLS (manual)

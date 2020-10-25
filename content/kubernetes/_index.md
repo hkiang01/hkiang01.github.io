@@ -12,5 +12,7 @@ pre = "<b>2. </b>"
 
 A few things I learned about Kubernetes
 
+- [Keycloak](./keycloak)
+  - Secure your applications with an open source Identity Managment solution
 - [Wildcard Certs](./wildcard-certs)
-  - How to secure your cluster's services using TLS
+  - How to secure your cluster's services using TLS (manual)
