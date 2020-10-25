@@ -1,7 +1,7 @@
 ---
 title: "Keycloak"
 date: 2020-10-25T21:30:00-05:00
-draft: true
+draft: false
 ---
 
 # Keycloak
@@ -220,5 +220,48 @@ kubectl -n keycloak port-forward svc/keycloak 8080:80
 We should now be able to access the instance at http://localhost:8080 in our browser.
 
 ### Adding Postgres
+
+The reason we want to add Postgresql via a Helm dependency is that a lot of the legwork with respect to ensuring availability and persistence is already done for you.
+There are packages that offer [high availability](https://artifacthub.io/packages/helm/bitnami/postgresql-ha), but here we'll just go for the standard [postgresql](https://artifacthub.io/packages/helm/bitnami/postgresql) package.
+
+Let's add the dependency:
+
+```yaml
+# Chart.yaml
+dependencies:
+- name: postgresql
+  version: 9.8.6
+  repository: https://charts.bitnami.com/bitnami
+```
+
+Pull dependency:
+
+```zsh
+helm dependency update ./keycloak
+
+...Successfully got an update from the "bitnami" chart repository
+Update Complete. ⎈Happy Helming!⎈
+Saving 1 charts
+Downloading postgresql from repo https://charts.bitnami.com/bitnami
+Deleting outdated charts
+```
+
+You can now observe the chart itself.
+We're going to configure it by continuing to edit the same values.yaml file we used to set the chart's image to keycloak
+
+```yaml
+# values.yaml
+postgresql:
+  postgresqlPassword: secretpassword
+  postgresqlDatabase: keycloak
+```
+
+> :warning: You should never store secrets in plaintext in your repo history.
+> Use something like ["Sealed Secrets" for Kubernetes](https://github.com/bitnami-labs/sealed-secrets
+
+
+Change the password to something else.
+If you feel inclined, you can add a Kubernetes Secret and point `postgresql.existingSecret` in values.yaml to it, but we're here to 
+
 
 [Keycloak]: https://www.keycloak.org/
