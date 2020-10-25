@@ -14,5 +14,3 @@ A few things I learned about Kubernetes
 
 - [Wildcard Certs](./wildcard-certs)
   - How to secure your cluster's services using TLS
-- [Keycloak](./keycloak)
-  - Secure your apps with an open source Identify Management Solution
