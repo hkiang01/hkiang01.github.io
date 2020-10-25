@@ -14,6 +14,7 @@ Sample code available at https://github.com/hkiang01/keycloak-demo.
   - [Database for production readiness](#database-for-production-readiness)
     - [Creating the chart](#creating-the-chart)
     - [Adding Postgres](#adding-postgres)
+- [Securing your application](#securing-your-application)
 - [Next steps](#next-steps)
 
 
@@ -380,6 +381,19 @@ You should see output like below:
 =========================================================================
 ...
 ```
+
+## Securing your application
+
+Keycloak has realms:
+
+> Keycloak supports multiple tenancy where all users, clients, and so on are grouped in what is called a realm. Each realm is independent of other realms.
+>
+> \- [Securing Applications and Services Guide](https://www.keycloak.org/docs/latest/securing_apps/index.html)
+
+By default, Keycloak sets up a "Master" realm that can only be used to create other realms.
+Let's create a realm and call it "Demo" by following the instructions outlined in [Creating a realm](https://www.keycloak.org/docs/latest/getting_started/#_create-realm)
+
+
 
 ## Next steps
 - Secure secrets in encrypted form using something like [Sealed Secrets for Kubernetes]
