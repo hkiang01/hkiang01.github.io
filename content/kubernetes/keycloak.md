@@ -7,8 +7,18 @@ draft: false
 [Keycloak] is an identity management solution useful for securing applications in Kubernetes.
 This post shows how to set up Keycloak and secure an application in Kubernetes with Keycloak.
 
+- [Installing Keycloak](#installing-keycloak)
+  - [Simple first](#simple-first)
+  - [Database for production readiness](#database-for-production-readiness)
+    - [Creating the chart](#creating-the-chart)
+    - [Adding Postgres](#adding-postgres)
+
+
 ## Installing Keycloak
 
+### Simple first
+
+We're going to see what it takes to minimally get Keycloak to run in Kubernetes.
 First, we'll create a namespace called keycloak
 
 ```bash
@@ -86,8 +96,14 @@ kubectl apply -f keycloak.yaml
 
 Let's make sure it's up and running:
 
-```txt
+```zsh
 kubectl get all -n keycloak
+```
+
+You should see that the pods are all ready.
+Below, 1 of 1 pods are ready, as indicated by 1/1.
+
+```txt
 NAME                            READY   STATUS    RESTARTS   AGE
 pod/keycloak-6bc5f6d94c-bdbln   1/1     Running   0          3m25s
 
@@ -101,11 +117,13 @@ NAME                                  DESIRED   CURRENT   READY   AGE
 replicaset.apps/keycloak-6bc5f6d94c   1         1         1       3m25s
 ```
 
-To access the app, we'll need to port-forward the service
-
+To access the app, we'll need to port-forward the service:
 ```zsh
 kubectl -n keycloak port-forward svc/keycloak 8080
+```
 
+You should see output like the following:
+```txt
 Forwarding from 127.0.0.1:8080 -> 8080
 Forwarding from [::1]:8080 -> 8080
 ```
@@ -117,9 +135,9 @@ Before we continue, let's do some cleanup:
 kubectl delete -f keycloak.yaml
 ```
 
-## Database for production readiness
+### Database for production readiness
 
-### Creating the chart
+#### Creating the chart
 
 Keycloak is a stateful application that is backed by a database like Postgres.
 We're going to take the above manifest from [Installing Keycloak](##installing-keycloak) and paste it as a template in a new Helm chart with Postgres as a package [dependency](https://helm.sh/docs/chart_best_practices/dependencies/#helm).
@@ -179,6 +197,7 @@ The snippet below is for demonstration purposes only.
 {{% /notice %}}
 
 ```yaml
+# values.yaml
 username: admin
 password: supersecretpassword
 ```
@@ -227,7 +246,7 @@ Perform the following command in a directory containing the keycloak/ directory 
 helm -n keycloak upgrade --install keycloak ./keycloak
 ```
 
-Port-foward the service
+Port-forward the service:
 
 ```
 kubectl -n keycloak port-forward svc/keycloak 8080:80
@@ -235,7 +254,7 @@ kubectl -n keycloak port-forward svc/keycloak 8080:80
 
 We should now be able to access the instance at http://localhost:8080 in our browser.
 
-### Adding Postgres
+#### Adding Postgres
 
 The reason we want to add Postgresql via a Helm dependency is that a lot of the legwork with respect to ensuring availability and persistence is already done for you.
 There are packages that offer [high availability](https://artifacthub.io/packages/helm/bitnami/postgresql-ha), but here we'll just go for the standard [postgresql](https://artifacthub.io/packages/helm/bitnami/postgresql) package.
@@ -252,9 +271,13 @@ dependencies:
 
 Pull the dependency:
 
-```txt
+```zsh
 helm dependency update ./keycloak
+```
 
+You should see output like below:
+
+```txt
 ...Successfully got an update from the "bitnami" chart repository
 Update Complete. ⎈Happy Helming!⎈
 Saving 1 charts
@@ -312,10 +335,15 @@ Now we have to make Keycloak talk to Postgres.
             value: {{ .Values.postgresql.postgresqlPassword }}
 ```
 
-Deploy the chart
+Deploy the chart:
 
 ```zsh
 helm -n keycloak upgrade --install keycloak ./keycloak
+```
+
+You should see output like the following:
+
+```txt
 Release "keycloak" has been upgraded. Happy Helming!
 NAME: keycloak
 LAST DEPLOYED: Sun Oct 25 01:02:10 2020
@@ -331,18 +359,23 @@ NOTES:
 ```
 
 
-By following the instructions from the output above, you should be able to access an instance of keycloak backed by Postgres!
+By following the instructions from the output above, you should be able to access an instance of keycloak backed by Postgres.
 
 To validate that your instance is backed by Postgres, you can tail the logs of the Keycloak pod:
 
-```txt
+```zsh
 kubectl -n keycloak logs -f -l=app.kubernetes.io/name=keycloak
+```
+
+You should see output like below:
+
+```txt
 =========================================================================
 
   Using PostgreSQL database
 
 =========================================================================
-
+...
 ```
 
 
