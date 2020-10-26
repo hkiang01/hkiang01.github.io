@@ -14,7 +14,7 @@ Sample code available at https://github.com/hkiang01/keycloak-demo.
   - [Database for production readiness](#database-for-production-readiness)
     - [Creating the chart](#creating-the-chart)
     - [Adding Postgres](#adding-postgres)
-- [Securing your application](#securing-your-application)
+- [Preparing Keycloak](#preparing-keycloak)
 - [Next steps](#next-steps)
 
 
@@ -382,17 +382,44 @@ You should see output like below:
 ...
 ```
 
-## Securing your application
+## Preparing Keycloak
 
-Keycloak has realms:
+Keycloak has Realms:
 
 > Keycloak supports multiple tenancy where all users, clients, and so on are grouped in what is called a realm. Each realm is independent of other realms.
 >
 > \- [Securing Applications and Services Guide](https://www.keycloak.org/docs/latest/securing_apps/index.html)
 
-By default, Keycloak sets up a "Master" realm that can only be used to create other realms.
-Let's create a realm and call it "Demo" by following the instructions outlined in [Creating a realm](https://www.keycloak.org/docs/latest/getting_started/#_create-realm)
+By default, Keycloak sets up a "Master" Realm that can only be used to create other Realms.
+Let's create a Realm and call it "Demo" by following the instructions outlined in [Creating a realm](https://www.keycloak.org/docs/latest/getting_started/#_create-realm).
+Once the Realm is created you should see something like this:
 
+![demo-realm](https://www.keycloak.org/docs/latest/getting_started/keycloak-images/demo-realm.png)
+
+Next, create a user by following the instructions outlined in [Creating a user](https://www.keycloak.org/docs/latest/getting_started/#creating-a-user).
+For demonstration purposes, I'm opting to flip the "Temporary" switch to "Off".
+
+You should then be able to log in by following the instructions outlined in [Logging into the account console](https://www.keycloak.org/docs/latest/getting_started/#logging-into-the-account-console).
+You should see something like this:
+
+![johndoe](https://www.keycloak.org/docs/latest/getting_started/images/account-console.png)
+
+{{% notice note %}}
+If you flipped the "Temporary" switch to "Off" you do not have to fill in the required fields for Email, First name, or Last name.
+{{% /notice %}}
+
+Next, we'll have to create a Client:
+
+> In order for an application or service to utilize Keycloak it has to register a client in Keycloak.
+>
+> \- [Client Registration](https://www.keycloak.org/docs/latest/securing_apps/#_client_registration)
+
+
+Create a client called "demo" as shown below:
+
+![demo-client](../keycloak.files/demo-client.png)
+
+Then click "Save".
 
 
 ## Next steps
