@@ -15,6 +15,7 @@ Sample code available at https://github.com/hkiang01/keycloak-demo.
     - [Creating the chart](#creating-the-chart)
     - [Adding Postgres](#adding-postgres)
 - [Preparing Keycloak](#preparing-keycloak)
+- [Securing your application](#securing-your-application)
 - [Next steps](#next-steps)
 
 
@@ -185,7 +186,7 @@ Let's configure the chart to use the keycloak image.
 We can accomplish this with the follwing in values.yaml at the root of the chart.
 
 ```yaml
-# values.yaml
+# keycloak/values.yaml
 image:
   repository: quay.io/keycloak/keycloak
   pullPolicy: IfNotPresent
@@ -201,7 +202,7 @@ The snippet below is for demonstration purposes only.
 {{% /notice %}}
 
 ```yaml
-# values.yaml
+# keycloak/values.yaml
 username: admin
 password: supersecretpassword
 ```
@@ -213,7 +214,7 @@ See [Usage](https://github.com/bitnami-labs/sealed-secrets#usage) to get started
 
 The container environment variables, ports, and probes will have to be copied over as well.
 ```yaml
-# templates/deployment.yaml
+# keycloak/templates/deployment.yaml
       containers:
         - name: {{ .Chart.Name }}
           securityContext:
@@ -266,7 +267,7 @@ There are packages that offer [high availability](https://artifacthub.io/package
 Let's add the dependency:
 
 ```yaml
-# Chart.yaml
+# keycloak/Chart.yaml
 dependencies:
 - name: postgresql
   version: 9.8.6
@@ -299,7 +300,7 @@ The snippet below is for demonstration purposes only.
 
 
 ```yaml
-# values.yaml
+# keycloak/values.yaml
 postgresql:
   postgresqlUsername: postgres
   postgresqlPassword: secretpassword
@@ -317,7 +318,7 @@ See [Usage](https://github.com/bitnami-labs/sealed-secrets#usage) to get started
 Now we have to make Keycloak talk to Postgres.
 
 ```yaml
-# templates/deployment.yaml
+# keycloak/templates/deployment.yaml
           env:
           - name: KEYCLOAK_USER
             value: {{ .Values.username }}
@@ -421,6 +422,52 @@ Create a client called "demo" as shown below:
 
 Then click "Save".
 
+## Securing your application
+
+We're going to use [Keycloak Gatekeeper](https://www.keycloak.org/docs/latest/securing_apps/#_keycloak_generic_adapter).
+It will be set up as a [sidecar](https://kubernetes.io/docs/concepts/workloads/pods/#how-pods-manage-multiple-containers) in the same pod containing our application.
+
+
+Let's first create an application:
+
+```zsh
+helm create app
+```
+
+The following files will be created:
+
+```
+app
+├── charts
+├── Chart.yaml
+├── templates
+│   ├── deployment.yaml
+│   ├── _helpers.tpl
+│   ├── hpa.yaml
+│   ├── ingress.yaml
+│   ├── NOTES.txt
+│   ├── serviceaccount.yaml
+│   ├── service.yaml
+│   └── tests
+│       └── test-connection.yaml
+└── values.yaml
+```
+
+We can get rid of the following in templates/:
+- hpa.yaml
+- tests/
+
+```zsh
+cd app/templates/
+rm -rf hpa.yaml tests/
+```
+
+We're going to [Configure a Pod to Use a ConfigMap](https://kubernetes.io/docs/tasks/configure-pod-container/configure-pod-configmap/) to store our Keycloak [Configuration options](https://www.keycloak.org/docs/latest/securing_apps/#configuration-options).
+
+```yaml
+# app/templates/configmap.yaml
+
+```
 
 ## Next steps
 - Secure secrets in encrypted form using something like [Sealed Secrets for Kubernetes]
