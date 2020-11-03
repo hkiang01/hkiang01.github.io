@@ -212,7 +212,7 @@ password: supersecretpassword
 ```
 
 {{% notice tip %}}
-You can use [Sealed Secrets for Kubernetes] and store secrets in encrypted form in your chart's templates.
+You can use [Sealed Secrets for Kubernetes](https://github.com/bitnami-labs/sealed-secrets) and store secrets in encrypted form in your chart's templates.
 See [Usage](https://github.com/bitnami-labs/sealed-secrets#usage) to get started.
 {{% /notice %}}
 
@@ -315,7 +315,7 @@ postgresql:
 
 {{% notice tip %}}
 Use a Kubernetes Secret to define your credentials and point `postgresql.existingSecret` in values.yaml to it.
-You can use [Sealed Secrets for Kubernetes] and store secrets in encrypted form in your chart's templates.
+You can use [Sealed Secrets for Kubernetes](https://github.com/bitnami-labs/sealed-secrets) and store secrets in encrypted form in your chart's templates.
 See [Usage](https://github.com/bitnami-labs/sealed-secrets#usage) to get started.
 {{% /notice %}}
 
@@ -515,5 +515,4 @@ We're going to [Configure a Pod to Use a ConfigMap](https://kubernetes.io/docs/t
 - Make your Keycloak instance highly available using [Clustering](https://www.keycloak.org/docs/latest/server_installation/#_clustering)
   - Worth considering if every client accessing every secured application in your cluster is accessing your Keycloak instance
 
-[Sealed Secrets for Kubernetes]: (https://github.com/bitnami-labs/sealed-secrets)
 [Keycloak]: https://www.keycloak.org/
