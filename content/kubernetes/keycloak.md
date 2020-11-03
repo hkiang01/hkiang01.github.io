@@ -592,11 +592,36 @@ Of course we'll need to use said configmap:
 
 To understand the flow, let's examine how the traffic travels from the outside to the app with and without Keycloak.
 
+{{<mermaid align="left">}}
+graph LR
+    outside-->ingress
+    subgraph Kubernetes
+    ingress-->service
+    service
+    service-->app
+    subgraph Pod
+    app
+    end
+    end
+{{< /mermaid >}}
+
+Here's what it looks like with Keycloak
+
+{{<mermaid align="left">}}
+graph LR
+    outside-->ingress
+    subgraph Kubernetes
+    ingress-->service
+    service
+    service-->gatekeeper
+    subgraph Pod
+    gatekeeper
+    gatekeeper-->app
+    end
+    end
+{{< /mermaid >}}
 
 
-```mermaid
-# todo
-```
 
 ### Fixing the audience
 
