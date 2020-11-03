@@ -685,10 +685,21 @@ graph LR
     end
 {{< /mermaid >}}
 
+All traffic is gated via the gatekeeper, which ensures all requests are secure.
+If the credentials are invalid or expired, then the user will be redirected to log back in via Keycloak.
 
+If we look closer at the service, we'll see that the named `targetPort` points to the `gatekeeper` container in the pod:
+
+```yaml
+# app/templates/service.yaml
+    - port: {{ .Values.service.port }}
+      targetPort: gatekeeper # <--- LOOK HERE
+      protocol: TCP
+      name: http
+```
 
 ## Next steps
-- Secure secrets in encrypted form using something like [Sealed Secrets for Kubernetes]
+- Secure secrets in encrypted form using something like [Sealed Secrets for Kubernetes](https://github.com/bitnami-labs/sealed-secrets)
 - Make Postgres highly available by using the [postgresql-ha](https://artifacthub.io/packages/helm/bitnami/postgresql-ha) artifact
 - Make your Keycloak instance highly available using [Clustering](https://www.keycloak.org/docs/latest/server_installation/#_clustering)
   - Worth considering if every client accessing every secured application in your cluster is accessing your Keycloak instance
