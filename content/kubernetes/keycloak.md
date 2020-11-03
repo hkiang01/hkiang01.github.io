@@ -15,6 +15,10 @@ Sample code available at https://github.com/hkiang01/keycloak-demo.
     - [Creating the chart](#creating-the-chart)
     - [Adding Postgres](#adding-postgres)
 - [Preparing Keycloak](#preparing-keycloak)
+  - [Create a Realm](#create-a-realm)
+  - [Create a Client](#create-a-client)
+  - [Create a User](#create-a-user)
+  - [Testing out your User](#testing-out-your-user)
 - [Securing your application](#securing-your-application)
 - [Next steps](#next-steps)
 
@@ -385,6 +389,7 @@ You should see output like below:
 
 ## Preparing Keycloak
 
+### Create a Realm
 Keycloak has Realms:
 
 > Keycloak supports multiple tenancy where all users, clients, and so on are grouped in what is called a realm. Each realm is independent of other realms.
@@ -392,12 +397,40 @@ Keycloak has Realms:
 > \- [Securing Applications and Services Guide](https://www.keycloak.org/docs/latest/securing_apps/index.html)
 
 By default, Keycloak sets up a "Master" Realm that can only be used to create other Realms.
-Let's create a Realm and call it "Demo" by following the instructions outlined in [Creating a realm](https://www.keycloak.org/docs/latest/getting_started/#_create-realm).
+Let's create a Realm and call it "demo" by following the instructions outlined in [Creating a realm](https://www.keycloak.org/docs/latest/getting_started/#_create-realm).
 Once the Realm is created you should see something like this:
 
 ![demo-realm](https://www.keycloak.org/docs/latest/getting_started/keycloak-images/demo-realm.png)
 
+### Create a Client
+
+> In order for an application or service to utilize Keycloak it has to register a client in Keycloak.
+>
+> \- [Client Registration](https://www.keycloak.org/docs/latest/securing_apps/#_client_registration)
+
+We'll have to create an OIDC client.
+Let's do so by following the instructions outlined in [OIDC Clients](https://www.keycloak.org/docs/latest/server_admin/#oidc-clients).
+It's a good idea to enter a "Root URL" as the resultant Client Settings page will fill out all the nuanced fields for you.
+
+![sample_client](https://www.keycloak.org/docs/latest/server_admin/keycloak-images/add-client-oidc.png)
+
+In Client Settings, scroll down and ensure "Direct Access Grants Enabled" is toggled to "On" and change the "Access Type" to confidential, then click "Save".
+You should now see a "Credentials" tab appear in the client like below (see [Confidential Client Credentials](https://www.keycloak.org/docs/latest/server_admin/#_client-credentials)):
+
+![credentials_tab](https://www.keycloak.org/docs/latest/server_admin/keycloak-images/client-credentials.png)
+
+Note the value in "Secret", we're going to use that when performing our password grant.
+
+### Create a User
+
 Next, create a user by following the instructions outlined in [Creating a user](https://www.keycloak.org/docs/latest/getting_started/#creating-a-user).
+
+![sample_user](https://www.keycloak.org/docs/latest/getting_started/keycloak-images/add-user.png)
+
+Then give the user a password by filling out the form under the "Credentials" tab for the user.
+
+![user_creds](https://www.keycloak.org/docs/latest/getting_started/keycloak-images/user-credentials.png)
+
 For demonstration purposes, I'm opting to flip the "Temporary" switch to "Off".
 
 You should then be able to log in by following the instructions outlined in [Logging into the account console](https://www.keycloak.org/docs/latest/getting_started/#logging-into-the-account-console).
@@ -405,22 +438,29 @@ You should see something like this:
 
 ![johndoe](https://www.keycloak.org/docs/latest/getting_started/images/account-console.png)
 
-{{% notice note %}}
-If you flipped the "Temporary" switch to "Off" you do not have to fill in the required fields for Email, First name, or Last name.
-{{% /notice %}}
+Verify that your user has access to your application by observing your client that you created in the list of "Applications"
 
-Next, we'll have to create a Client:
+![applictions](../kubernetes_files/applications.png)
 
-> In order for an application or service to utilize Keycloak it has to register a client in Keycloak.
->
-> \- [Client Registration](https://www.keycloak.org/docs/latest/securing_apps/#_client_registration)
+Note that "myapp" is in the above list of Applications.
 
+### Testing out your User
 
-Create a client called "demo" as shown below:
+Now make a Direct Grant as described in the [Resource Owner Password Credentials](https://www.keycloak.org/docs/latest/securing_apps/#_resource_owner_password_credentials_flow).
+Here is an example:
 
-![demo-client](../keycloak.files/demo-client.png)
+```zsh
+curl --request POST 'https://keycloak.harrisonkiang.com/auth/realms/demo/protocol/openid-connect/token' \
+--header 'Content-Type: application/x-www-form-urlencoded' \
+--data-urlencode 'username=johndoe' \
+--data-urlencode 'password=johndoe' \
+--data-urlencode 'client_id=myapp' \
+--data-urlencode 'client_secret=90a47b27-6de6-43e9-a300-4eb02f18b447' \
+--data-urlencode 'grant_type=password'
+```
 
-Then click "Save".
+The `username` and `password` are that of the user, the `client_id` is the name of the client, and the `client_secret` is the value of "Secret" in the "Credentials" tab of the client.
+You should get back a response with an access token, refresh token, etc.
 
 ## Securing your application
 
