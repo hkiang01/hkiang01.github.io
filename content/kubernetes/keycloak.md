@@ -21,8 +21,9 @@ Sample code available at https://github.com/hkiang01/keycloak-demo.
   - [Testing out your User](#testing-out-your-user)
 - [Securing your application](#securing-your-application)
   - [Setting up the gatekeeper sidecar](#setting-up-the-gatekeeper-sidecar)
-  - [Some understanding](#some-understanding)
+  - [Deploy secured app](#deploy-secured-app)
   - [Fixing the audience](#fixing-the-audience)
+- [Some understanding](#some-understanding)
 - [Next steps](#next-steps)
 
 
@@ -588,7 +589,70 @@ Of course we'll need to use said configmap:
           name: {{ include "app.fullname" . }}-gatekeeper
 ```
 
-### Some understanding
+### Deploy secured app
+
+Let's deploy
+
+```zsh
+helm -n keycloak upgrade --install app app
+```
+
+Now let's make sure everything is ready
+
+```zsh
+helm -n keycloak get manifest app | kubectl -n keycloak get -f -
+NAME                 SECRETS   AGE
+serviceaccount/app   1         29m
+
+NAME                       DATA   AGE
+configmap/app-gatekeeper   1      29m
+
+NAME          TYPE        CLUSTER-IP       EXTERNAL-IP   PORT(S)   AGE
+service/app   ClusterIP   10.152.183.125   <none>        80/TCP    29m
+
+NAME                  READY   UP-TO-DATE   AVAILABLE   AGE
+deployment.apps/app   1/1     1            1           29m
+
+NAME                            CLASS    HOSTS                   ADDRESS     PORTS     AGE
+ingress.networking.k8s.io/app   <none>   app.harrisonkiang.com   127.0.0.1   80, 443   29m
+```
+
+and that the pod is up
+
+```zsh
+kubectl -n keycloak get pod -l=app.kubernetes.io/instance=app
+
+NAME                   READY   STATUS    RESTARTS   AGE
+app-78d9484d86-8hvsd   2/2     Running   0          31m
+```
+
+2/2 means we're good to go.
+Now you should be able to _almost_ log in as normal.
+
+### Fixing the audience
+
+You'll find that after trying to log in your app via the browser you won't get what you expect.
+This is due to the fact that you have to manually add your `client_id` to the audience field `aud` of the access token per [this SO post](https://stackoverflow.com/a/53627747), the important bit of which is in the snippet below:
+
+> Configure audience in Keycloak
+>
+>   - Add realm or configure existing
+>   - Add client my-app or use existing
+>   - Goto to the newly added "Client Scopes" menu [1]
+>       - Add Client scope 'good-service'
+>       - Within the settings of the 'good-service' goto Mappers tab
+>           - Create Protocol Mapper 'my-app-audience'
+>               - Name: my-app-audience
+>               - Choose Mapper type: Audience
+>               - Included Client Audience: my-app
+>               - Add to access token: on
+>   - Configure client my-app in the "Clients" menu
+>       - Client Scopes tab in my-app settings
+>       - Add available client scopes "good-service" to assigned default client scopes
+
+After following the above you should be able to successfully acces your application!
+
+## Some understanding
 
 To understand the flow, let's examine how the traffic travels from the outside to the app with and without Keycloak.
 
@@ -622,29 +686,6 @@ graph LR
 {{< /mermaid >}}
 
 
-
-### Fixing the audience
-
-You'll find that after trying to log in your app via the browser you won't get what you expect.
-This is due to the fact that you have to manually add your `client_id` to the audience field `aud` of the access token per [this SO post](https://stackoverflow.com/a/53627747), the important bit of which is in the snippet below:
-
-> Configure audience in Keycloak
->
->   - Add realm or configure existing
->   - Add client my-app or use existing
->   - Goto to the newly added "Client Scopes" menu [1]
->       - Add Client scope 'good-service'
->       - Within the settings of the 'good-service' goto Mappers tab
->           - Create Protocol Mapper 'my-app-audience'
->               - Name: my-app-audience
->               - Choose Mapper type: Audience
->               - Included Client Audience: my-app
->               - Add to access token: on
->   - Configure client my-app in the "Clients" menu
->       - Client Scopes tab in my-app settings
->       - Add available client scopes "good-service" to assigned default client scopes
-
-After following the above you should be able to successfully acces your application!
 
 ## Next steps
 - Secure secrets in encrypted form using something like [Sealed Secrets for Kubernetes]
