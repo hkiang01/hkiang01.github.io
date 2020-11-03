@@ -13,22 +13,22 @@
   <title>Keycloak :: Some reading materal</title>
 
   
-  <link href="/css/nucleus.css?1604385784" rel="stylesheet">
-  <link href="/css/fontawesome-all.min.css?1604385784"
+  <link href="/css/nucleus.css?1604385899" rel="stylesheet">
+  <link href="/css/fontawesome-all.min.css?1604385899"
     rel="stylesheet">
-  <link href="/css/hybrid.css?1604385784" rel="stylesheet">
-  <link href="/css/featherlight.min.css?1604385784" rel="stylesheet">
-  <link href="/css/perfect-scrollbar.min.css?1604385784"
+  <link href="/css/hybrid.css?1604385899" rel="stylesheet">
+  <link href="/css/featherlight.min.css?1604385899" rel="stylesheet">
+  <link href="/css/perfect-scrollbar.min.css?1604385899"
     rel="stylesheet">
-  <link href="/css/auto-complete.css?1604385784" rel="stylesheet">
-  <link href="/css/atom-one-dark-reasonable.css?1604385784"
+  <link href="/css/auto-complete.css?1604385899" rel="stylesheet">
+  <link href="/css/atom-one-dark-reasonable.css?1604385899"
     rel="stylesheet">
-  <link href="/css/theme.css?1604385784" rel="stylesheet">
-  <link href="/css/hugo-theme.css?1604385784" rel="stylesheet">
+  <link href="/css/theme.css?1604385899" rel="stylesheet">
+  <link href="/css/hugo-theme.css?1604385899" rel="stylesheet">
   
   
 
-  <script src="/js/jquery-3.3.1.min.js?1604385784"></script>
+  <script src="/js/jquery-3.3.1.min.js?1604385899"></script>
 
   <style>
     :root #header+#content>#left>#rlblock_left {
@@ -72,14 +72,14 @@
     <span data-search-clear=""><i class="fas fa-times"></i></span>
 </div>
 
-<script type="text/javascript" src="/js/lunr.min.js?1604385784"></script>
-<script type="text/javascript" src="/js/auto-complete.js?1604385784"></script>
+<script type="text/javascript" src="/js/lunr.min.js?1604385899"></script>
+<script type="text/javascript" src="/js/auto-complete.js?1604385899"></script>
 <script type="text/javascript">
     
         var baseurl = "https:\/\/hkiang01.github.io";
     
 </script>
-<script type="text/javascript" src="/js/search.js?1604385784"></script>
+<script type="text/javascript" src="/js/search.js?1604385899"></script>
 
     
   </div>
@@ -716,7 +716,8 @@ We&rsquo;ll need to set some of the values we use in the above config.</p>
   <span style="color:#f92672">discoveryUrl</span>: <span style="color:#ae81ff">https://keycloak.harrisonkiang.com/auth/realms/demo</span>
 </code></pre></div><p>The client secret is relatively safe to share, as the user will require valid credentials to access the protected resources in your app, which is the whole point of securing your app in the first place.</p>
 <p>I&rsquo;m using a TLS secret (see below):</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#f92672">ingress</span>:
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#75715e"># app/values.yaml</span>
+<span style="color:#f92672">ingress</span>:
   <span style="color:#f92672">tls</span>:
    - <span style="color:#f92672">secretName</span>: <span style="color:#ae81ff">harrisonkiang-dot-com-wildcard-tls</span>
 </code></pre></div>
@@ -998,19 +999,19 @@ If the credentials are invalid or expired, then the user will be redirected to l
     <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
       <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
     </div>
-    <script src="/js/clipboard.min.js?1604385784"></script>
-    <script src="/js/perfect-scrollbar.min.js?1604385784"></script>
-    <script src="/js/perfect-scrollbar.jquery.min.js?1604385784"></script>
-    <script src="/js/jquery.sticky.js?1604385784"></script>
-    <script src="/js/featherlight.min.js?1604385784"></script>
-    <script src="/js/highlight.pack.js?1604385784"></script>
+    <script src="/js/clipboard.min.js?1604385899"></script>
+    <script src="/js/perfect-scrollbar.min.js?1604385899"></script>
+    <script src="/js/perfect-scrollbar.jquery.min.js?1604385899"></script>
+    <script src="/js/jquery.sticky.js?1604385899"></script>
+    <script src="/js/featherlight.min.js?1604385899"></script>
+    <script src="/js/highlight.pack.js?1604385899"></script>
     <script>hljs.initHighlightingOnLoad();</script>
-    <script src="/js/modernizr.custom-3.6.0.js?1604385784"></script>
-    <script src="/js/learn.js?1604385784"></script>
-    <script src="/js/hugo-learn.js?1604385784"></script>
+    <script src="/js/modernizr.custom-3.6.0.js?1604385899"></script>
+    <script src="/js/learn.js?1604385899"></script>
+    <script src="/js/hugo-learn.js?1604385899"></script>
     
         
-            <script src="/mermaid/mermaid.js?1604385784"></script>
+            <script src="/mermaid/mermaid.js?1604385899"></script>
         
         <script>
             mermaid.initialize({ startOnLoad: true });
