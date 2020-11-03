@@ -8,6 +8,16 @@
     <language>en-us</language>
     <lastBuildDate>Sat, 17 Oct 2020 15:56:47 -0500</lastBuildDate><atom:link href="https://hkiang01.github.io/index.xml" rel="self" type="application/rss+xml" />
     <item>
+      <title>Keycloak</title>
+      <link>https://hkiang01.github.io/kubernetes/keycloak/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://hkiang01.github.io/kubernetes/keycloak/</guid>
+      <description>Keycloak is an identity management solution useful for securing applications in Kubernetes. This post shows how to set up Keycloak and secure an application in Kubernetes with Keycloak. Sample code available at https://github.com/hkiang01/keycloak-demo.
+ Installing Keycloak  Simple first Database for production readiness  Creating the chart Adding Postgres     Preparing Keycloak  Create a Realm Create a Client Create a User Testing out your User   Securing your application  Setting up the gatekeeper sidecar Deploy secured app Fixing the audience   Some understanding Next steps  Installing Keycloak Simple first We&amp;rsquo;re going to see what it takes to minimally get Keycloak to run in Kubernetes.</description>
+    </item>
+    
+    <item>
       <title>Wildcard certs</title>
       <link>https://hkiang01.github.io/kubernetes/wildcard-certs/</link>
       <pubDate>Sat, 17 Oct 2020 15:58:10 -0500</pubDate>
