@@ -547,6 +547,20 @@ keycloak:
 
 The client secret is relatively safe to share, as the user will require valid credentials to access the protected resources in your app, which is the whole point of securing your app in the first place.
 
+
+I'm using a TLS secret (see below):
+
+```yaml
+ingress:
+  tls:
+   - secretName: harrisonkiang-dot-com-wildcard-tls
+```
+
+{{% notice note %}}
+The above TLS secret is not provided in the code samples at https://github.com/hkiang01/keycloak-demo.
+You can configure your own [TLS secrets](https://kubernetes.io/docs/concepts/configuration/secret/#tls-secrets) or else rely on the [Default SSL Certificate](https://kubernetes.github.io/ingress-nginx/user-guide/tls/#default-ssl-certificate) created by [NGINX Ingress Controller](https://kubernetes.github.io/ingress-nginx/).
+{{% /notice %}}
+
 Of course we'll need to use said configmap:
 
 ```yaml
