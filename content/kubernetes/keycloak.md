@@ -20,6 +20,9 @@ Sample code available at https://github.com/hkiang01/keycloak-demo.
   - [Create a User](#create-a-user)
   - [Testing out your User](#testing-out-your-user)
 - [Securing your application](#securing-your-application)
+  - [Setting up the gatekeeper sidecar](#setting-up-the-gatekeeper-sidecar)
+  - [Some understanding](#some-understanding)
+  - [Fixing the audience](#fixing-the-audience)
 - [Next steps](#next-steps)
 
 
@@ -464,6 +467,8 @@ You should get back a response with an access token, refresh token, etc.
 
 ## Securing your application
 
+### Setting up the gatekeeper sidecar
+
 We're going to use [Keycloak Gatekeeper](https://www.keycloak.org/docs/latest/securing_apps/#_keycloak_generic_adapter).
 It will be set up as a [sidecar](https://kubernetes.io/docs/concepts/workloads/pods/#how-pods-manage-multiple-containers) in the same pod containing our application.
 
@@ -502,12 +507,119 @@ cd app/templates/
 rm -rf hpa.yaml tests/
 ```
 
-We're going to [Configure a Pod to Use a ConfigMap](https://kubernetes.io/docs/tasks/configure-pod-container/configure-pod-configmap/) to store our Keycloak [Configuration options](https://www.keycloak.org/docs/latest/securing_apps/#configuration-options).
+We're going to [Configure a Pod to Use a ConfigMap](https://kubernetes.io/docs/tasks/configure-pod-container/configure-pod-configmap/) to store our Keycloak.
 
 ```yaml
 # app/templates/configmap.yaml
-
+data:
+    keycloak-gatekeeper.yaml: |
+        # is the url for retrieve the OpenID configuration - normally the <server>/auth/realm/<realm_name>
+        discovery-url: {{ .Values.keycloak.discoveryUrl }}
+        # the client id for the 'client' application
+        client-id: {{ .Values.keycloak.clientId }}
+        # the secret associated to the 'client' application
+        client-secret: {{ .Values.keycloak.clientSecret }}
+        # enforces the cookie to be secure"`
+        secure-cookie: false
+        # the interface definition you wish the proxy to listen, all interfaces is specified as ':<port>', unix sockets as unix://<REL_PATH>|</ABS PATH>
+        listen: :3000
+        # whether to enable refresh tokens
+        enable-refresh-tokens: true
+        # the redirection url, essentially the site url, note: /oauth/callback is added at the end
+        redirection-url: http://{{ get $hosts "host"}}
+        # the encryption key used to encode the session state
+        encryption-key: "{{ randAlphaNum 32 }}"
+        # the upstream endpoint which we should proxy request
+        upstream-url: http://127.0.0.1:80
 ```
+
+See [Configuration options](https://www.keycloak.org/docs/latest/securing_apps/#configuration-options) for details on each config.
+We'll need to set some of the values we use in the above config.
+
+```yaml
+# app/values.yaml
+keycloak:
+  clientId: app
+  clientSecret: 90a47b27-6de6-43e9-a300-4eb02f18b447
+  discoveryUrl: https://keycloak.harrisonkiang.com/auth/realms/demo
+```
+
+The client secret is relatively safe to share, as the user will require valid credentials to access the protected resources in your app, which is the whole point of securing your app in the first place.
+
+Of course we'll need to use said configmap:
+
+```yaml
+# app/templates/deployment.yaml
+      containers:
+        - name: gatekeeper
+          image: quay.io/louketo/louketo-proxy:1.0.0
+          args:
+          - --config=/etc/config/keycloak-gatekeeper.yaml
+          volumeMounts:
+          - name: gatekeeper-config
+            mountPath: /etc/config
+          imagePullPolicy: {{ .Values.image.pullPolicy }}
+          ports:
+          - name: gatekeeper
+            containerPort: 3000
+            protocol: TCP
+        - name: {{ .Chart.Name }}
+          securityContext:
+            {{- toYaml .Values.securityContext | nindent 12 }}
+          image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
+          imagePullPolicy: {{ .Values.image.pullPolicy }}
+          ports:
+            - name: http
+              containerPort: 80
+              protocol: TCP
+          livenessProbe:
+            httpGet:
+              path: /
+              port: http
+          readinessProbe:
+            httpGet:
+              path: /
+              port: http
+          resources:
+            {{- toYaml .Values.resources | nindent 12 }}
+      volumes:
+      - name: gatekeeper-config
+        configMap:
+          name: {{ include "app.fullname" . }}-gatekeeper
+```
+
+### Some understanding
+
+To understand the flow, let's examine how the traffic travels from the outside to the app with and without Keycloak.
+
+
+
+```mermaid
+# todo
+```
+
+### Fixing the audience
+
+You'll find that after trying to log in your app via the browser you won't get what you expect.
+This is due to the fact that you have to manually add your `client_id` to the audience field `aud` of the access token per [this SO post](https://stackoverflow.com/a/53627747), the important bit of which is in the snippet below:
+
+> Configure audience in Keycloak
+>
+>   - Add realm or configure existing
+>   - Add client my-app or use existing
+>   - Goto to the newly added "Client Scopes" menu [1]
+>       - Add Client scope 'good-service'
+>       - Within the settings of the 'good-service' goto Mappers tab
+>           - Create Protocol Mapper 'my-app-audience'
+>               - Name: my-app-audience
+>               - Choose Mapper type: Audience
+>               - Included Client Audience: my-app
+>               - Add to access token: on
+>   - Configure client my-app in the "Clients" menu
+>       - Client Scopes tab in my-app settings
+>       - Add available client scopes "good-service" to assigned default client scopes
+
+After following the above you should be able to successfully acces your application!
 
 ## Next steps
 - Secure secrets in encrypted form using something like [Sealed Secrets for Kubernetes]
