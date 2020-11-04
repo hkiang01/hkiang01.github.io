@@ -551,6 +551,7 @@ The client secret is relatively safe to share, as the user will require valid cr
 I'm using a TLS secret (see below):
 
 ```yaml
+# app/values.yaml
 ingress:
   tls:
    - secretName: harrisonkiang-dot-com-wildcard-tls

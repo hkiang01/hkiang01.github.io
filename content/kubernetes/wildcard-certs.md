@@ -112,7 +112,9 @@ certbot run -a manual -i nginx -d *.mydomain.com
 
 Be careful to not put your domain in as the Host in the TXT record
 
-8. When you successfully acquire your wildcard cert, create the Kubernetes TLS secret in your publicly available server, like below:
+8. Wait until your TXT record propogates through the Internet's DNS servers. You can use a site like https://mxtoolbox.com/SuperTool.aspx
+
+9. When you successfully acquire your wildcard cert, create the Kubernetes TLS secret in your publicly available server, like below:
 
 ```bash
 # server with publicly available static ip
@@ -121,12 +123,12 @@ Be careful to not put your domain in as the Host in the TXT record
 sudo -s
 cd /etc/letsencrypt/live/mydomain.com/
 # create the TLS secret
-kubectl -n gitlab create secret tls mydomain-dot-com-wildcard-tls --cert fullchain.pem --key privkey.pem --dry-run -o yaml > mydomain-com-wildcard-tls.yaml
+kubectl create secret tls mydomain-dot-com-wildcard-tls --cert fullchain.pem --key privkey.pem --dry-run -o yaml > mydomain-com-wildcard-tls.yaml
 # move the yaml file to someplace you'll be able to scp from on your local machine, likely your user's home directory
 mv mydomain-com-wildcard-tls.yaml /home/myuser/
 ```
 
-9. Move your secret to your local machine
+10. Move your secret to your local machine
 
 ```bash
 # local machine
@@ -134,7 +136,7 @@ mv mydomain-com-wildcard-tls.yaml /home/myuser/
 scp my_user@my_server_ip:/home/myuser/mydomain-com-wildcard-tls.yaml .
 ```
 
-10. You likely want to change the namespace of your secret so that when you apply it it's available for your service to reference by name. Change `metadata.namespace` accordingly, for example:
+11. You likely want to change the namespace of your secret so that when you apply it it's available for your service to reference by name. Change `metadata.namespace` accordingly, for example:
 ```yaml
 # mydomain-com-wildcard-tls.yaml
 ...
@@ -143,12 +145,12 @@ metadata:
 ...
 ```
 
-11. Apply the secret
+12. Apply the secret
 
 ```bash
 kubectl apply mydomain-com-wildcard-tls.yaml
 ```
 
-12. You can now guard your service using your newly created cert. Here's an example of [TLS termination](https://kubernetes.github.io/ingress-nginx/examples/tls-termination/) using [ingress-nginx](ingress-nginx/README.md)
+13. You can now guard your service using your newly created cert. Here's an example of [TLS termination](https://kubernetes.github.io/ingress-nginx/examples/tls-termination/) using [ingress-nginx](ingress-nginx/README.md)
 
-13. Oh yeah, you probably want to delete your NGINX web server instance so as not keeping your TLS secrets "exposed"....
+14. Oh yeah, you probably want to delete your NGINX web server instance so as not keeping your TLS secrets "exposed"....
