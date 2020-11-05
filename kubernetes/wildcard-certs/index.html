@@ -4,7 +4,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="generator" content="Hugo 0.77.0" />
+  <meta name="generator" content="Hugo 0.78.0" />
   <meta name="description" content="">
 
 
@@ -13,22 +13,22 @@
   <title>Wildcard certs :: Some reading materal</title>
 
   
-  <link href="/css/nucleus.css?1604385985" rel="stylesheet">
-  <link href="/css/fontawesome-all.min.css?1604385985"
+  <link href="/css/nucleus.css?1604542169" rel="stylesheet">
+  <link href="/css/fontawesome-all.min.css?1604542169"
     rel="stylesheet">
-  <link href="/css/hybrid.css?1604385985" rel="stylesheet">
-  <link href="/css/featherlight.min.css?1604385985" rel="stylesheet">
-  <link href="/css/perfect-scrollbar.min.css?1604385985"
+  <link href="/css/hybrid.css?1604542169" rel="stylesheet">
+  <link href="/css/featherlight.min.css?1604542169" rel="stylesheet">
+  <link href="/css/perfect-scrollbar.min.css?1604542169"
     rel="stylesheet">
-  <link href="/css/auto-complete.css?1604385985" rel="stylesheet">
-  <link href="/css/atom-one-dark-reasonable.css?1604385985"
+  <link href="/css/auto-complete.css?1604542169" rel="stylesheet">
+  <link href="/css/atom-one-dark-reasonable.css?1604542169"
     rel="stylesheet">
-  <link href="/css/theme.css?1604385985" rel="stylesheet">
-  <link href="/css/hugo-theme.css?1604385985" rel="stylesheet">
+  <link href="/css/theme.css?1604542169" rel="stylesheet">
+  <link href="/css/hugo-theme.css?1604542169" rel="stylesheet">
   
   
 
-  <script src="/js/jquery-3.3.1.min.js?1604385985"></script>
+  <script src="/js/jquery-3.3.1.min.js?1604542169"></script>
 
   <style>
     :root #header+#content>#left>#rlblock_left {
@@ -72,14 +72,14 @@
     <span data-search-clear=""><i class="fas fa-times"></i></span>
 </div>
 
-<script type="text/javascript" src="/js/lunr.min.js?1604385985"></script>
-<script type="text/javascript" src="/js/auto-complete.js?1604385985"></script>
+<script type="text/javascript" src="/js/lunr.min.js?1604542169"></script>
+<script type="text/javascript" src="/js/auto-complete.js?1604542169"></script>
 <script type="text/javascript">
     
         var baseurl = "https:\/\/hkiang01.github.io";
     
 </script>
-<script type="text/javascript" src="/js/search.js?1604385985"></script>
+<script type="text/javascript" src="/js/search.js?1604542169"></script>
 
     
   </div>
@@ -394,7 +394,12 @@ certbot run -a manual -i nginx -d *.mydomain.com
 <p><img src="https://i.imgur.com/n3TEPBg.png" alt="sample_txt_record"></p>
 <p>Be careful to not put your domain in as the Host in the TXT record</p>
 <ol start="8">
-<li>When you successfully acquire your wildcard cert, create the Kubernetes TLS secret in your publicly available server, like below:</li>
+<li>
+<p>Wait until your TXT record propogates through the Internet&rsquo;s DNS servers. You can use a site like <a href="https://mxtoolbox.com/SuperTool.aspx">https://mxtoolbox.com/SuperTool.aspx</a></p>
+</li>
+<li>
+<p>When you successfully acquire your wildcard cert, create the Kubernetes TLS secret in your publicly available server, like below:</p>
+</li>
 </ol>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e"># server with publicly available static ip</span>
 
@@ -402,16 +407,16 @@ certbot run -a manual -i nginx -d *.mydomain.com
 sudo -s
 cd /etc/letsencrypt/live/mydomain.com/
 <span style="color:#75715e"># create the TLS secret</span>
-kubectl -n gitlab create secret tls mydomain-dot-com-wildcard-tls --cert fullchain.pem --key privkey.pem --dry-run -o yaml &gt; mydomain-com-wildcard-tls.yaml
+kubectl create secret tls mydomain-dot-com-wildcard-tls --cert fullchain.pem --key privkey.pem --dry-run -o yaml &gt; mydomain-com-wildcard-tls.yaml
 <span style="color:#75715e"># move the yaml file to someplace you&#39;ll be able to scp from on your local machine, likely your user&#39;s home directory</span>
 mv mydomain-com-wildcard-tls.yaml /home/myuser/
-</code></pre></div><ol start="9">
+</code></pre></div><ol start="10">
 <li>Move your secret to your local machine</li>
 </ol>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e"># local machine</span>
 
 scp my_user@my_server_ip:/home/myuser/mydomain-com-wildcard-tls.yaml .
-</code></pre></div><ol start="10">
+</code></pre></div><ol start="11">
 <li>You likely want to change the namespace of your secret so that when you apply it it&rsquo;s available for your service to reference by name. Change <code>metadata.namespace</code> accordingly, for example:</li>
 </ol>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#75715e"># mydomain-com-wildcard-tls.yaml</span>
@@ -419,11 +424,11 @@ scp my_user@my_server_ip:/home/myuser/mydomain-com-wildcard-tls.yaml .
 <span style="color:#f92672">metadata</span>:
   <span style="color:#f92672">namespace</span>: <span style="color:#ae81ff">my-namespace</span>
 ...
-</code></pre></div><ol start="11">
+</code></pre></div><ol start="12">
 <li>Apply the secret</li>
 </ol>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">kubectl apply mydomain-com-wildcard-tls.yaml
-</code></pre></div><ol start="12">
+</code></pre></div><ol start="13">
 <li>
 <p>You can now guard your service using your newly created cert. Here&rsquo;s an example of <a href="https://kubernetes.github.io/ingress-nginx/examples/tls-termination/">TLS termination</a> using <a href="ingress-nginx/README.md">ingress-nginx</a></p>
 </li>
@@ -557,19 +562,19 @@ scp my_user@my_server_ip:/home/myuser/mydomain-com-wildcard-tls.yaml .
     <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
       <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
     </div>
-    <script src="/js/clipboard.min.js?1604385985"></script>
-    <script src="/js/perfect-scrollbar.min.js?1604385985"></script>
-    <script src="/js/perfect-scrollbar.jquery.min.js?1604385985"></script>
-    <script src="/js/jquery.sticky.js?1604385985"></script>
-    <script src="/js/featherlight.min.js?1604385985"></script>
-    <script src="/js/highlight.pack.js?1604385985"></script>
+    <script src="/js/clipboard.min.js?1604542169"></script>
+    <script src="/js/perfect-scrollbar.min.js?1604542169"></script>
+    <script src="/js/perfect-scrollbar.jquery.min.js?1604542169"></script>
+    <script src="/js/jquery.sticky.js?1604542169"></script>
+    <script src="/js/featherlight.min.js?1604542169"></script>
+    <script src="/js/highlight.pack.js?1604542169"></script>
     <script>hljs.initHighlightingOnLoad();</script>
-    <script src="/js/modernizr.custom-3.6.0.js?1604385985"></script>
-    <script src="/js/learn.js?1604385985"></script>
-    <script src="/js/hugo-learn.js?1604385985"></script>
+    <script src="/js/modernizr.custom-3.6.0.js?1604542169"></script>
+    <script src="/js/learn.js?1604542169"></script>
+    <script src="/js/hugo-learn.js?1604542169"></script>
     
         
-            <script src="/mermaid/mermaid.js?1604385985"></script>
+            <script src="/mermaid/mermaid.js?1604542169"></script>
         
         <script>
             mermaid.initialize({ startOnLoad: true });
