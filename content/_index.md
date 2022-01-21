@@ -27,3 +27,7 @@ I can write in Markdown, create [Mermaid](https://learn.netlify.app/en/shortcode
   - Secure your applications with an open source Identity Managment solution
 - [Wildcard Certs](./kubernetes/wildcard-certs)
   - How to secure your cluster's services using TLS (manual)
+
+## [Python](./python)
+- [Testing Abstractions Efficiently](./python/testing-abstractions)
+  - Paramterize your fixtures to reduce the number of tests you have to write
