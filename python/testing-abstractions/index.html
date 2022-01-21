@@ -6,16 +6,16 @@
 <meta name=description content>
 <link rel=icon href=/images/favicon.png type=image/png>
 <title>Testing Abstractions :: Some reading materal</title>
-<link href=/css/nucleus.css?1642749530 rel=stylesheet>
-<link href=/css/fontawesome-all.min.css?1642749530 rel=stylesheet>
-<link href=/css/hybrid.css?1642749530 rel=stylesheet>
-<link href=/css/featherlight.min.css?1642749530 rel=stylesheet>
-<link href=/css/perfect-scrollbar.min.css?1642749530 rel=stylesheet>
-<link href=/css/auto-complete.css?1642749530 rel=stylesheet>
-<link href=/css/atom-one-dark-reasonable.css?1642749530 rel=stylesheet>
-<link href=/css/theme.css?1642749530 rel=stylesheet>
-<link href=/css/hugo-theme.css?1642749530 rel=stylesheet>
-<script src=/js/jquery-3.3.1.min.js?1642749530></script>
+<link href=/css/nucleus.css?1642781214 rel=stylesheet>
+<link href=/css/fontawesome-all.min.css?1642781214 rel=stylesheet>
+<link href=/css/hybrid.css?1642781214 rel=stylesheet>
+<link href=/css/featherlight.min.css?1642781214 rel=stylesheet>
+<link href=/css/perfect-scrollbar.min.css?1642781214 rel=stylesheet>
+<link href=/css/auto-complete.css?1642781214 rel=stylesheet>
+<link href=/css/atom-one-dark-reasonable.css?1642781214 rel=stylesheet>
+<link href=/css/theme.css?1642781214 rel=stylesheet>
+<link href=/css/hugo-theme.css?1642781214 rel=stylesheet>
+<script src=/js/jquery-3.3.1.min.js?1642781214></script>
 <style>:root #header+#content>#left>#rlblock_left{display:none!important}{ { if .Site.Params.disableInlineCopyToClipBoard }}:not(pre)>code+span.copy-to-clipboard{display:none}{ { end }}</style>
 </head>
 <body data-url=/python/testing-abstractions/>
@@ -31,10 +31,10 @@ Some reading material
 <input data-search-input id=search-by type=search placeholder=Search...>
 <span data-search-clear><i class="fas fa-times"></i></span>
 </div>
-<script type=text/javascript src=/js/lunr.min.js?1642749530></script>
-<script type=text/javascript src=/js/auto-complete.js?1642749530></script>
+<script type=text/javascript src=/js/lunr.min.js?1642781214></script>
+<script type=text/javascript src=/js/auto-complete.js?1642781214></script>
 <script type=text/javascript>var baseurl="https://hkiang01.github.io"</script>
-<script type=text/javascript src=/js/search.js?1642749530></script>
+<script type=text/javascript src=/js/search.js?1642781214></script>
 </div>
 <div class=highlightable>
 <ul class=topics>
@@ -117,7 +117,6 @@ Testing Abstractions
 <ul>
 <li><a href=#tldr>TL;DR</a></li>
 <li><a href=#setting-the-stage>Setting the stage</a></li>
-<li><a href=#the-library>The Library</a></li>
 <li><a href=#natural-evolution-of-bad-tests>Natural Evolution of (Bad) Tests</a></li>
 <li><a href=#the-secret-sauce>The secret sauce</a></li>
 <li><a href=#full-example>Full example</a></li>
@@ -139,7 +138,6 @@ Testing Abstractions
 <ul>
 <li><a href=#tldr>TL;DR</a></li>
 <li><a href=#setting-the-stage>Setting the stage</a></li>
-<li><a href=#the-library>The Library</a></li>
 <li><a href=#natural-evolution-of-bad-tests>Natural Evolution of (Bad) Tests</a></li>
 <li><a href=#the-secret-sauce>The secret sauce</a></li>
 <li><a href=#full-example>Full example</a></li>
@@ -182,7 +180,7 @@ However, it&rsquo;s been determined that a separate vendor offering will be a be
 The promise of &ldquo;<a href=https://en.wikipedia.org/wiki/Write_once,_run_anywhere>Write once, run anywhere</a>&rdquo; isn&rsquo;t as obvious.
 Luckily, we can take advantage of <a href=https://docs.pytest.org/en/latest/how-to/fixtures.html#fixture-parametrize>Parametrizing fixtures</a> so as to keep our tests <a href=https://en.wikipedia.org/wiki/Don%27t_repeat_yourself>DRY</a>.
 Now let&rsquo;s see a more concrete example</p>
-<h3 id=the-library>The Library</h3>
+<h3 id=natural-evolution-of-bad-tests>Natural Evolution of (Bad) Tests</h3>
 <p>Let&rsquo;s say our library code looks like this</p>
 <div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-python data-lang=python><span style=color:#75715e># library/module.py</span>
 <span style=color:#66d9ef>class</span> <span style=color:#a6e22e>Base</span>:
@@ -196,8 +194,7 @@ Now let&rsquo;s see a more concrete example</p>
 <span style=color:#66d9ef>class</span> <span style=color:#a6e22e>DerivedB</span>(Base):
   <span style=color:#66d9ef>def</span> <span style=color:#a6e22e>do_the_thing</span>(self) <span style=color:#f92672>-&gt;</span> str:
     <span style=color:#66d9ef>return</span> <span style=color:#e6db74>&#34;I did it better&#34;</span>
-</code></pre></div><h3 id=natural-evolution-of-bad-tests>Natural Evolution of (Bad) Tests</h3>
-<p>This is what our tests would look like if we just had them written for <code>DerivedA</code>:</p>
+</code></pre></div><p>This is what our tests would look like if we just had them written for <code>DerivedA</code>:</p>
 <div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-python data-lang=python><span style=color:#f92672>import</span> pytest
 
 <span style=color:#66d9ef>def</span> <span style=color:#a6e22e>test_do_the_thing</span>():
@@ -416,17 +413,17 @@ The docs can say it best:</p>
 <div style=left:-1000px;overflow:scroll;position:absolute;top:-1000px;border:none;box-sizing:content-box;height:200px;margin:0;padding:0;width:200px>
 <div style=border:none;box-sizing:content-box;height:200px;margin:0;padding:0;width:200px></div>
 </div>
-<script src=/js/clipboard.min.js?1642749530></script>
-<script src=/js/perfect-scrollbar.min.js?1642749530></script>
-<script src=/js/perfect-scrollbar.jquery.min.js?1642749530></script>
-<script src=/js/jquery.sticky.js?1642749530></script>
-<script src=/js/featherlight.min.js?1642749530></script>
-<script src=/js/highlight.pack.js?1642749530></script>
+<script src=/js/clipboard.min.js?1642781214></script>
+<script src=/js/perfect-scrollbar.min.js?1642781214></script>
+<script src=/js/perfect-scrollbar.jquery.min.js?1642781214></script>
+<script src=/js/jquery.sticky.js?1642781214></script>
+<script src=/js/featherlight.min.js?1642781214></script>
+<script src=/js/highlight.pack.js?1642781214></script>
 <script>hljs.initHighlightingOnLoad()</script>
-<script src=/js/modernizr.custom-3.6.0.js?1642749530></script>
-<script src=/js/learn.js?1642749530></script>
-<script src=/js/hugo-learn.js?1642749530></script>
-<script src=/mermaid/mermaid.js?1642749530></script>
+<script src=/js/modernizr.custom-3.6.0.js?1642781214></script>
+<script src=/js/learn.js?1642781214></script>
+<script src=/js/hugo-learn.js?1642781214></script>
+<script src=/mermaid/mermaid.js?1642781214></script>
 <script>mermaid.initialize({startOnLoad:!0})</script>
 </body>
 </html>
