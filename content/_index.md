@@ -29,5 +29,5 @@ I can write in Markdown, create [Mermaid](https://learn.netlify.app/en/shortcode
   - How to secure your cluster's services using TLS (manual)
 
 ## [Python](./python)
-- [Testing Abstractions Efficiently](./python/testing-abstractions)
+- [Testing Abstractions Efficiently](./python/testing-abstractions) **<-- Newest article!**
   - Paramterize your fixtures to reduce the number of tests you have to write
