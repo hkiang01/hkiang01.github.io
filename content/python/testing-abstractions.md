@@ -6,7 +6,6 @@ draft: false
 
 - [TL;DR](#tldr)
 - [Setting the stage](#setting-the-stage)
-- [The Library](#the-library)
 - [Natural Evolution of (Bad) Tests](#natural-evolution-of-bad-tests)
 - [The secret sauce](#the-secret-sauce)
 - [Full example](#full-example)
@@ -42,7 +41,7 @@ The promise of "[Write once, run anywhere]" isn't as obvious.
 Luckily, we can take advantage of [Parametrizing fixtures] so as to keep our tests [DRY].
 Now let's see a more concrete example
 
-### The Library
+### Natural Evolution of (Bad) Tests
 
 Let's say our library code looks like this
 ```python
@@ -59,8 +58,6 @@ class DerivedB(Base):
   def do_the_thing(self) -> str:
     return "I did it better"
 ```
-
-### Natural Evolution of (Bad) Tests
 
 This is what our tests would look like if we just had them written for `DerivedA`:
 
