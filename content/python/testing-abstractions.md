@@ -298,7 +298,7 @@ def test_do_that_thing(base: Base):
 ```
 
 ### What does this mean?
-If we implement `class Base` in a `class DerivedC`, we'll get the test for free!
+If we implement `class Base` in a `class DerivedC`, we'll get the tests for free!
 
 Note that `params=[cls for cls in Base.__subclasses__()]` makes this possible in the `base()` fixture.
 
