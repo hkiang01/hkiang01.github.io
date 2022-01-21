@@ -1,0 +1,295 @@
+<!doctype html><html lang=en class="js csstransforms3d">
+<head>
+<meta charset=utf-8>
+<meta name=viewport content="width=device-width,initial-scale=1">
+<meta name=generator content="Hugo 0.92.0">
+<meta name=description content>
+<link rel=icon href=/images/favicon.png type=image/png>
+<title>Wildcard certs :: Some reading materal</title>
+<link href=/css/nucleus.css?1642743946 rel=stylesheet>
+<link href=/css/fontawesome-all.min.css?1642743946 rel=stylesheet>
+<link href=/css/hybrid.css?1642743946 rel=stylesheet>
+<link href=/css/featherlight.min.css?1642743946 rel=stylesheet>
+<link href=/css/perfect-scrollbar.min.css?1642743946 rel=stylesheet>
+<link href=/css/auto-complete.css?1642743946 rel=stylesheet>
+<link href=/css/atom-one-dark-reasonable.css?1642743946 rel=stylesheet>
+<link href=/css/theme.css?1642743946 rel=stylesheet>
+<link href=/css/hugo-theme.css?1642743946 rel=stylesheet>
+<script src=/js/jquery-3.3.1.min.js?1642743946></script>
+<style>:root #header+#content>#left>#rlblock_left{display:none!important}{ { if .Site.Params.disableInlineCopyToClipBoard }}:not(pre)>code+span.copy-to-clipboard{display:none}{ { end }}</style>
+</head>
+<body data-url=/kubernetes/wildcard-certs/>
+<nav id=sidebar>
+<div id=header-wrapper>
+<div id=header>
+<a id=logo href=https://hkiang01.github.io>
+Some reading material
+</a>
+</div>
+<div class=searchbox>
+<label for=search-by><i class="fas fa-search"></i></label>
+<input data-search-input id=search-by type=search placeholder=Search...>
+<span data-search-clear><i class="fas fa-times"></i></span>
+</div>
+<script type=text/javascript src=/js/lunr.min.js?1642743946></script>
+<script type=text/javascript src=/js/auto-complete.js?1642743946></script>
+<script type=text/javascript>var baseurl="https://hkiang01.github.io"</script>
+<script type=text/javascript src=/js/search.js?1642743946></script>
+</div>
+<div class=highlightable>
+<ul class=topics>
+<li data-nav-id=/philosophy/ title=Philosophy class=dd-item>
+<a href=/philosophy/>
+<b>1. </b>Philosophy
+</a>
+</li>
+<li data-nav-id=/kubernetes/ title=Kubernetes class="dd-item
+parent">
+<a href=/kubernetes/>
+<b>2. </b>Kubernetes
+</a>
+<ul>
+<li data-nav-id=/kubernetes/keycloak/ title=Keycloak class=dd-item>
+<a href=/kubernetes/keycloak/>
+Keycloak
+</a>
+</li>
+<li data-nav-id=/kubernetes/wildcard-certs/ title="Wildcard certs" class="dd-item active">
+<a href=/kubernetes/wildcard-certs/>
+Wildcard certs
+</a>
+</li>
+</ul>
+</li>
+<li data-nav-id=/python/ title=Python class=dd-item>
+<a href=/python/>
+<b>3. </b>Python
+</a>
+<ul>
+<li data-nav-id=/python/testing-abstractions/ title="Testing Abstractions" class=dd-item>
+<a href=/python/testing-abstractions/>
+Testing Abstractions
+</a>
+</li>
+</ul>
+</li>
+</ul>
+<section id=shortcuts>
+<h3>More</h3>
+<ul>
+<li>
+<a class=padding href=https://github.com/hkiang01><i class="fab fa-github"></i> Github</a>
+</li>
+<li>
+<a class=padding href=https://www.linkedin.com/in/harrison-kiang-ba737568/><i class="fab fa-linkedin"></i> LinkedIn</a>
+</li>
+<li>
+<a class=padding href=https://twitter.com/hkiang01/><i class="fab fa-twitter"></i> Twitter</a>
+</li>
+</ul>
+</section>
+<section id=footer>
+<p>Built with <a href=https://github.com/matcornic/hugo-theme-learn><i class="fas fa-heart"></i></a> from <a href=https://getgrav.org>Grav</a> and <a href=https://gohugo.io/>Hugo</a></p>
+</section>
+</div>
+</nav>
+<section id=body>
+<div id=overlay></div>
+<div class="padding highlightable">
+<div>
+<div id=top-bar>
+<div id=breadcrumbs itemscope itemtype=http://data-vocabulary.org/Breadcrumb>
+<span id=sidebar-toggle-span>
+<a href=# id=sidebar-toggle data-sidebar-toggle>
+<i class="fas fa-bars"></i>
+</a>
+</span>
+<span id=toc-menu><i class="fas fa-list-alt"></i></span>
+<span class=links>
+<a href=/>Some reading material</a> > <a href=/kubernetes/>Kubernetes</a> > Wildcard certs
+</span>
+</div>
+<div class=progress>
+<div class=wrapper>
+<nav id=TableOfContents>
+<ul>
+<li><a href=#some-understanding>Some understanding</a></li>
+<li><a href=#clusters-with-a-public-ip>Clusters with a public IP</a></li>
+<li><a href=#clusters-without-a-public-ip>Clusters without a public IP</a></li>
+</ul>
+</nav>
+</div>
+</div>
+</div>
+</div>
+<div id=head-tags>
+</div>
+<div id=body-inner>
+<h1>
+Wildcard certs
+</h1>
+<p>This is NOT representative of what I do at work (mostly for my home hobby cluster).</p>
+<p>Once you have <a href=https://docs.nginx.com/nginx-ingress-controller/installation/installation-with-helm/>NGINX</a> set up, each of your services can sit behind an <a href=https://kubernetes.io/docs/concepts/services-networking/ingress/>Ingress</a> with a host resembling something close to <em>myservice.mydomain.com</em>.
+That&rsquo;s great and all, but you&rsquo;ll find that your connections aren&rsquo;t secured until you configure <a href=https://kubernetes.io/docs/concepts/services-networking/ingress/#tls>TLS</a>.</p>
+<h2 id=some-understanding>Some understanding</h2>
+<p>You&rsquo;ll need to pass a <a href=https://letsencrypt.org/docs/challenge-types/#dns-01-challenge>DNS-01 challenge</a>.
+The challenge itself is run by servers from a certificate authority (CA) such as <a href=https://letsencrypt.org/>Let&rsquo;s Encrypt</a>.
+Those servers expect your web server to be reachable from whatever IP address your domain points to.</p>
+<h2 id=clusters-with-a-public-ip>Clusters with a public IP</h2>
+<p>It&rsquo;s fairly straightforward to secure your services via <a href=https://cert-manager.io/docs/tutorials/acme/ingress/>cert-manager</a> as the Let&rsquo;s Encrypt servers will be able to reach your node clusters (which play the role of your web server).</p>
+<h2 id=clusters-without-a-public-ip>Clusters without a public IP</h2>
+<p>Solutions like cert-manager won&rsquo;t work out of the box here.
+Essentially you&rsquo;ll need to stand up a web service apart from your cluster that has a static IP for the sole purpose of getting the pem certs requried to generate your <a href=https://kubernetes.github.io/ingress-nginx/user-guide/tls/#tls-secrets>TLS Secrets</a>.
+AWS, Google Cloud, etc., are able to provide here.</p>
+<p>Note: the following instructions are tested on a server running Ubuntu 20.04:</p>
+<ol>
+<li>
+<p>Set up a server with a publicly accessible static IP address either in the cloud or some other hosting provider you trust.</p>
+</li>
+<li>
+<p>Create an A record pointing to its static IP.
+Below is an example:</p>
+</li>
+</ol>
+<p><img src=https://i.imgur.com/CYaRu8Z.png alt=sample_dns></p>
+<p>Replace the IP address Value with your server&rsquo;s static IP.</p>
+<ol start=3>
+<li>Install the following in the same server:</li>
+</ol>
+<ul>
+<li><a href=https://certbot.eff.org/docs/install.html>certbot</a>
+<ul>
+<li>used to get tls cert from <a href=https://letsencrypt.org/>Let&rsquo;s Encrypt</a></li>
+</ul>
+</li>
+<li><a href=https://ubuntu.com/tutorials/install-and-configure-nginx#2-installing-nginx>nginx</a>
+<ul>
+<li>used as the installer <a href=https://certbot.eff.org/docs/using.html#nginx>plugin</a> when <a href="https://certbot.eff.org/docs/using.html?highlight=manual#combining-plugins">combining plugins</a></li>
+</ul>
+</li>
+<li><a href=https://kubernetes.io/docs/tasks/tools/install-kubectl/>kubectl</a>
+<ul>
+<li>used to locally render the secret to copy over to our private cluster</li>
+</ul>
+</li>
+</ul>
+<ol start=4>
+<li>In your publicly available server, create an index.html file that will display something.</li>
+</ol>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=color:#75715e># server with publicly available static ip</span>
+cd /var/www
+sudo mkdir tutorial
+cd tutorial
+sudo <span style=color:#e6db74>&#34;</span><span style=color:#e6db74>${</span>EDITOR<span style=color:#66d9ef>:-</span>vi<span style=color:#e6db74>}</span><span style=color:#e6db74>&#34;</span> index.html
+</code></pre></div><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-html data-lang=html><span style=color:#75715e>&lt;!-- index.html --&gt;</span>
+<span style=color:#75715e>&lt;!-- This is what the nginx server will return --&gt;</span>
+<span style=color:#75715e>&lt;!doctype html&gt;</span>
+&lt;<span style=color:#f92672>html</span>&gt;
+&lt;<span style=color:#f92672>head</span>&gt;
+    &lt;<span style=color:#f92672>meta</span> <span style=color:#a6e22e>charset</span><span style=color:#f92672>=</span><span style=color:#e6db74>&#34;utf-8&#34;</span>&gt;
+    &lt;<span style=color:#f92672>title</span>&gt;Hello, Nginx!&lt;/<span style=color:#f92672>title</span>&gt;
+&lt;/<span style=color:#f92672>head</span>&gt;
+&lt;<span style=color:#f92672>body</span>&gt;
+    &lt;<span style=color:#f92672>h1</span>&gt;Hello, Nginx!&lt;/<span style=color:#f92672>h1</span>&gt;
+    &lt;<span style=color:#f92672>p</span>&gt;We have just configured our Nginx web server on Ubuntu Server!&lt;/<span style=color:#f92672>p</span>&gt;
+&lt;/<span style=color:#f92672>body</span>&gt;
+&lt;/<span style=color:#f92672>html</span>&gt;
+</code></pre></div><ol start=5>
+<li>In your publicly available server, configure NGINX as shown below:</li>
+</ol>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=color:#75715e># server with publicly available static ip</span>
+cd /etc/nginx/sites-enabled
+sudo <span style=color:#e6db74>&#34;</span><span style=color:#e6db74>${</span>EDITOR<span style=color:#66d9ef>:-</span>vi<span style=color:#e6db74>}</span><span style=color:#e6db74>&#34;</span> tutorial
+</code></pre></div><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-nginx data-lang=nginx><span style=color:#66d9ef>server</span> {
+       <span style=color:#f92672>listen</span> <span style=color:#ae81ff>80</span>;
+       <span style=color:#f92672>listen</span> <span style=color:#e6db74>[::]:80</span>;
+
+       <span style=color:#f92672>server_name</span> <span style=color:#e6db74>*.mydomain.com</span>;
+
+       <span style=color:#f92672>root</span> <span style=color:#e6db74>/var/www/tutorial</span>;
+       <span style=color:#f92672>index</span> <span style=color:#e6db74>index.html</span>;
+
+       <span style=color:#f92672>location</span> <span style=color:#e6db74>/</span> {
+               <span style=color:#f92672>try_files</span> $uri $uri/ =<span style=color:#ae81ff>404</span>;
+       }
+}
+</code></pre></div><p>The above config is just a simple nginx server that listens on a wildcard path returning a simple response.</p>
+<ol start=6>
+<li>In your publicly available server, use <code>certbot</code> with the <a href=https://certbot.eff.org/docs/using.html#manual>manual</a> plugin as the authenticator and the <a href=https://certbot.eff.org/docs/using.html#nginx>nginx</a> plugin as the installer to grant your wildcard cert:</li>
+</ol>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=color:#75715e># server with publicly available static ip</span>
+certbot run -a manual -i nginx -d *.mydomain.com
+</code></pre></div><ol start=7>
+<li>When prompted, create a TXT record in your DNS like below:</li>
+</ol>
+<p><img src=https://i.imgur.com/n3TEPBg.png alt=sample_txt_record></p>
+<p>Be careful to not put your domain in as the Host in the TXT record</p>
+<ol start=8>
+<li>
+<p>Wait until your TXT record propogates through the Internet&rsquo;s DNS servers. You can use a site like <a href=https://mxtoolbox.com/SuperTool.aspx>https://mxtoolbox.com/SuperTool.aspx</a></p>
+</li>
+<li>
+<p>When you successfully acquire your wildcard cert, create the Kubernetes TLS secret in your publicly available server, like below:</p>
+</li>
+</ol>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=color:#75715e># server with publicly available static ip</span>
+
+<span style=color:#75715e># only sudo has access to the directory we need to get to</span>
+sudo -s
+cd /etc/letsencrypt/live/mydomain.com/
+<span style=color:#75715e># create the TLS secret</span>
+kubectl create secret tls mydomain-dot-com-wildcard-tls --cert fullchain.pem --key privkey.pem --dry-run -o yaml &gt; mydomain-com-wildcard-tls.yaml
+<span style=color:#75715e># move the yaml file to someplace you&#39;ll be able to scp from on your local machine, likely your user&#39;s home directory</span>
+mv mydomain-com-wildcard-tls.yaml /home/myuser/
+</code></pre></div><ol start=10>
+<li>Move your secret to your local machine</li>
+</ol>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=color:#75715e># local machine</span>
+
+scp my_user@my_server_ip:/home/myuser/mydomain-com-wildcard-tls.yaml .
+</code></pre></div><ol start=11>
+<li>You likely want to change the namespace of your secret so that when you apply it it&rsquo;s available for your service to reference by name. Change <code>metadata.namespace</code> accordingly, for example:</li>
+</ol>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-yaml data-lang=yaml><span style=color:#75715e># mydomain-com-wildcard-tls.yaml</span>
+...
+<span style=color:#f92672>metadata</span>:
+  <span style=color:#f92672>namespace</span>: <span style=color:#ae81ff>my-namespace</span>
+...
+</code></pre></div><ol start=12>
+<li>Apply the secret</li>
+</ol>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash>kubectl apply mydomain-com-wildcard-tls.yaml
+</code></pre></div><ol start=13>
+<li>
+<p>You can now guard your service using your newly created cert. Here&rsquo;s an example of <a href=https://kubernetes.github.io/ingress-nginx/examples/tls-termination/>TLS termination</a> using <a href=ingress-nginx/README.md>ingress-nginx</a></p>
+</li>
+<li>
+<p>Oh yeah, you probably want to delete your NGINX web server instance so as not keeping your TLS secrets &ldquo;exposed&rdquo;&mldr;.</p>
+</li>
+</ol>
+<footer class=footline>
+</footer>
+</div>
+</div>
+<div id=navigation>
+<a class="nav nav-prev" href=/kubernetes/keycloak/ title=Keycloak> <i class="fa fa-chevron-left"></i></a>
+<a class="nav nav-next" href=/python/ title=Python style=margin-right:0><i class="fa fa-chevron-right"></i></a>
+</div>
+</section>
+<div style=left:-1000px;overflow:scroll;position:absolute;top:-1000px;border:none;box-sizing:content-box;height:200px;margin:0;padding:0;width:200px>
+<div style=border:none;box-sizing:content-box;height:200px;margin:0;padding:0;width:200px></div>
+</div>
+<script src=/js/clipboard.min.js?1642743946></script>
+<script src=/js/perfect-scrollbar.min.js?1642743946></script>
+<script src=/js/perfect-scrollbar.jquery.min.js?1642743946></script>
+<script src=/js/jquery.sticky.js?1642743946></script>
+<script src=/js/featherlight.min.js?1642743946></script>
+<script src=/js/highlight.pack.js?1642743946></script>
+<script>hljs.initHighlightingOnLoad()</script>
+<script src=/js/modernizr.custom-3.6.0.js?1642743946></script>
+<script src=/js/learn.js?1642743946></script>
+<script src=/js/hugo-learn.js?1642743946></script>
+<script src=/mermaid/mermaid.js?1642743946></script>
+<script>mermaid.initialize({startOnLoad:!0})</script>
+</body>
+</html>

@@ -1,0 +1,432 @@
+<!doctype html><html lang=en class="js csstransforms3d">
+<head>
+<meta charset=utf-8>
+<meta name=viewport content="width=device-width,initial-scale=1">
+<meta name=generator content="Hugo 0.92.0">
+<meta name=description content>
+<link rel=icon href=/images/favicon.png type=image/png>
+<title>Testing Abstractions :: Some reading materal</title>
+<link href=/css/nucleus.css?1642743946 rel=stylesheet>
+<link href=/css/fontawesome-all.min.css?1642743946 rel=stylesheet>
+<link href=/css/hybrid.css?1642743946 rel=stylesheet>
+<link href=/css/featherlight.min.css?1642743946 rel=stylesheet>
+<link href=/css/perfect-scrollbar.min.css?1642743946 rel=stylesheet>
+<link href=/css/auto-complete.css?1642743946 rel=stylesheet>
+<link href=/css/atom-one-dark-reasonable.css?1642743946 rel=stylesheet>
+<link href=/css/theme.css?1642743946 rel=stylesheet>
+<link href=/css/hugo-theme.css?1642743946 rel=stylesheet>
+<script src=/js/jquery-3.3.1.min.js?1642743946></script>
+<style>:root #header+#content>#left>#rlblock_left{display:none!important}{ { if .Site.Params.disableInlineCopyToClipBoard }}:not(pre)>code+span.copy-to-clipboard{display:none}{ { end }}</style>
+</head>
+<body data-url=/python/testing-abstractions/>
+<nav id=sidebar>
+<div id=header-wrapper>
+<div id=header>
+<a id=logo href=https://hkiang01.github.io>
+Some reading material
+</a>
+</div>
+<div class=searchbox>
+<label for=search-by><i class="fas fa-search"></i></label>
+<input data-search-input id=search-by type=search placeholder=Search...>
+<span data-search-clear><i class="fas fa-times"></i></span>
+</div>
+<script type=text/javascript src=/js/lunr.min.js?1642743946></script>
+<script type=text/javascript src=/js/auto-complete.js?1642743946></script>
+<script type=text/javascript>var baseurl="https://hkiang01.github.io"</script>
+<script type=text/javascript src=/js/search.js?1642743946></script>
+</div>
+<div class=highlightable>
+<ul class=topics>
+<li data-nav-id=/philosophy/ title=Philosophy class=dd-item>
+<a href=/philosophy/>
+<b>1. </b>Philosophy
+</a>
+</li>
+<li data-nav-id=/kubernetes/ title=Kubernetes class=dd-item>
+<a href=/kubernetes/>
+<b>2. </b>Kubernetes
+</a>
+<ul>
+<li data-nav-id=/kubernetes/keycloak/ title=Keycloak class=dd-item>
+<a href=/kubernetes/keycloak/>
+Keycloak
+</a>
+</li>
+<li data-nav-id=/kubernetes/wildcard-certs/ title="Wildcard certs" class=dd-item>
+<a href=/kubernetes/wildcard-certs/>
+Wildcard certs
+</a>
+</li>
+</ul>
+</li>
+<li data-nav-id=/python/ title=Python class="dd-item
+parent">
+<a href=/python/>
+<b>3. </b>Python
+</a>
+<ul>
+<li data-nav-id=/python/testing-abstractions/ title="Testing Abstractions" class="dd-item active">
+<a href=/python/testing-abstractions/>
+Testing Abstractions
+</a>
+</li>
+</ul>
+</li>
+</ul>
+<section id=shortcuts>
+<h3>More</h3>
+<ul>
+<li>
+<a class=padding href=https://github.com/hkiang01><i class="fab fa-github"></i> Github</a>
+</li>
+<li>
+<a class=padding href=https://www.linkedin.com/in/harrison-kiang-ba737568/><i class="fab fa-linkedin"></i> LinkedIn</a>
+</li>
+<li>
+<a class=padding href=https://twitter.com/hkiang01/><i class="fab fa-twitter"></i> Twitter</a>
+</li>
+</ul>
+</section>
+<section id=footer>
+<p>Built with <a href=https://github.com/matcornic/hugo-theme-learn><i class="fas fa-heart"></i></a> from <a href=https://getgrav.org>Grav</a> and <a href=https://gohugo.io/>Hugo</a></p>
+</section>
+</div>
+</nav>
+<section id=body>
+<div id=overlay></div>
+<div class="padding highlightable">
+<div>
+<div id=top-bar>
+<div id=breadcrumbs itemscope itemtype=http://data-vocabulary.org/Breadcrumb>
+<span id=sidebar-toggle-span>
+<a href=# id=sidebar-toggle data-sidebar-toggle>
+<i class="fas fa-bars"></i>
+</a>
+</span>
+<span id=toc-menu><i class="fas fa-list-alt"></i></span>
+<span class=links>
+<a href=/>Some reading material</a> > <a href=/python/>Python</a> > Testing Abstractions
+</span>
+</div>
+<div class=progress>
+<div class=wrapper>
+<nav id=TableOfContents>
+<ul>
+<li>
+<ul>
+<li><a href=#tldr>TL;DR</a></li>
+<li><a href=#setting-the-stage>Setting the stage</a></li>
+<li><a href=#the-library>The Library</a></li>
+<li><a href=#natural-evolution-of-bad-tests>Natural Evolution of (Bad) Tests</a></li>
+<li><a href=#the-secret-sauce>The secret sauce</a></li>
+<li><a href=#full-example>Full example</a></li>
+<li><a href=#what-does-this-mean>What does this mean?</a></li>
+</ul>
+</li>
+</ul>
+</nav>
+</div>
+</div>
+</div>
+</div>
+<div id=head-tags>
+</div>
+<div id=body-inner>
+<h1>
+Testing Abstractions
+</h1>
+<ul>
+<li><a href=#tldr>TL;DR</a></li>
+<li><a href=#setting-the-stage>Setting the stage</a></li>
+<li><a href=#the-library>The Library</a></li>
+<li><a href=#natural-evolution-of-bad-tests>Natural Evolution of (Bad) Tests</a></li>
+<li><a href=#the-secret-sauce>The secret sauce</a></li>
+<li><a href=#full-example>Full example</a></li>
+<li><a href=#what-does-this-mean>What does this mean?</a></li>
+</ul>
+<h3 id=tldr>TL;DR</h3>
+<p><a href=https://docs.pytest.org/en/latest/how-to/fixtures.html#fixture-parametrize>Parametrizing fixtures</a> can enable testing all derived classes of a given base class while keeping tests <a href=https://en.wikipedia.org/wiki/Don%27t_repeat_yourself>DRY</a>.
+Check out <a href=#the-secret-sauce>The secret sauce</a>.</p>
+<h3 id=setting-the-stage>Setting the stage</h3>
+<p>You&rsquo;ll eventually get to a point where you decide to start maintaining a Python package to include all of your standard logic used in multiple projects.
+This has a few advantages:</p>
+<ul>
+<li>Take advantage of existing package management solutions for a smooth upgrade process
+<ul>
+<li>poetry, pip, etc.</li>
+</ul>
+</li>
+<li>Reuse: &ldquo;<a href=https://en.wikipedia.org/wiki/Write_once,_run_anywhere>Write once, run anywhere</a>&rdquo;
+<ul>
+<li>Easy to sell to your boss, other money people</li>
+<li>Applies to both implementation and tests</li>
+</ul>
+</li>
+<li>Take advantage of <a href=https://docs.python.org/3/tutorial/classes.html#inheritance>inheritance</a>
+<ul>
+<li>i.e., <code>class Base</code> can be implemented by <code>class DerivedA</code>, and <code>class DerivedB</code></li>
+</ul>
+</li>
+</ul>
+<p>The last bit is quite valuable: Let&rsquo;s say there&rsquo;s a vendor offering that your company&rsquo;s applications use via the <code>class Base</code> abstractoin in your Python package.
+Said vendor offering can be implemented directly in <code>class DerivedA</code>.
+However, it&rsquo;s been determined that a separate vendor offering will be a better fit going forward.</p>
+<p>The switch from the &ldquo;old&rdquo; vendor offering to the &ldquo;new&rdquo; would then look something like this:</p>
+<ul>
+<li>implement the &ldquo;new&rdquo; vendor offering in <code>class DerivedB</code> in a new version of the Python package</li>
+<li>update the package in the application</li>
+<li>change the application logic to use the <code>class DerivedB</code> to ultimately use the &ldquo;new&rdquo; vendor offering behind-the-scenes</li>
+</ul>
+<p>Great, but what about tests?
+The promise of &ldquo;<a href=https://en.wikipedia.org/wiki/Write_once,_run_anywhere>Write once, run anywhere</a>&rdquo; isn&rsquo;t as obvious.
+Luckily, we can take advantage of <a href=https://docs.pytest.org/en/latest/how-to/fixtures.html#fixture-parametrize>Parametrizing fixtures</a> so as to keep our tests <a href=https://en.wikipedia.org/wiki/Don%27t_repeat_yourself>DRY</a>.
+Now let&rsquo;s see a more concrete example</p>
+<h3 id=the-library>The Library</h3>
+<p>Let&rsquo;s say our library code looks like this</p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-python data-lang=python><span style=color:#75715e># library/module.py</span>
+<span style=color:#66d9ef>class</span> <span style=color:#a6e22e>Base</span>:
+  <span style=color:#66d9ef>def</span> <span style=color:#a6e22e>do_the_thing</span>(self) <span style=color:#f92672>-&gt;</span> str:
+    <span style=color:#66d9ef>raise</span> <span style=color:#a6e22e>NotImplementedError</span>
+
+<span style=color:#66d9ef>class</span> <span style=color:#a6e22e>DerivedA</span>(Base):
+  <span style=color:#66d9ef>def</span> <span style=color:#a6e22e>do_the_thing</span>(self) <span style=color:#f92672>-&gt;</span> str:
+    <span style=color:#66d9ef>return</span> <span style=color:#e6db74>&#34;I did it&#34;</span>
+
+<span style=color:#66d9ef>class</span> <span style=color:#a6e22e>DerivedB</span>(Base):
+  <span style=color:#66d9ef>def</span> <span style=color:#a6e22e>do_the_thing</span>(self) <span style=color:#f92672>-&gt;</span> str:
+    <span style=color:#66d9ef>return</span> <span style=color:#e6db74>&#34;I did it better&#34;</span>
+</code></pre></div><h3 id=natural-evolution-of-bad-tests>Natural Evolution of (Bad) Tests</h3>
+<p>This is what our tests would look like if we just had them written for <code>DerivedA</code>:</p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-python data-lang=python><span style=color:#f92672>import</span> pytest
+
+<span style=color:#66d9ef>def</span> <span style=color:#a6e22e>test_do_the_thing</span>():
+  base: Base <span style=color:#f92672>=</span> DerivedA()
+  result <span style=color:#f92672>=</span> base<span style=color:#f92672>.</span>do_the_thing()
+  <span style=color:#66d9ef>assert</span> <span style=color:#e6db74>&#34;I did it&#34;</span> <span style=color:#f92672>in</span> result
+</code></pre></div><p>Okay, then naturally we&rsquo;ll just add another test for <code>DerivedB</code> such that our tests look like this:</p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-python data-lang=python><span style=color:#66d9ef>def</span> <span style=color:#a6e22e>test_do_the_thing_a</span>():
+  base: Base <span style=color:#f92672>=</span> DerivedA()
+  result <span style=color:#f92672>=</span> base<span style=color:#f92672>.</span>do_the_thing()
+  <span style=color:#66d9ef>assert</span> <span style=color:#e6db74>&#34;I did it&#34;</span> <span style=color:#f92672>in</span> result
+
+<span style=color:#66d9ef>def</span> <span style=color:#a6e22e>test_do_the_thing_b</span>():
+  base: Base <span style=color:#f92672>=</span> DerivedB()
+  result <span style=color:#f92672>=</span> base<span style=color:#f92672>.</span>do_the_thing()
+  <span style=color:#66d9ef>assert</span> <span style=color:#e6db74>&#34;I did it&#34;</span> <span style=color:#f92672>in</span> result
+</code></pre></div><p>It&rsquo;s easy to see how this can be a bit repetitive, especially if the base class looks like this:</p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-python data-lang=python><span style=color:#66d9ef>class</span> <span style=color:#a6e22e>Base</span>:
+  <span style=color:#66d9ef>def</span> <span style=color:#a6e22e>do_the_thing</span>(self) <span style=color:#f92672>-&gt;</span> str:
+    <span style=color:#66d9ef>raise</span> <span style=color:#a6e22e>NotImplementedError</span>
+
+  <span style=color:#66d9ef>def</span> <span style=color:#a6e22e>do_the_other_thing</span>(self) <span style=color:#f92672>-&gt;</span> str:
+    <span style=color:#66d9ef>raise</span> <span style=color:#a6e22e>NotImplementedError</span>
+
+  <span style=color:#66d9ef>def</span> <span style=color:#a6e22e>do_this_thing</span>(self) <span style=color:#f92672>-&gt;</span> str:
+    <span style=color:#66d9ef>raise</span> <span style=color:#a6e22e>NotImplementedError</span>
+
+  <span style=color:#66d9ef>def</span> <span style=color:#a6e22e>do_that_thing</span>(self) <span style=color:#f92672>-&gt;</span> str:
+    <span style=color:#66d9ef>raise</span> <span style=color:#a6e22e>NotImplementedError</span>
+
+<span style=color:#66d9ef>class</span> <span style=color:#a6e22e>DerivedA</span>(Base):
+  <span style=color:#66d9ef>def</span> <span style=color:#a6e22e>do_the_thing</span>(self) <span style=color:#f92672>-&gt;</span> str:
+    <span style=color:#66d9ef>return</span> <span style=color:#e6db74>&#34;I did it&#34;</span>
+
+  <span style=color:#66d9ef>def</span> <span style=color:#a6e22e>do_the_other_thing</span>(self) <span style=color:#f92672>-&gt;</span> str:
+    <span style=color:#66d9ef>return</span> <span style=color:#e6db74>&#34;I did it&#34;</span>
+
+  <span style=color:#66d9ef>def</span> <span style=color:#a6e22e>do_this_thing</span>(self) <span style=color:#f92672>-&gt;</span> str:
+    <span style=color:#66d9ef>return</span> <span style=color:#e6db74>&#34;I did it&#34;</span>
+
+  <span style=color:#66d9ef>def</span> <span style=color:#a6e22e>do_that_thing</span>(self) <span style=color:#f92672>-&gt;</span> str:
+    <span style=color:#66d9ef>return</span> <span style=color:#e6db74>&#34;I did it&#34;</span>
+
+<span style=color:#66d9ef>class</span> <span style=color:#a6e22e>DerivedB</span>(Base):
+  <span style=color:#66d9ef>def</span> <span style=color:#a6e22e>do_the_thing</span>(self) <span style=color:#f92672>-&gt;</span> str:
+    <span style=color:#66d9ef>return</span> <span style=color:#e6db74>&#34;I did it better&#34;</span>
+
+  <span style=color:#66d9ef>def</span> <span style=color:#a6e22e>do_the_other_thing</span>(self) <span style=color:#f92672>-&gt;</span> str:
+    <span style=color:#66d9ef>return</span> <span style=color:#e6db74>&#34;I did it better&#34;</span>
+
+  <span style=color:#66d9ef>def</span> <span style=color:#a6e22e>do_this_thing</span>(self) <span style=color:#f92672>-&gt;</span> str:
+    <span style=color:#66d9ef>return</span> <span style=color:#e6db74>&#34;I did it better&#34;</span>
+
+  <span style=color:#66d9ef>def</span> <span style=color:#a6e22e>do_that_thing</span>(self) <span style=color:#f92672>-&gt;</span> str:
+    <span style=color:#66d9ef>return</span> <span style=color:#e6db74>&#34;I did it better&#34;</span>
+</code></pre></div><p>Then your tests would look like this:</p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-python data-lang=python><span style=color:#66d9ef>def</span> <span style=color:#a6e22e>test_do_the_thing_a</span>():
+  base: Base <span style=color:#f92672>=</span> DerivedA()
+  result <span style=color:#f92672>=</span> base<span style=color:#f92672>.</span>do_the_thing()
+  <span style=color:#66d9ef>assert</span> <span style=color:#e6db74>&#34;I did it&#34;</span> <span style=color:#f92672>in</span> result
+
+<span style=color:#66d9ef>def</span> <span style=color:#a6e22e>test_do_the_thing_b</span>():
+  base: Base <span style=color:#f92672>=</span> DerivedB()
+  result <span style=color:#f92672>=</span> base<span style=color:#f92672>.</span>do_the_thing()
+  <span style=color:#66d9ef>assert</span> <span style=color:#e6db74>&#34;I did it&#34;</span> <span style=color:#f92672>in</span> result
+
+<span style=color:#66d9ef>def</span> <span style=color:#a6e22e>test_do_the_other_thing_a</span>():
+  base: Base <span style=color:#f92672>=</span> DerivedA()
+  result <span style=color:#f92672>=</span> base<span style=color:#f92672>.</span>do_the_other_thing()
+  <span style=color:#66d9ef>assert</span> <span style=color:#e6db74>&#34;I did it&#34;</span> <span style=color:#f92672>in</span> result
+
+<span style=color:#66d9ef>def</span> <span style=color:#a6e22e>test_do_the_other_thing_b</span>():
+  base: Base <span style=color:#f92672>=</span> DerivedB()
+  result <span style=color:#f92672>=</span> base<span style=color:#f92672>.</span>do_the_other_thing()
+  <span style=color:#66d9ef>assert</span> <span style=color:#e6db74>&#34;I did it&#34;</span> <span style=color:#f92672>in</span> result
+
+<span style=color:#66d9ef>def</span> <span style=color:#a6e22e>test_do_this_thing_a</span>():
+  base: Base <span style=color:#f92672>=</span> DerivedA()
+  result <span style=color:#f92672>=</span> base<span style=color:#f92672>.</span>do_this_thing()
+  <span style=color:#66d9ef>assert</span> <span style=color:#e6db74>&#34;I did it&#34;</span> <span style=color:#f92672>in</span> result
+
+<span style=color:#66d9ef>def</span> <span style=color:#a6e22e>test_do_this_thing_b</span>():
+  base: Base <span style=color:#f92672>=</span> DerivedB()
+  result <span style=color:#f92672>=</span> base<span style=color:#f92672>.</span>do_this_thing()
+  <span style=color:#66d9ef>assert</span> <span style=color:#e6db74>&#34;I did it&#34;</span> <span style=color:#f92672>in</span> result
+
+<span style=color:#66d9ef>def</span> <span style=color:#a6e22e>test_do_that_thing_a</span>():
+  base: Base <span style=color:#f92672>=</span> DerivedA()
+  result <span style=color:#f92672>=</span> base<span style=color:#f92672>.</span>do_that_thing()
+  <span style=color:#66d9ef>assert</span> <span style=color:#e6db74>&#34;I did it&#34;</span> <span style=color:#f92672>in</span> result
+
+<span style=color:#66d9ef>def</span> <span style=color:#a6e22e>test_do_that_thing_b</span>():
+  base: Base <span style=color:#f92672>=</span> DerivedB()
+  result <span style=color:#f92672>=</span> base<span style=color:#f92672>.</span>do_that_thing()
+  <span style=color:#66d9ef>assert</span> <span style=color:#e6db74>&#34;I did it&#34;</span> <span style=color:#f92672>in</span> result
+</code></pre></div><p>This is what you&rsquo;re doing when writing stuff like above.</p>
+<p><img src="https://media3.giphy.com/media/dOl2LFw0RbTMc/giphy.gif?cid=ecf05e471cok6ox2v6bc6odlnxriokonvouq2lqb38h9iua4&rid=giphy.gif&ct=g" alt=puke></p>
+<p>Stop it.
+You know you can do better.
+So do better.</p>
+<h3 id=the-secret-sauce>The secret sauce</h3>
+<p><img src="https://media2.giphy.com/media/vRZWXn6DpqvoB7UdR2/giphy.gif?cid=ecf05e47ksvj8udiv9yggxpcyk0vvxmbl1bw9mh5inyvqssq&rid=giphy.gif&ct=g" alt=sauce></p>
+<p>Instead, your tests can look like this:</p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-python data-lang=python><span style=color:#66d9ef>def</span> <span style=color:#a6e22e>test_do_the_thing</span>(base: Base):
+  result <span style=color:#f92672>=</span> base<span style=color:#f92672>.</span>do_the_thing()
+  <span style=color:#66d9ef>assert</span> <span style=color:#e6db74>&#34;I did it&#34;</span> <span style=color:#f92672>in</span> result
+
+<span style=color:#66d9ef>def</span> <span style=color:#a6e22e>test_do_the_other_thing</span>(base: Base):
+  result <span style=color:#f92672>=</span> base<span style=color:#f92672>.</span>do_the_other_thing()
+  <span style=color:#66d9ef>assert</span> <span style=color:#e6db74>&#34;I did it&#34;</span> <span style=color:#f92672>in</span> result
+
+<span style=color:#66d9ef>def</span> <span style=color:#a6e22e>test_do_this_thing</span>(base: Base):
+  result <span style=color:#f92672>=</span> base<span style=color:#f92672>.</span>do_this_thing()
+  <span style=color:#66d9ef>assert</span> <span style=color:#e6db74>&#34;I did it&#34;</span> <span style=color:#f92672>in</span> result
+
+<span style=color:#66d9ef>def</span> <span style=color:#a6e22e>test_do_that_thing</span>(base: Base):
+  result <span style=color:#f92672>=</span> base<span style=color:#f92672>.</span>do_that_thing()
+  <span style=color:#66d9ef>assert</span> <span style=color:#e6db74>&#34;I did it&#34;</span> <span style=color:#f92672>in</span> result
+</code></pre></div><p><a href=https://docs.pytest.org/en/latest/how-to/fixtures.html#fixture-parametrize>Parametrizing fixtures</a> is what makes the above possible:</p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-python data-lang=python><span style=color:#a6e22e>@pytest</span><span style=color:#f92672>.</span>fixture(params<span style=color:#f92672>=</span>[cls <span style=color:#66d9ef>for</span> cls <span style=color:#f92672>in</span> Base<span style=color:#f92672>.</span>__subclasses__()])
+<span style=color:#66d9ef>def</span> <span style=color:#a6e22e>base</span>(request) <span style=color:#f92672>-&gt;</span> Base:
+  <span style=color:#66d9ef>if</span> request<span style=color:#f92672>.</span>param <span style=color:#f92672>==</span> DerivedA:
+    <span style=color:#66d9ef>return</span> DerivedA()
+  <span style=color:#66d9ef>elif</span> request<span style=color:#f92672>.</span>param <span style=color:#f92672>==</span> DerivedB:
+    <span style=color:#66d9ef>return</span> DerivedB()
+</code></pre></div><p>What is happening, exactly?
+The docs can say it best:</p>
+<blockquote>
+<p>The main change is the declaration of params with @pytest.fixture, a list of values for each of which the fixture function will execute and can access a value via request.param. No test function code needs to change.</p>
+</blockquote>
+<h3 id=full-example>Full example</h3>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-python data-lang=python><span style=color:#f92672>import</span> pytest
+
+
+<span style=color:#66d9ef>class</span> <span style=color:#a6e22e>Base</span>:
+    <span style=color:#66d9ef>def</span> <span style=color:#a6e22e>do_the_thing</span>(self) <span style=color:#f92672>-&gt;</span> str:
+        <span style=color:#66d9ef>raise</span> <span style=color:#a6e22e>NotImplementedError</span>
+
+    <span style=color:#66d9ef>def</span> <span style=color:#a6e22e>do_the_other_thing</span>(self) <span style=color:#f92672>-&gt;</span> str:
+        <span style=color:#66d9ef>raise</span> <span style=color:#a6e22e>NotImplementedError</span>
+
+    <span style=color:#66d9ef>def</span> <span style=color:#a6e22e>do_this_thing</span>(self) <span style=color:#f92672>-&gt;</span> str:
+        <span style=color:#66d9ef>raise</span> <span style=color:#a6e22e>NotImplementedError</span>
+
+    <span style=color:#66d9ef>def</span> <span style=color:#a6e22e>do_that_thing</span>(self) <span style=color:#f92672>-&gt;</span> str:
+        <span style=color:#66d9ef>raise</span> <span style=color:#a6e22e>NotImplementedError</span>
+
+
+<span style=color:#66d9ef>class</span> <span style=color:#a6e22e>DerivedA</span>(Base):
+    <span style=color:#66d9ef>def</span> <span style=color:#a6e22e>do_the_thing</span>(self) <span style=color:#f92672>-&gt;</span> str:
+        <span style=color:#66d9ef>return</span> <span style=color:#e6db74>&#34;I did it&#34;</span>
+
+    <span style=color:#66d9ef>def</span> <span style=color:#a6e22e>do_the_other_thing</span>(self) <span style=color:#f92672>-&gt;</span> str:
+        <span style=color:#66d9ef>return</span> <span style=color:#e6db74>&#34;I did it&#34;</span>
+
+    <span style=color:#66d9ef>def</span> <span style=color:#a6e22e>do_this_thing</span>(self) <span style=color:#f92672>-&gt;</span> str:
+        <span style=color:#66d9ef>return</span> <span style=color:#e6db74>&#34;I did it&#34;</span>
+
+    <span style=color:#66d9ef>def</span> <span style=color:#a6e22e>do_that_thing</span>(self) <span style=color:#f92672>-&gt;</span> str:
+        <span style=color:#66d9ef>return</span> <span style=color:#e6db74>&#34;I did it&#34;</span>
+
+
+<span style=color:#66d9ef>class</span> <span style=color:#a6e22e>DerivedB</span>(Base):
+    <span style=color:#66d9ef>def</span> <span style=color:#a6e22e>do_the_thing</span>(self) <span style=color:#f92672>-&gt;</span> str:
+        <span style=color:#66d9ef>return</span> <span style=color:#e6db74>&#34;I did it better&#34;</span>
+
+    <span style=color:#66d9ef>def</span> <span style=color:#a6e22e>do_the_other_thing</span>(self) <span style=color:#f92672>-&gt;</span> str:
+        <span style=color:#66d9ef>return</span> <span style=color:#e6db74>&#34;I did it better&#34;</span>
+
+    <span style=color:#66d9ef>def</span> <span style=color:#a6e22e>do_this_thing</span>(self) <span style=color:#f92672>-&gt;</span> str:
+        <span style=color:#66d9ef>return</span> <span style=color:#e6db74>&#34;I did it better&#34;</span>
+
+    <span style=color:#66d9ef>def</span> <span style=color:#a6e22e>do_that_thing</span>(self) <span style=color:#f92672>-&gt;</span> str:
+        <span style=color:#66d9ef>return</span> <span style=color:#e6db74>&#34;I did it better&#34;</span>
+
+
+<span style=color:#a6e22e>@pytest</span><span style=color:#f92672>.</span>fixture(params<span style=color:#f92672>=</span>[cls <span style=color:#66d9ef>for</span> cls <span style=color:#f92672>in</span> Base<span style=color:#f92672>.</span>__subclasses__()])
+<span style=color:#66d9ef>def</span> <span style=color:#a6e22e>base</span>(request) <span style=color:#f92672>-&gt;</span> Base:
+    <span style=color:#66d9ef>if</span> request<span style=color:#f92672>.</span>param <span style=color:#f92672>==</span> DerivedA:
+        <span style=color:#66d9ef>return</span> DerivedA()
+    <span style=color:#66d9ef>elif</span> request<span style=color:#f92672>.</span>param <span style=color:#f92672>==</span> DerivedB:
+        <span style=color:#66d9ef>return</span> DerivedB()
+
+
+<span style=color:#66d9ef>def</span> <span style=color:#a6e22e>test_do_the_thing</span>(base: Base):
+    result <span style=color:#f92672>=</span> base<span style=color:#f92672>.</span>do_the_thing()
+    <span style=color:#66d9ef>assert</span> <span style=color:#e6db74>&#34;I did it&#34;</span> <span style=color:#f92672>in</span> result
+
+
+<span style=color:#66d9ef>def</span> <span style=color:#a6e22e>test_do_the_other_thing</span>(base: Base):
+    result <span style=color:#f92672>=</span> base<span style=color:#f92672>.</span>do_the_other_thing()
+    <span style=color:#66d9ef>assert</span> <span style=color:#e6db74>&#34;I did it&#34;</span> <span style=color:#f92672>in</span> result
+
+
+<span style=color:#66d9ef>def</span> <span style=color:#a6e22e>test_do_this_thing</span>(base: Base):
+    result <span style=color:#f92672>=</span> base<span style=color:#f92672>.</span>do_this_thing()
+    <span style=color:#66d9ef>assert</span> <span style=color:#e6db74>&#34;I did it&#34;</span> <span style=color:#f92672>in</span> result
+
+
+<span style=color:#66d9ef>def</span> <span style=color:#a6e22e>test_do_that_thing</span>(base: Base):
+    result <span style=color:#f92672>=</span> base<span style=color:#f92672>.</span>do_that_thing()
+    <span style=color:#66d9ef>assert</span> <span style=color:#e6db74>&#34;I did it&#34;</span> <span style=color:#f92672>in</span> result
+</code></pre></div><h3 id=what-does-this-mean>What does this mean?</h3>
+<p>If we implement <code>class Base</code> in a <code>class DerivedC</code>, we&rsquo;ll get the test for free!</p>
+<p>Note that <code>params=[cls for cls in Base.__subclasses__()]</code> makes this possible in the <code>base()</code> fixture.</p>
+<p>Now go eat lunch :)</p>
+<footer class=footline>
+</footer>
+</div>
+</div>
+<div id=navigation>
+<a class="nav nav-prev" href=/python/ title=Python> <i class="fa fa-chevron-left"></i></a>
+<a class="nav nav-next" href=/philosophy/ title=Philosophy style=margin-right:0><i class="fa fa-chevron-right"></i></a>
+</div>
+</section>
+<div style=left:-1000px;overflow:scroll;position:absolute;top:-1000px;border:none;box-sizing:content-box;height:200px;margin:0;padding:0;width:200px>
+<div style=border:none;box-sizing:content-box;height:200px;margin:0;padding:0;width:200px></div>
+</div>
+<script src=/js/clipboard.min.js?1642743946></script>
+<script src=/js/perfect-scrollbar.min.js?1642743946></script>
+<script src=/js/perfect-scrollbar.jquery.min.js?1642743946></script>
+<script src=/js/jquery.sticky.js?1642743946></script>
+<script src=/js/featherlight.min.js?1642743946></script>
+<script src=/js/highlight.pack.js?1642743946></script>
+<script>hljs.initHighlightingOnLoad()</script>
+<script src=/js/modernizr.custom-3.6.0.js?1642743946></script>
+<script src=/js/learn.js?1642743946></script>
+<script src=/js/hugo-learn.js?1642743946></script>
+<script src=/mermaid/mermaid.js?1642743946></script>
+<script>mermaid.initialize({startOnLoad:!0})</script>
+</body>
+</html>
