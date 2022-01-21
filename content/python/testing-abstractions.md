@@ -302,7 +302,7 @@ If we implement `class Base` in a `class DerivedC`, we'll get the test for free!
 
 Note that `params=[cls for cls in Base.__subclasses__()]` makes this possible in the `base()` fixture.
 
-Now go eat lunch :)
+This is pretty based lol
 
 
 [Parametrizing fixtures]: https://docs.pytest.org/en/latest/how-to/fixtures.html#fixture-parametrize
