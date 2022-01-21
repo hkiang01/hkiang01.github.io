@@ -10,6 +10,7 @@ draft: false
 - [Natural Evolution of (Bad) Tests](#natural-evolution-of-bad-tests)
 - [The secret sauce](#the-secret-sauce)
 - [Full example](#full-example)
+- [What does this mean?](#what-does-this-mean)
 
 ### TL;DR
 [Parametrizing fixtures] can enable testing all derived classes of a given base class while keeping tests [DRY].
@@ -295,6 +296,11 @@ def test_do_that_thing(base: Base):
     result = base.do_that_thing()
     assert "I did it" in result
 ```
+
+### What does this mean?
+If we implement `class Base` in a `class DerivedC`, we'll get the test for free!
+
+Note that `params=[cls for cls in Base.__subclasses__()]` makes this possible in the `base()` fixture.
 
 Now go eat lunch :)
 
