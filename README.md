@@ -1,6 +1,6 @@
 # blog
 
-my blog
+[my blog](https://www.youtube.com/watch?v=V-fRuoMIfpw) 😂
 
 ## dev
 
