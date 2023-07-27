@@ -1,285 +1,91 @@
-<!doctype html><html lang=en class="js csstransforms3d">
-<head>
-<meta charset=utf-8>
-<meta name=viewport content="width=device-width,initial-scale=1">
-<meta name=generator content="Hugo 0.92.0">
-<meta name=description content>
-<link rel=icon href=/images/favicon.png type=image/png>
-<title>Keycloak :: Some reading materal</title>
-<link href=/css/nucleus.css?1642781214 rel=stylesheet>
-<link href=/css/fontawesome-all.min.css?1642781214 rel=stylesheet>
-<link href=/css/hybrid.css?1642781214 rel=stylesheet>
-<link href=/css/featherlight.min.css?1642781214 rel=stylesheet>
-<link href=/css/perfect-scrollbar.min.css?1642781214 rel=stylesheet>
-<link href=/css/auto-complete.css?1642781214 rel=stylesheet>
-<link href=/css/atom-one-dark-reasonable.css?1642781214 rel=stylesheet>
-<link href=/css/theme.css?1642781214 rel=stylesheet>
-<link href=/css/hugo-theme.css?1642781214 rel=stylesheet>
-<script src=/js/jquery-3.3.1.min.js?1642781214></script>
-<style>:root #header+#content>#left>#rlblock_left{display:none!important}{ { if .Site.Params.disableInlineCopyToClipBoard }}:not(pre)>code+span.copy-to-clipboard{display:none}{ { end }}</style>
-</head>
-<body data-url=/kubernetes/keycloak/>
-<nav id=sidebar>
-<div id=header-wrapper>
-<div id=header>
-<a id=logo href=https://hkiang01.github.io>
-Some reading material
-</a>
-</div>
-<div class=searchbox>
-<label for=search-by><i class="fas fa-search"></i></label>
+<!doctype html><html lang=en class="js csstransforms3d"><head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><meta name=generator content="Hugo 0.115.4"><meta name=description content><link rel=icon href=/images/favicon.png type=image/png><title>Keycloak :: Some reading materal</title><link href=/css/nucleus.css?1690495561 rel=stylesheet><link href=/css/fontawesome-all.min.css?1690495561 rel=stylesheet><link href=/css/hybrid.css?1690495561 rel=stylesheet><link href=/css/featherlight.min.css?1690495561 rel=stylesheet><link href=/css/perfect-scrollbar.min.css?1690495561 rel=stylesheet><link href=/css/auto-complete.css?1690495561 rel=stylesheet><link href=/css/atom-one-dark-reasonable.css?1690495561 rel=stylesheet><link href=/css/theme.css?1690495561 rel=stylesheet><link href=/css/hugo-theme.css?1690495561 rel=stylesheet><script src=/js/jquery-3.3.1.min.js?1690495561></script><style>:root #header+#content>#left>#rlblock_left{display:none!important}{ { if .Site.Params.disableInlineCopyToClipBoard }}:not(pre)>code+span.copy-to-clipboard{display:none}{ { end }}</style></head><body data-url=/kubernetes/keycloak/><nav id=sidebar><div id=header-wrapper><div id=header><a id=logo href=https://hkiang01.github.io>Some reading material</a></div><div class=searchbox><label for=search-by><i class="fas fa-search"></i></label>
 <input data-search-input id=search-by type=search placeholder=Search...>
-<span data-search-clear><i class="fas fa-times"></i></span>
-</div>
-<script type=text/javascript src=/js/lunr.min.js?1642781214></script>
-<script type=text/javascript src=/js/auto-complete.js?1642781214></script>
-<script type=text/javascript>var baseurl="https://hkiang01.github.io"</script>
-<script type=text/javascript src=/js/search.js?1642781214></script>
-</div>
-<div class=highlightable>
-<ul class=topics>
-<li data-nav-id=/philosophy/ title=Philosophy class=dd-item>
-<a href=/philosophy/>
-<b>1. </b>Philosophy
-</a>
-</li>
-<li data-nav-id=/kubernetes/ title=Kubernetes class="dd-item
-parent">
-<a href=/kubernetes/>
-<b>2. </b>Kubernetes
-</a>
-<ul>
-<li data-nav-id=/kubernetes/keycloak/ title=Keycloak class="dd-item active">
-<a href=/kubernetes/keycloak/>
-Keycloak
-</a>
-</li>
-<li data-nav-id=/kubernetes/wildcard-certs/ title="Wildcard certs" class=dd-item>
-<a href=/kubernetes/wildcard-certs/>
-Wildcard certs
-</a>
-</li>
-</ul>
-</li>
-<li data-nav-id=/python/ title=Python class=dd-item>
-<a href=/python/>
-<b>3. </b>Python
-</a>
-<ul>
-<li data-nav-id=/python/testing-abstractions/ title="Testing Abstractions" class=dd-item>
-<a href=/python/testing-abstractions/>
-Testing Abstractions
-</a>
-</li>
-</ul>
-</li>
-</ul>
-<section id=shortcuts>
-<h3>More</h3>
-<ul>
-<li>
-<a class=padding href=https://github.com/hkiang01><i class="fab fa-github"></i> Github</a>
-</li>
-<li>
-<a class=padding href=https://www.linkedin.com/in/harrison-kiang-ba737568/><i class="fab fa-linkedin"></i> LinkedIn</a>
-</li>
-<li>
-<a class=padding href=https://twitter.com/hkiang01/><i class="fab fa-twitter"></i> Twitter</a>
-</li>
-</ul>
-</section>
-<section id=footer>
-<p>Built with <a href=https://github.com/matcornic/hugo-theme-learn><i class="fas fa-heart"></i></a> from <a href=https://getgrav.org>Grav</a> and <a href=https://gohugo.io/>Hugo</a></p>
-</section>
-</div>
-</nav>
-<section id=body>
-<div id=overlay></div>
-<div class="padding highlightable">
-<div>
-<div id=top-bar>
-<div id=breadcrumbs itemscope itemtype=http://data-vocabulary.org/Breadcrumb>
-<span id=sidebar-toggle-span>
-<a href=# id=sidebar-toggle data-sidebar-toggle>
-<i class="fas fa-bars"></i>
-</a>
-</span>
+<span data-search-clear><i class="fas fa-times"></i></span></div><script type=text/javascript src=/js/lunr.min.js?1690495561></script>
+<script type=text/javascript src=/js/auto-complete.js?1690495561></script>
+<script type=text/javascript>var baseurl="https://hkiang01.github.io"</script><script type=text/javascript src=/js/search.js?1690495561></script></div><div class=highlightable><ul class=topics><li data-nav-id=/philosophy/ title=Philosophy class=dd-item><a href=/philosophy/><b>1. </b>Philosophy</a></li><li data-nav-id=/kubernetes/ title=Kubernetes class="dd-item
+parent"><a href=/kubernetes/><b>2. </b>Kubernetes</a><ul><li data-nav-id=/kubernetes/keycloak/ title=Keycloak class="dd-item active"><a href=/kubernetes/keycloak/>Keycloak</a></li><li data-nav-id=/kubernetes/wildcard-certs/ title="Wildcard certs" class=dd-item><a href=/kubernetes/wildcard-certs/>Wildcard certs</a></li></ul></li><li data-nav-id=/python/ title=Python class=dd-item><a href=/python/><b>3. </b>Python</a><ul><li data-nav-id=/python/testing-abstractions/ title="Testing Abstractions" class=dd-item><a href=/python/testing-abstractions/>Testing Abstractions</a></li></ul></li></ul><section id=shortcuts><h3>More</h3><ul><li><a class=padding href=https://github.com/hkiang01><i class='fab fa-github'></i> Github</a></li><li><a class=padding href=https://www.linkedin.com/in/harrison-kiang-ba737568/><i class='fab fa-linkedin'></i> LinkedIn</a></li><li><a class=padding href=https://twitter.com/hkiang01/><i class='fab fa-twitter'></i> Twitter</a></li></ul></section><section id=footer><p>Built with <a href=https://github.com/matcornic/hugo-theme-learn><i class="fas fa-heart"></i></a> from <a href=https://getgrav.org>Grav</a> and <a href=https://gohugo.io/>Hugo</a></p></section></div></nav><section id=body><div id=overlay></div><div class="padding highlightable"><div><div id=top-bar><div id=breadcrumbs itemscope itemtype=http://data-vocabulary.org/Breadcrumb><span id=sidebar-toggle-span><a href=# id=sidebar-toggle data-sidebar-toggle><i class="fas fa-bars"></i></a></span>
 <span id=toc-menu><i class="fas fa-list-alt"></i></span>
-<span class=links>
-<a href=/>Some reading material</a> > <a href=/kubernetes/>Kubernetes</a> > Keycloak
-</span>
-</div>
-<div class=progress>
-<div class=wrapper>
-<nav id=TableOfContents>
-<ul>
-<li><a href=#installing-keycloak>Installing Keycloak</a>
-<ul>
-<li><a href=#simple-first>Simple first</a></li>
-<li><a href=#database-for-production-readiness>Database for production readiness</a></li>
-</ul>
-</li>
-<li><a href=#preparing-keycloak>Preparing Keycloak</a>
-<ul>
-<li><a href=#create-a-realm>Create a Realm</a></li>
-<li><a href=#create-a-client>Create a Client</a></li>
-<li><a href=#create-a-user>Create a User</a></li>
-<li><a href=#testing-out-your-user>Testing out your User</a></li>
-</ul>
-</li>
-<li><a href=#securing-your-application>Securing your application</a>
-<ul>
-<li><a href=#setting-up-the-gatekeeper-sidecar>Setting up the gatekeeper sidecar</a></li>
-<li><a href=#deploy-secured-app>Deploy secured app</a></li>
-<li><a href=#fixing-the-audience>Fixing the audience</a></li>
-</ul>
-</li>
-<li><a href=#some-understanding>Some understanding</a></li>
-<li><a href=#next-steps>Next steps</a></li>
-</ul>
-</nav>
-</div>
-</div>
-</div>
-</div>
-<div id=head-tags>
-</div>
-<div id=body-inner>
-<h1>
-Keycloak
-</h1>
-<p><a href=https://www.keycloak.org/>Keycloak</a> is an identity management solution useful for securing applications in Kubernetes.
+<span class=links><a href=/>Some reading material</a> > <a href=/kubernetes/>Kubernetes</a> > Keycloak</span></div><div class=progress><div class=wrapper><nav id=TableOfContents><ul><li><a href=#installing-keycloak>Installing Keycloak</a><ul><li><a href=#simple-first>Simple first</a></li><li><a href=#database-for-production-readiness>Database for production readiness</a></li></ul></li><li><a href=#preparing-keycloak>Preparing Keycloak</a><ul><li><a href=#create-a-realm>Create a Realm</a></li><li><a href=#create-a-client>Create a Client</a></li><li><a href=#create-a-user>Create a User</a></li><li><a href=#testing-out-your-user>Testing out your User</a></li></ul></li><li><a href=#securing-your-application>Securing your application</a><ul><li><a href=#setting-up-the-gatekeeper-sidecar>Setting up the gatekeeper sidecar</a></li><li><a href=#deploy-secured-app>Deploy secured app</a></li><li><a href=#fixing-the-audience>Fixing the audience</a></li></ul></li><li><a href=#some-understanding>Some understanding</a></li><li><a href=#next-steps>Next steps</a></li></ul></nav></div></div></div></div><div id=head-tags></div><div id=body-inner><h1>Keycloak</h1><p><a href=https://www.keycloak.org/>Keycloak</a> is an identity management solution useful for securing applications in Kubernetes.
 This post shows how to set up Keycloak and secure an application in Kubernetes with Keycloak.
-Sample code available at <a href=https://github.com/hkiang01/keycloak-demo>https://github.com/hkiang01/keycloak-demo</a>.</p>
-<ul>
-<li><a href=#installing-keycloak>Installing Keycloak</a>
-<ul>
-<li><a href=#simple-first>Simple first</a></li>
-<li><a href=#database-for-production-readiness>Database for production readiness</a>
-<ul>
-<li><a href=#creating-the-chart>Creating the chart</a></li>
-<li><a href=#adding-postgres>Adding Postgres</a></li>
-</ul>
-</li>
-</ul>
-</li>
-<li><a href=#preparing-keycloak>Preparing Keycloak</a>
-<ul>
-<li><a href=#create-a-realm>Create a Realm</a></li>
-<li><a href=#create-a-client>Create a Client</a></li>
-<li><a href=#create-a-user>Create a User</a></li>
-<li><a href=#testing-out-your-user>Testing out your User</a></li>
-</ul>
-</li>
-<li><a href=#securing-your-application>Securing your application</a>
-<ul>
-<li><a href=#setting-up-the-gatekeeper-sidecar>Setting up the gatekeeper sidecar</a></li>
-<li><a href=#deploy-secured-app>Deploy secured app</a></li>
-<li><a href=#fixing-the-audience>Fixing the audience</a></li>
-</ul>
-</li>
-<li><a href=#some-understanding>Some understanding</a></li>
-<li><a href=#next-steps>Next steps</a></li>
-</ul>
-<h2 id=installing-keycloak>Installing Keycloak</h2>
-<h3 id=simple-first>Simple first</h3>
-<p>We&rsquo;re going to see what it takes to minimally get Keycloak to run in Kubernetes.
-First, we&rsquo;ll create a namespace called keycloak</p>
-<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash>kubectl create namespace keycloak
-</code></pre></div><p>We&rsquo;ll then get the quickstart manifest from <a href=https://github.com/keycloak/keycloak-quickstarts/tree/latest/kubernetes-examples>https://github.com/keycloak/keycloak-quickstarts/tree/latest/kubernetes-examples</a>.
-I&rsquo;ve made a few edits, namely:</p>
-<ul>
-<li>Service type changed to ClusterIP</li>
-<li>namespaces changed to &ldquo;keycloak&rdquo;</li>
-</ul>
-<p>I&rsquo;ll call mine keycloak.yaml</p>
-<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-yaml data-lang=yaml><span style=color:#75715e># keycloak.yaml</span>
-<span style=color:#f92672>apiVersion</span>: <span style=color:#ae81ff>v1</span>
-<span style=color:#f92672>kind</span>: <span style=color:#ae81ff>Service</span>
-<span style=color:#f92672>metadata</span>:
-  <span style=color:#f92672>name</span>: <span style=color:#ae81ff>keycloak</span>
-  <span style=color:#f92672>namespace</span>: <span style=color:#ae81ff>keycloak</span>
-  <span style=color:#f92672>labels</span>:
-    <span style=color:#f92672>app</span>: <span style=color:#ae81ff>keycloak</span>
-<span style=color:#f92672>spec</span>:
-  <span style=color:#f92672>ports</span>:
-  - <span style=color:#f92672>name</span>: <span style=color:#ae81ff>http</span>
-    <span style=color:#f92672>port</span>: <span style=color:#ae81ff>8080</span>
-    <span style=color:#f92672>targetPort</span>: <span style=color:#ae81ff>8080</span>
-  <span style=color:#f92672>selector</span>:
-    <span style=color:#f92672>app</span>: <span style=color:#ae81ff>keycloak</span>
-  <span style=color:#f92672>type</span>: <span style=color:#ae81ff>ClusterIP</span>
----
-<span style=color:#f92672>apiVersion</span>: <span style=color:#ae81ff>apps/v1</span>
-<span style=color:#f92672>kind</span>: <span style=color:#ae81ff>Deployment</span>
-<span style=color:#f92672>metadata</span>:
-  <span style=color:#f92672>name</span>: <span style=color:#ae81ff>keycloak</span>
-  <span style=color:#f92672>namespace</span>: <span style=color:#ae81ff>keycloak</span>
-  <span style=color:#f92672>labels</span>:
-    <span style=color:#f92672>app</span>: <span style=color:#ae81ff>keycloak</span>
-<span style=color:#f92672>spec</span>:
-  <span style=color:#f92672>replicas</span>: <span style=color:#ae81ff>1</span>
-  <span style=color:#f92672>selector</span>:
-    <span style=color:#f92672>matchLabels</span>:
-      <span style=color:#f92672>app</span>: <span style=color:#ae81ff>keycloak</span>
-  <span style=color:#f92672>template</span>:
-    <span style=color:#f92672>metadata</span>:
-      <span style=color:#f92672>labels</span>:
-        <span style=color:#f92672>app</span>: <span style=color:#ae81ff>keycloak</span>
-    <span style=color:#f92672>spec</span>:
-      <span style=color:#f92672>containers</span>:
-      - <span style=color:#f92672>name</span>: <span style=color:#ae81ff>keycloak</span>
-        <span style=color:#f92672>image</span>: <span style=color:#ae81ff>quay.io/keycloak/keycloak:11.0.2</span>
-        <span style=color:#f92672>env</span>:
-        - <span style=color:#f92672>name</span>: <span style=color:#ae81ff>KEYCLOAK_USER</span>
-          <span style=color:#f92672>value</span>: <span style=color:#e6db74>&#34;admin&#34;</span>
-        - <span style=color:#f92672>name</span>: <span style=color:#ae81ff>KEYCLOAK_PASSWORD</span>
-          <span style=color:#f92672>value</span>: <span style=color:#e6db74>&#34;admin&#34;</span>
-        - <span style=color:#f92672>name</span>: <span style=color:#ae81ff>PROXY_ADDRESS_FORWARDING</span>
-          <span style=color:#f92672>value</span>: <span style=color:#e6db74>&#34;true&#34;</span>
-        <span style=color:#f92672>ports</span>:
-        - <span style=color:#f92672>name</span>: <span style=color:#ae81ff>http</span>
-          <span style=color:#f92672>containerPort</span>: <span style=color:#ae81ff>8080</span>
-        - <span style=color:#f92672>name</span>: <span style=color:#ae81ff>https</span>
-          <span style=color:#f92672>containerPort</span>: <span style=color:#ae81ff>8443</span>
-        <span style=color:#f92672>readinessProbe</span>:
-          <span style=color:#f92672>httpGet</span>:
-            <span style=color:#f92672>path</span>: <span style=color:#ae81ff>/auth/realms/master</span>
-            <span style=color:#f92672>port</span>: <span style=color:#ae81ff>8080</span>
-</code></pre></div><p>Let&rsquo;s apply it</p>
-<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-zsh data-lang=zsh>kubectl apply -f keycloak.yaml
-</code></pre></div><p>Let&rsquo;s make sure it&rsquo;s up and running:</p>
-<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-zsh data-lang=zsh>kubectl get all -n keycloak
-</code></pre></div><p>You should see that the pods are all ready.
-Below, 1 of 1 pods are ready, as indicated by 1/1.</p>
-<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-txt data-lang=txt>NAME                            READY   STATUS    RESTARTS   AGE
-pod/keycloak-6bc5f6d94c-bdbln   1/1     Running   0          3m25s
-
-NAME               TYPE        CLUSTER-IP      EXTERNAL-IP   PORT(S)    AGE
-service/keycloak   ClusterIP   10.152.183.91   &lt;none&gt;        8080/TCP   3m26s
-
-NAME                       READY   UP-TO-DATE   AVAILABLE   AGE
-deployment.apps/keycloak   1/1     1            1           3m25s
-
-NAME                                  DESIRED   CURRENT   READY   AGE
-replicaset.apps/keycloak-6bc5f6d94c   1         1         1       3m25s
-</code></pre></div><p>To access the app, we&rsquo;ll need to port-forward the service:</p>
-<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-zsh data-lang=zsh>kubectl -n keycloak port-forward svc/keycloak <span style=color:#ae81ff>8080</span>
-</code></pre></div><p>You should see output like the following:</p>
-<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-txt data-lang=txt>Forwarding from 127.0.0.1:8080 -&gt; 8080
-Forwarding from [::1]:8080 -&gt; 8080
-</code></pre></div><p>We should now be able to access the instance at http://localhost:8080 in our browser.
-Before we continue, let&rsquo;s do some cleanup:</p>
-<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-zsh data-lang=zsh>kubectl delete -f keycloak.yaml
-</code></pre></div><h3 id=database-for-production-readiness>Database for production readiness</h3>
-<h4 id=creating-the-chart>Creating the chart</h4>
-<p>Keycloak is a stateful application that is backed by a database like Postgres.
+Sample code available at <a href=https://github.com/hkiang01/keycloak-demo>https://github.com/hkiang01/keycloak-demo</a>.</p><ul><li><a href=#installing-keycloak>Installing Keycloak</a><ul><li><a href=#simple-first>Simple first</a></li><li><a href=#database-for-production-readiness>Database for production readiness</a><ul><li><a href=#creating-the-chart>Creating the chart</a></li><li><a href=#adding-postgres>Adding Postgres</a></li></ul></li></ul></li><li><a href=#preparing-keycloak>Preparing Keycloak</a><ul><li><a href=#create-a-realm>Create a Realm</a></li><li><a href=#create-a-client>Create a Client</a></li><li><a href=#create-a-user>Create a User</a></li><li><a href=#testing-out-your-user>Testing out your User</a></li></ul></li><li><a href=#securing-your-application>Securing your application</a><ul><li><a href=#setting-up-the-gatekeeper-sidecar>Setting up the gatekeeper sidecar</a></li><li><a href=#deploy-secured-app>Deploy secured app</a></li><li><a href=#fixing-the-audience>Fixing the audience</a></li></ul></li><li><a href=#some-understanding>Some understanding</a></li><li><a href=#next-steps>Next steps</a></li></ul><h2 id=installing-keycloak>Installing Keycloak</h2><h3 id=simple-first>Simple first</h3><p>We&rsquo;re going to see what it takes to minimally get Keycloak to run in Kubernetes.
+First, we&rsquo;ll create a namespace called keycloak</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=display:flex><span>kubectl create namespace keycloak
+</span></span></code></pre></div><p>We&rsquo;ll then get the quickstart manifest from <a href=https://github.com/keycloak/keycloak-quickstarts/tree/latest/kubernetes-examples>https://github.com/keycloak/keycloak-quickstarts/tree/latest/kubernetes-examples</a>.
+I&rsquo;ve made a few edits, namely:</p><ul><li>Service type changed to ClusterIP</li><li>namespaces changed to &ldquo;keycloak&rdquo;</li></ul><p>I&rsquo;ll call mine keycloak.yaml</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-yaml data-lang=yaml><span style=display:flex><span><span style=color:#75715e># keycloak.yaml</span>
+</span></span><span style=display:flex><span><span style=color:#f92672>apiVersion</span>: <span style=color:#ae81ff>v1</span>
+</span></span><span style=display:flex><span><span style=color:#f92672>kind</span>: <span style=color:#ae81ff>Service</span>
+</span></span><span style=display:flex><span><span style=color:#f92672>metadata</span>:
+</span></span><span style=display:flex><span>  <span style=color:#f92672>name</span>: <span style=color:#ae81ff>keycloak</span>
+</span></span><span style=display:flex><span>  <span style=color:#f92672>namespace</span>: <span style=color:#ae81ff>keycloak</span>
+</span></span><span style=display:flex><span>  <span style=color:#f92672>labels</span>:
+</span></span><span style=display:flex><span>    <span style=color:#f92672>app</span>: <span style=color:#ae81ff>keycloak</span>
+</span></span><span style=display:flex><span><span style=color:#f92672>spec</span>:
+</span></span><span style=display:flex><span>  <span style=color:#f92672>ports</span>:
+</span></span><span style=display:flex><span>  - <span style=color:#f92672>name</span>: <span style=color:#ae81ff>http</span>
+</span></span><span style=display:flex><span>    <span style=color:#f92672>port</span>: <span style=color:#ae81ff>8080</span>
+</span></span><span style=display:flex><span>    <span style=color:#f92672>targetPort</span>: <span style=color:#ae81ff>8080</span>
+</span></span><span style=display:flex><span>  <span style=color:#f92672>selector</span>:
+</span></span><span style=display:flex><span>    <span style=color:#f92672>app</span>: <span style=color:#ae81ff>keycloak</span>
+</span></span><span style=display:flex><span>  <span style=color:#f92672>type</span>: <span style=color:#ae81ff>ClusterIP</span>
+</span></span><span style=display:flex><span>---
+</span></span><span style=display:flex><span><span style=color:#f92672>apiVersion</span>: <span style=color:#ae81ff>apps/v1</span>
+</span></span><span style=display:flex><span><span style=color:#f92672>kind</span>: <span style=color:#ae81ff>Deployment</span>
+</span></span><span style=display:flex><span><span style=color:#f92672>metadata</span>:
+</span></span><span style=display:flex><span>  <span style=color:#f92672>name</span>: <span style=color:#ae81ff>keycloak</span>
+</span></span><span style=display:flex><span>  <span style=color:#f92672>namespace</span>: <span style=color:#ae81ff>keycloak</span>
+</span></span><span style=display:flex><span>  <span style=color:#f92672>labels</span>:
+</span></span><span style=display:flex><span>    <span style=color:#f92672>app</span>: <span style=color:#ae81ff>keycloak</span>
+</span></span><span style=display:flex><span><span style=color:#f92672>spec</span>:
+</span></span><span style=display:flex><span>  <span style=color:#f92672>replicas</span>: <span style=color:#ae81ff>1</span>
+</span></span><span style=display:flex><span>  <span style=color:#f92672>selector</span>:
+</span></span><span style=display:flex><span>    <span style=color:#f92672>matchLabels</span>:
+</span></span><span style=display:flex><span>      <span style=color:#f92672>app</span>: <span style=color:#ae81ff>keycloak</span>
+</span></span><span style=display:flex><span>  <span style=color:#f92672>template</span>:
+</span></span><span style=display:flex><span>    <span style=color:#f92672>metadata</span>:
+</span></span><span style=display:flex><span>      <span style=color:#f92672>labels</span>:
+</span></span><span style=display:flex><span>        <span style=color:#f92672>app</span>: <span style=color:#ae81ff>keycloak</span>
+</span></span><span style=display:flex><span>    <span style=color:#f92672>spec</span>:
+</span></span><span style=display:flex><span>      <span style=color:#f92672>containers</span>:
+</span></span><span style=display:flex><span>      - <span style=color:#f92672>name</span>: <span style=color:#ae81ff>keycloak</span>
+</span></span><span style=display:flex><span>        <span style=color:#f92672>image</span>: <span style=color:#ae81ff>quay.io/keycloak/keycloak:11.0.2</span>
+</span></span><span style=display:flex><span>        <span style=color:#f92672>env</span>:
+</span></span><span style=display:flex><span>        - <span style=color:#f92672>name</span>: <span style=color:#ae81ff>KEYCLOAK_USER</span>
+</span></span><span style=display:flex><span>          <span style=color:#f92672>value</span>: <span style=color:#e6db74>&#34;admin&#34;</span>
+</span></span><span style=display:flex><span>        - <span style=color:#f92672>name</span>: <span style=color:#ae81ff>KEYCLOAK_PASSWORD</span>
+</span></span><span style=display:flex><span>          <span style=color:#f92672>value</span>: <span style=color:#e6db74>&#34;admin&#34;</span>
+</span></span><span style=display:flex><span>        - <span style=color:#f92672>name</span>: <span style=color:#ae81ff>PROXY_ADDRESS_FORWARDING</span>
+</span></span><span style=display:flex><span>          <span style=color:#f92672>value</span>: <span style=color:#e6db74>&#34;true&#34;</span>
+</span></span><span style=display:flex><span>        <span style=color:#f92672>ports</span>:
+</span></span><span style=display:flex><span>        - <span style=color:#f92672>name</span>: <span style=color:#ae81ff>http</span>
+</span></span><span style=display:flex><span>          <span style=color:#f92672>containerPort</span>: <span style=color:#ae81ff>8080</span>
+</span></span><span style=display:flex><span>        - <span style=color:#f92672>name</span>: <span style=color:#ae81ff>https</span>
+</span></span><span style=display:flex><span>          <span style=color:#f92672>containerPort</span>: <span style=color:#ae81ff>8443</span>
+</span></span><span style=display:flex><span>        <span style=color:#f92672>readinessProbe</span>:
+</span></span><span style=display:flex><span>          <span style=color:#f92672>httpGet</span>:
+</span></span><span style=display:flex><span>            <span style=color:#f92672>path</span>: <span style=color:#ae81ff>/auth/realms/master</span>
+</span></span><span style=display:flex><span>            <span style=color:#f92672>port</span>: <span style=color:#ae81ff>8080</span>
+</span></span></code></pre></div><p>Let&rsquo;s apply it</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-zsh data-lang=zsh><span style=display:flex><span>kubectl apply -f keycloak.yaml
+</span></span></code></pre></div><p>Let&rsquo;s make sure it&rsquo;s up and running:</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-zsh data-lang=zsh><span style=display:flex><span>kubectl get all -n keycloak
+</span></span></code></pre></div><p>You should see that the pods are all ready.
+Below, 1 of 1 pods are ready, as indicated by 1/1.</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-txt data-lang=txt><span style=display:flex><span>NAME                            READY   STATUS    RESTARTS   AGE
+</span></span><span style=display:flex><span>pod/keycloak-6bc5f6d94c-bdbln   1/1     Running   0          3m25s
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>NAME               TYPE        CLUSTER-IP      EXTERNAL-IP   PORT(S)    AGE
+</span></span><span style=display:flex><span>service/keycloak   ClusterIP   10.152.183.91   &lt;none&gt;        8080/TCP   3m26s
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>NAME                       READY   UP-TO-DATE   AVAILABLE   AGE
+</span></span><span style=display:flex><span>deployment.apps/keycloak   1/1     1            1           3m25s
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>NAME                                  DESIRED   CURRENT   READY   AGE
+</span></span><span style=display:flex><span>replicaset.apps/keycloak-6bc5f6d94c   1         1         1       3m25s
+</span></span></code></pre></div><p>To access the app, we&rsquo;ll need to port-forward the service:</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-zsh data-lang=zsh><span style=display:flex><span>kubectl -n keycloak port-forward svc/keycloak <span style=color:#ae81ff>8080</span>
+</span></span></code></pre></div><p>You should see output like the following:</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-txt data-lang=txt><span style=display:flex><span>Forwarding from 127.0.0.1:8080 -&gt; 8080
+</span></span><span style=display:flex><span>Forwarding from [::1]:8080 -&gt; 8080
+</span></span></code></pre></div><p>We should now be able to access the instance at http://localhost:8080 in our browser.
+Before we continue, let&rsquo;s do some cleanup:</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-zsh data-lang=zsh><span style=display:flex><span>kubectl delete -f keycloak.yaml
+</span></span></code></pre></div><h3 id=database-for-production-readiness>Database for production readiness</h3><h4 id=creating-the-chart>Creating the chart</h4><p>Keycloak is a stateful application that is backed by a database like Postgres.
 We&rsquo;re going to take the above manifest from <a href=##installing-keycloak>Installing Keycloak</a> and paste it as a template in a new Helm chart with Postgres as a package <a href=https://helm.sh/docs/chart_best_practices/dependencies/#helm>dependency</a>.
-You can use an existing chart, but I think it&rsquo;s valuable to see what a minimal chart looks like.</p>
-<p>Let&rsquo;s first create a chart called keycloak:</p>
-<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-zsh data-lang=zsh>helm create keycloak
-</code></pre></div><p>This is the file tree of what&rsquo;s created</p>
-<pre tabindex=0><code>├── keycloak
+You can use an existing chart, but I think it&rsquo;s valuable to see what a minimal chart looks like.</p><p>Let&rsquo;s first create a chart called keycloak:</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-zsh data-lang=zsh><span style=display:flex><span>helm create keycloak
+</span></span></code></pre></div><p>This is the file tree of what&rsquo;s created</p><pre tabindex=0><code>├── keycloak
 │   ├── charts
 │   ├── Chart.yaml
 │   ├── templates
@@ -293,203 +99,132 @@ You can use an existing chart, but I think it&rsquo;s valuable to see what a min
 │   │   └── tests
 │   │       └── test-connection.yaml
 │   └── values.yaml
-</code></pre><p>We can get rid of the following in templates/:</p>
-<ul>
-<li>hpa.yaml</li>
-<li>tests/</li>
-</ul>
-<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-zsh data-lang=zsh>cd keycloak/templates/
-rm -rf hpa.yaml tests/
-</code></pre></div><p>Let&rsquo;s configure the chart to use the keycloak image.
-We can accomplish this with the follwing in values.yaml at the root of the chart.</p>
-<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-yaml data-lang=yaml><span style=color:#75715e># keycloak/values.yaml</span>
-<span style=color:#f92672>image</span>:
-  <span style=color:#f92672>repository</span>: <span style=color:#ae81ff>quay.io/keycloak/keycloak</span>
-  <span style=color:#f92672>pullPolicy</span>: <span style=color:#ae81ff>IfNotPresent</span>
-  <span style=color:#75715e># Overrides the image tag whose default is the chart appVersion.</span>
-  <span style=color:#f92672>tag</span>: <span style=color:#e6db74>&#34;11.0.2&#34;</span>
-</code></pre></div><p>And configure our credentials:</p>
-<div class="notices warning"><p>You should never store secrets in plaintext in your repo history.
-The snippet below is for demonstration purposes only.</p>
-</div>
-<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-yaml data-lang=yaml><span style=color:#75715e># keycloak/values.yaml</span>
-<span style=color:#f92672>username</span>: <span style=color:#ae81ff>admin</span>
-<span style=color:#f92672>password</span>: <span style=color:#ae81ff>supersecretpassword</span>
-</code></pre></div>
-<div class="notices tip"><p>You can use <a href=https://github.com/bitnami-labs/sealed-secrets>Sealed Secrets for Kubernetes</a> and store secrets in encrypted form in your chart&rsquo;s templates.
-See <a href=https://github.com/bitnami-labs/sealed-secrets#usage>Usage</a> to get started.</p>
-</div>
-<p>The container environment variables, ports, and probes will have to be copied over as well.</p>
-<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-yaml data-lang=yaml><span style=color:#75715e># keycloak/templates/deployment.yaml</span>
-      <span style=color:#f92672>containers</span>:
-        - <span style=color:#f92672>name</span>: {{ <span style=color:#ae81ff>.Chart.Name }}</span>
-          <span style=color:#f92672>securityContext</span>:
-            {{- <span style=color:#ae81ff>toYaml .Values.securityContext | nindent 12 }}</span>
-          <span style=color:#f92672>image</span>: <span style=color:#e6db74>&#34;{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}&#34;</span>
-          <span style=color:#f92672>imagePullPolicy</span>: {{ <span style=color:#ae81ff>.Values.image.pullPolicy }}</span>
-          <span style=color:#f92672>env</span>:
-          - <span style=color:#f92672>name</span>: <span style=color:#ae81ff>KEYCLOAK_USER</span>
-            <span style=color:#f92672>value</span>: {{ <span style=color:#ae81ff>.Values.username }}</span>
-          - <span style=color:#f92672>name</span>: <span style=color:#ae81ff>KEYCLOAK_PASSWORD</span>
-            <span style=color:#f92672>value</span>: {{ <span style=color:#ae81ff>.Values.password }}</span>
-          - <span style=color:#f92672>name</span>: <span style=color:#ae81ff>PROXY_ADDRESS_FORWARDING</span>
-            <span style=color:#f92672>value</span>: <span style=color:#e6db74>&#34;true&#34;</span>
-          <span style=color:#f92672>ports</span>:
-            - <span style=color:#f92672>name</span>: <span style=color:#ae81ff>http</span>
-              <span style=color:#f92672>containerPort</span>: <span style=color:#ae81ff>8080</span>
-              <span style=color:#f92672>protocol</span>: <span style=color:#ae81ff>TCP</span>
-            - <span style=color:#f92672>name</span>: <span style=color:#ae81ff>https</span>
-              <span style=color:#f92672>containerPort</span>: <span style=color:#ae81ff>8443</span>
-          <span style=color:#f92672>livenessProbe</span>:
-            <span style=color:#f92672>httpGet</span>:
-              <span style=color:#f92672>path</span>: <span style=color:#ae81ff>/</span>
-              <span style=color:#f92672>port</span>: <span style=color:#ae81ff>http</span>
-          <span style=color:#f92672>readinessProbe</span>:
-            <span style=color:#f92672>httpGet</span>:
-              <span style=color:#f92672>path</span>: <span style=color:#ae81ff>/auth/realms/master</span>
-              <span style=color:#f92672>port</span>: <span style=color:#ae81ff>http</span>
-</code></pre></div><p>We can now test our chart to make sure we have the same level of access as before.
-Perform the following command in a directory containing the keycloak/ directory that is the chart we created:</p>
-<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-zsh data-lang=zsh>helm -n keycloak upgrade --install keycloak ./keycloak
-</code></pre></div><p>Port-forward the service:</p>
-<pre tabindex=0><code>kubectl -n keycloak port-forward svc/keycloak 8080:80
-</code></pre><p>We should now be able to access the instance at http://localhost:8080 in our browser.</p>
-<h4 id=adding-postgres>Adding Postgres</h4>
-<p>The reason we want to add Postgresql via a Helm dependency is that a lot of the legwork with respect to ensuring availability and persistence is already done for you.
-There are packages that offer <a href=https://artifacthub.io/packages/helm/bitnami/postgresql-ha>high availability</a>, but here we&rsquo;ll just go for the standard <a href=https://artifacthub.io/packages/helm/bitnami/postgresql>postgresql</a> package.</p>
-<p>Let&rsquo;s add the dependency:</p>
-<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-yaml data-lang=yaml><span style=color:#75715e># keycloak/Chart.yaml</span>
-<span style=color:#f92672>dependencies</span>:
-- <span style=color:#f92672>name</span>: <span style=color:#ae81ff>postgresql</span>
-  <span style=color:#f92672>version</span>: <span style=color:#ae81ff>9.8.6</span>
-  <span style=color:#f92672>repository</span>: <span style=color:#ae81ff>https://charts.bitnami.com/bitnami</span>
-</code></pre></div><p>Pull the dependency:</p>
-<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-zsh data-lang=zsh>helm dependency update ./keycloak
-</code></pre></div><p>You should see output like below:</p>
-<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-txt data-lang=txt>...Successfully got an update from the &#34;bitnami&#34; chart repository
-Update Complete. ⎈Happy Helming!⎈
-Saving 1 charts
-Downloading postgresql from repo https://charts.bitnami.com/bitnami
-Deleting outdated charts
-</code></pre></div><p>You can now observe the chart itself.
-We&rsquo;re going to configure it by continuing to edit the same values.yaml file we used to set the chart&rsquo;s image to keycloak to configure out secrets</p>
-<div class="notices warning"><p>You should never store secrets in plaintext in your repo history.
-The snippet below is for demonstration purposes only.</p>
-</div>
-<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-yaml data-lang=yaml><span style=color:#75715e># keycloak/values.yaml</span>
-<span style=color:#f92672>postgresql</span>:
-  <span style=color:#f92672>postgresqlUsername</span>: <span style=color:#ae81ff>postgres</span>
-  <span style=color:#f92672>postgresqlPassword</span>: <span style=color:#ae81ff>secretpassword</span>
-  <span style=color:#f92672>postgresqlDatabase</span>: <span style=color:#ae81ff>keycloak</span>
-  <span style=color:#f92672>service</span>:
-    <span style=color:#f92672>port</span>: <span style=color:#ae81ff>5432</span>
-</code></pre></div>
-<div class="notices tip"><p>Use a Kubernetes Secret to define your credentials and point <code>postgresql.existingSecret</code> in values.yaml to it.
+</code></pre><p>We can get rid of the following in templates/:</p><ul><li>hpa.yaml</li><li>tests/</li></ul><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-zsh data-lang=zsh><span style=display:flex><span>cd keycloak/templates/
+</span></span><span style=display:flex><span>rm -rf hpa.yaml tests/
+</span></span></code></pre></div><p>Let&rsquo;s configure the chart to use the keycloak image.
+We can accomplish this with the follwing in values.yaml at the root of the chart.</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-yaml data-lang=yaml><span style=display:flex><span><span style=color:#75715e># keycloak/values.yaml</span>
+</span></span><span style=display:flex><span><span style=color:#f92672>image</span>:
+</span></span><span style=display:flex><span>  <span style=color:#f92672>repository</span>: <span style=color:#ae81ff>quay.io/keycloak/keycloak</span>
+</span></span><span style=display:flex><span>  <span style=color:#f92672>pullPolicy</span>: <span style=color:#ae81ff>IfNotPresent</span>
+</span></span><span style=display:flex><span>  <span style=color:#75715e># Overrides the image tag whose default is the chart appVersion.</span>
+</span></span><span style=display:flex><span>  <span style=color:#f92672>tag</span>: <span style=color:#e6db74>&#34;11.0.2&#34;</span>
+</span></span></code></pre></div><p>And configure our credentials:</p><div class="notices warning"><p>You should never store secrets in plaintext in your repo history.
+The snippet below is for demonstration purposes only.</p></div><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-yaml data-lang=yaml><span style=display:flex><span><span style=color:#75715e># keycloak/values.yaml</span>
+</span></span><span style=display:flex><span><span style=color:#f92672>username</span>: <span style=color:#ae81ff>admin</span>
+</span></span><span style=display:flex><span><span style=color:#f92672>password</span>: <span style=color:#ae81ff>supersecretpassword</span>
+</span></span></code></pre></div><div class="notices tip"><p>You can use <a href=https://github.com/bitnami-labs/sealed-secrets>Sealed Secrets for Kubernetes</a> and store secrets in encrypted form in your chart&rsquo;s templates.
+See <a href=https://github.com/bitnami-labs/sealed-secrets#usage>Usage</a> to get started.</p></div><p>The container environment variables, ports, and probes will have to be copied over as well.</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-yaml data-lang=yaml><span style=display:flex><span><span style=color:#75715e># keycloak/templates/deployment.yaml</span>
+</span></span><span style=display:flex><span>      <span style=color:#f92672>containers</span>:
+</span></span><span style=display:flex><span>        - <span style=color:#f92672>name</span>: {{ <span style=color:#ae81ff>.Chart.Name }}</span>
+</span></span><span style=display:flex><span>          <span style=color:#f92672>securityContext</span>:
+</span></span><span style=display:flex><span>            {{- <span style=color:#ae81ff>toYaml .Values.securityContext | nindent 12 }}</span>
+</span></span><span style=display:flex><span>          <span style=color:#f92672>image</span>: <span style=color:#e6db74>&#34;{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}&#34;</span>
+</span></span><span style=display:flex><span>          <span style=color:#f92672>imagePullPolicy</span>: {{ <span style=color:#ae81ff>.Values.image.pullPolicy }}</span>
+</span></span><span style=display:flex><span>          <span style=color:#f92672>env</span>:
+</span></span><span style=display:flex><span>          - <span style=color:#f92672>name</span>: <span style=color:#ae81ff>KEYCLOAK_USER</span>
+</span></span><span style=display:flex><span>            <span style=color:#f92672>value</span>: {{ <span style=color:#ae81ff>.Values.username }}</span>
+</span></span><span style=display:flex><span>          - <span style=color:#f92672>name</span>: <span style=color:#ae81ff>KEYCLOAK_PASSWORD</span>
+</span></span><span style=display:flex><span>            <span style=color:#f92672>value</span>: {{ <span style=color:#ae81ff>.Values.password }}</span>
+</span></span><span style=display:flex><span>          - <span style=color:#f92672>name</span>: <span style=color:#ae81ff>PROXY_ADDRESS_FORWARDING</span>
+</span></span><span style=display:flex><span>            <span style=color:#f92672>value</span>: <span style=color:#e6db74>&#34;true&#34;</span>
+</span></span><span style=display:flex><span>          <span style=color:#f92672>ports</span>:
+</span></span><span style=display:flex><span>            - <span style=color:#f92672>name</span>: <span style=color:#ae81ff>http</span>
+</span></span><span style=display:flex><span>              <span style=color:#f92672>containerPort</span>: <span style=color:#ae81ff>8080</span>
+</span></span><span style=display:flex><span>              <span style=color:#f92672>protocol</span>: <span style=color:#ae81ff>TCP</span>
+</span></span><span style=display:flex><span>            - <span style=color:#f92672>name</span>: <span style=color:#ae81ff>https</span>
+</span></span><span style=display:flex><span>              <span style=color:#f92672>containerPort</span>: <span style=color:#ae81ff>8443</span>
+</span></span><span style=display:flex><span>          <span style=color:#f92672>livenessProbe</span>:
+</span></span><span style=display:flex><span>            <span style=color:#f92672>httpGet</span>:
+</span></span><span style=display:flex><span>              <span style=color:#f92672>path</span>: <span style=color:#ae81ff>/</span>
+</span></span><span style=display:flex><span>              <span style=color:#f92672>port</span>: <span style=color:#ae81ff>http</span>
+</span></span><span style=display:flex><span>          <span style=color:#f92672>readinessProbe</span>:
+</span></span><span style=display:flex><span>            <span style=color:#f92672>httpGet</span>:
+</span></span><span style=display:flex><span>              <span style=color:#f92672>path</span>: <span style=color:#ae81ff>/auth/realms/master</span>
+</span></span><span style=display:flex><span>              <span style=color:#f92672>port</span>: <span style=color:#ae81ff>http</span>
+</span></span></code></pre></div><p>We can now test our chart to make sure we have the same level of access as before.
+Perform the following command in a directory containing the keycloak/ directory that is the chart we created:</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-zsh data-lang=zsh><span style=display:flex><span>helm -n keycloak upgrade --install keycloak ./keycloak
+</span></span></code></pre></div><p>Port-forward the service:</p><pre tabindex=0><code>kubectl -n keycloak port-forward svc/keycloak 8080:80
+</code></pre><p>We should now be able to access the instance at http://localhost:8080 in our browser.</p><h4 id=adding-postgres>Adding Postgres</h4><p>The reason we want to add Postgresql via a Helm dependency is that a lot of the legwork with respect to ensuring availability and persistence is already done for you.
+There are packages that offer <a href=https://artifacthub.io/packages/helm/bitnami/postgresql-ha>high availability</a>, but here we&rsquo;ll just go for the standard <a href=https://artifacthub.io/packages/helm/bitnami/postgresql>postgresql</a> package.</p><p>Let&rsquo;s add the dependency:</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-yaml data-lang=yaml><span style=display:flex><span><span style=color:#75715e># keycloak/Chart.yaml</span>
+</span></span><span style=display:flex><span><span style=color:#f92672>dependencies</span>:
+</span></span><span style=display:flex><span>- <span style=color:#f92672>name</span>: <span style=color:#ae81ff>postgresql</span>
+</span></span><span style=display:flex><span>  <span style=color:#f92672>version</span>: <span style=color:#ae81ff>9.8.6</span>
+</span></span><span style=display:flex><span>  <span style=color:#f92672>repository</span>: <span style=color:#ae81ff>https://charts.bitnami.com/bitnami</span>
+</span></span></code></pre></div><p>Pull the dependency:</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-zsh data-lang=zsh><span style=display:flex><span>helm dependency update ./keycloak
+</span></span></code></pre></div><p>You should see output like below:</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-txt data-lang=txt><span style=display:flex><span>...Successfully got an update from the &#34;bitnami&#34; chart repository
+</span></span><span style=display:flex><span>Update Complete. ⎈Happy Helming!⎈
+</span></span><span style=display:flex><span>Saving 1 charts
+</span></span><span style=display:flex><span>Downloading postgresql from repo https://charts.bitnami.com/bitnami
+</span></span><span style=display:flex><span>Deleting outdated charts
+</span></span></code></pre></div><p>You can now observe the chart itself.
+We&rsquo;re going to configure it by continuing to edit the same values.yaml file we used to set the chart&rsquo;s image to keycloak to configure out secrets</p><div class="notices warning"><p>You should never store secrets in plaintext in your repo history.
+The snippet below is for demonstration purposes only.</p></div><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-yaml data-lang=yaml><span style=display:flex><span><span style=color:#75715e># keycloak/values.yaml</span>
+</span></span><span style=display:flex><span><span style=color:#f92672>postgresql</span>:
+</span></span><span style=display:flex><span>  <span style=color:#f92672>postgresqlUsername</span>: <span style=color:#ae81ff>postgres</span>
+</span></span><span style=display:flex><span>  <span style=color:#f92672>postgresqlPassword</span>: <span style=color:#ae81ff>secretpassword</span>
+</span></span><span style=display:flex><span>  <span style=color:#f92672>postgresqlDatabase</span>: <span style=color:#ae81ff>keycloak</span>
+</span></span><span style=display:flex><span>  <span style=color:#f92672>service</span>:
+</span></span><span style=display:flex><span>    <span style=color:#f92672>port</span>: <span style=color:#ae81ff>5432</span>
+</span></span></code></pre></div><div class="notices tip"><p>Use a Kubernetes Secret to define your credentials and point <code>postgresql.existingSecret</code> in values.yaml to it.
 You can use <a href=https://github.com/bitnami-labs/sealed-secrets>Sealed Secrets for Kubernetes</a> and store secrets in encrypted form in your chart&rsquo;s templates.
-See <a href=https://github.com/bitnami-labs/sealed-secrets#usage>Usage</a> to get started.</p>
-</div>
-<p>Now we have to make Keycloak talk to Postgres.</p>
-<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-yaml data-lang=yaml><span style=color:#75715e># keycloak/templates/deployment.yaml</span>
-          <span style=color:#f92672>env</span>:
-          - <span style=color:#f92672>name</span>: <span style=color:#ae81ff>KEYCLOAK_USER</span>
-            <span style=color:#f92672>value</span>: {{ <span style=color:#ae81ff>.Values.username }}</span>
-          - <span style=color:#f92672>name</span>: <span style=color:#ae81ff>KEYCLOAK_PASSWORD</span>
-            <span style=color:#f92672>value</span>: {{ <span style=color:#ae81ff>.Values.password }}</span>
-          - <span style=color:#f92672>name</span>: <span style=color:#ae81ff>PROXY_ADDRESS_FORWARDING</span>
-            <span style=color:#f92672>value</span>: <span style=color:#e6db74>&#34;true&#34;</span>
-          - <span style=color:#f92672>name</span>: <span style=color:#ae81ff>DB_VENDOR</span>
-            <span style=color:#f92672>value</span>: <span style=color:#ae81ff>postgres</span>
-          - <span style=color:#f92672>name</span>: <span style=color:#ae81ff>DB_ADDR</span>
-            <span style=color:#f92672>value</span>: {{ <span style=color:#ae81ff>include &#34;keycloak.fullname&#34; . }}-postgresql</span>
-          - <span style=color:#f92672>name</span>: <span style=color:#ae81ff>DB_PORT</span>
-            <span style=color:#f92672>value</span>: {{ <span style=color:#ae81ff>.Values.postgresql.service.port | quote }}</span>
-          - <span style=color:#f92672>name</span>: <span style=color:#ae81ff>DB_DATABASE</span>
-            <span style=color:#f92672>value</span>: {{ <span style=color:#ae81ff>.Values.postgresql.postgresqlDatabase }}</span>
-          - <span style=color:#f92672>name</span>: <span style=color:#ae81ff>DB_USER</span>
-            <span style=color:#f92672>value</span>: {{ <span style=color:#ae81ff>.Values.postgresql.postgresqlUsername }}</span>
-          - <span style=color:#f92672>name</span>: <span style=color:#ae81ff>DB_PASSWORD</span>
-            <span style=color:#f92672>value</span>: {{ <span style=color:#ae81ff>.Values.postgresql.postgresqlPassword }}</span>
-</code></pre></div><p>Deploy the chart:</p>
-<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-zsh data-lang=zsh>helm -n keycloak upgrade --install keycloak ./keycloak
-</code></pre></div><p>You should see output like the following:</p>
-<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-txt data-lang=txt>Release &#34;keycloak&#34; has been upgraded. Happy Helming!
-NAME: keycloak
-LAST DEPLOYED: Sun Oct 25 01:02:10 2020
-NAMESPACE: keycloak
-STATUS: deployed
-REVISION: 5
-TEST SUITE: None
-NOTES:
-1. Get the application URL by running these commands:
-  export POD_NAME=$(kubectl get pods --namespace keycloak -l &#34;app.kubernetes.io/name=keycloak,app.kubernetes.io/instance=keycloak&#34; -o jsonpath=&#34;{.items[0].metadata.name}&#34;)
-  echo &#34;Visit http://127.0.0.1:8080 to use your application&#34;
-  kubectl --namespace keycloak port-forward $POD_NAME 8080:80
-</code></pre></div><p>By following the instructions from the output above, you should be able to access an instance of keycloak backed by Postgres.</p>
-<p>To validate that your instance is backed by Postgres, you can tail the logs of the Keycloak pod:</p>
-<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-zsh data-lang=zsh>kubectl -n keycloak logs -f -l<span style=color:#f92672>=</span>app.kubernetes.io/name<span style=color:#f92672>=</span>keycloak
-</code></pre></div><p>You should see output like below:</p>
-<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-txt data-lang=txt>=========================================================================
-
-  Using PostgreSQL database
-
-=========================================================================
-...
-</code></pre></div><h2 id=preparing-keycloak>Preparing Keycloak</h2>
-<h3 id=create-a-realm>Create a Realm</h3>
-<p>Keycloak has Realms:</p>
-<blockquote>
-<p>Keycloak supports multiple tenancy where all users, clients, and so on are grouped in what is called a realm. Each realm is independent of other realms.</p>
-<p>- <a href=https://www.keycloak.org/docs/latest/securing_apps/index.html>Securing Applications and Services Guide</a></p>
-</blockquote>
-<p>By default, Keycloak sets up a &ldquo;Master&rdquo; Realm that can only be used to create other Realms.
+See <a href=https://github.com/bitnami-labs/sealed-secrets#usage>Usage</a> to get started.</p></div><p>Now we have to make Keycloak talk to Postgres.</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-yaml data-lang=yaml><span style=display:flex><span><span style=color:#75715e># keycloak/templates/deployment.yaml</span>
+</span></span><span style=display:flex><span>          <span style=color:#f92672>env</span>:
+</span></span><span style=display:flex><span>          - <span style=color:#f92672>name</span>: <span style=color:#ae81ff>KEYCLOAK_USER</span>
+</span></span><span style=display:flex><span>            <span style=color:#f92672>value</span>: {{ <span style=color:#ae81ff>.Values.username }}</span>
+</span></span><span style=display:flex><span>          - <span style=color:#f92672>name</span>: <span style=color:#ae81ff>KEYCLOAK_PASSWORD</span>
+</span></span><span style=display:flex><span>            <span style=color:#f92672>value</span>: {{ <span style=color:#ae81ff>.Values.password }}</span>
+</span></span><span style=display:flex><span>          - <span style=color:#f92672>name</span>: <span style=color:#ae81ff>PROXY_ADDRESS_FORWARDING</span>
+</span></span><span style=display:flex><span>            <span style=color:#f92672>value</span>: <span style=color:#e6db74>&#34;true&#34;</span>
+</span></span><span style=display:flex><span>          - <span style=color:#f92672>name</span>: <span style=color:#ae81ff>DB_VENDOR</span>
+</span></span><span style=display:flex><span>            <span style=color:#f92672>value</span>: <span style=color:#ae81ff>postgres</span>
+</span></span><span style=display:flex><span>          - <span style=color:#f92672>name</span>: <span style=color:#ae81ff>DB_ADDR</span>
+</span></span><span style=display:flex><span>            <span style=color:#f92672>value</span>: {{ <span style=color:#ae81ff>include &#34;keycloak.fullname&#34; . }}-postgresql</span>
+</span></span><span style=display:flex><span>          - <span style=color:#f92672>name</span>: <span style=color:#ae81ff>DB_PORT</span>
+</span></span><span style=display:flex><span>            <span style=color:#f92672>value</span>: {{ <span style=color:#ae81ff>.Values.postgresql.service.port | quote }}</span>
+</span></span><span style=display:flex><span>          - <span style=color:#f92672>name</span>: <span style=color:#ae81ff>DB_DATABASE</span>
+</span></span><span style=display:flex><span>            <span style=color:#f92672>value</span>: {{ <span style=color:#ae81ff>.Values.postgresql.postgresqlDatabase }}</span>
+</span></span><span style=display:flex><span>          - <span style=color:#f92672>name</span>: <span style=color:#ae81ff>DB_USER</span>
+</span></span><span style=display:flex><span>            <span style=color:#f92672>value</span>: {{ <span style=color:#ae81ff>.Values.postgresql.postgresqlUsername }}</span>
+</span></span><span style=display:flex><span>          - <span style=color:#f92672>name</span>: <span style=color:#ae81ff>DB_PASSWORD</span>
+</span></span><span style=display:flex><span>            <span style=color:#f92672>value</span>: {{ <span style=color:#ae81ff>.Values.postgresql.postgresqlPassword }}</span>
+</span></span></code></pre></div><p>Deploy the chart:</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-zsh data-lang=zsh><span style=display:flex><span>helm -n keycloak upgrade --install keycloak ./keycloak
+</span></span></code></pre></div><p>You should see output like the following:</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-txt data-lang=txt><span style=display:flex><span>Release &#34;keycloak&#34; has been upgraded. Happy Helming!
+</span></span><span style=display:flex><span>NAME: keycloak
+</span></span><span style=display:flex><span>LAST DEPLOYED: Sun Oct 25 01:02:10 2020
+</span></span><span style=display:flex><span>NAMESPACE: keycloak
+</span></span><span style=display:flex><span>STATUS: deployed
+</span></span><span style=display:flex><span>REVISION: 5
+</span></span><span style=display:flex><span>TEST SUITE: None
+</span></span><span style=display:flex><span>NOTES:
+</span></span><span style=display:flex><span>1. Get the application URL by running these commands:
+</span></span><span style=display:flex><span>  export POD_NAME=$(kubectl get pods --namespace keycloak -l &#34;app.kubernetes.io/name=keycloak,app.kubernetes.io/instance=keycloak&#34; -o jsonpath=&#34;{.items[0].metadata.name}&#34;)
+</span></span><span style=display:flex><span>  echo &#34;Visit http://127.0.0.1:8080 to use your application&#34;
+</span></span><span style=display:flex><span>  kubectl --namespace keycloak port-forward $POD_NAME 8080:80
+</span></span></code></pre></div><p>By following the instructions from the output above, you should be able to access an instance of keycloak backed by Postgres.</p><p>To validate that your instance is backed by Postgres, you can tail the logs of the Keycloak pod:</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-zsh data-lang=zsh><span style=display:flex><span>kubectl -n keycloak logs -f -l<span style=color:#f92672>=</span>app.kubernetes.io/name<span style=color:#f92672>=</span>keycloak
+</span></span></code></pre></div><p>You should see output like below:</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-txt data-lang=txt><span style=display:flex><span>=========================================================================
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>  Using PostgreSQL database
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>=========================================================================
+</span></span><span style=display:flex><span>...
+</span></span></code></pre></div><h2 id=preparing-keycloak>Preparing Keycloak</h2><h3 id=create-a-realm>Create a Realm</h3><p>Keycloak has Realms:</p><blockquote><p>Keycloak supports multiple tenancy where all users, clients, and so on are grouped in what is called a realm. Each realm is independent of other realms.</p><p>- <a href=https://www.keycloak.org/docs/latest/securing_apps/index.html>Securing Applications and Services Guide</a></p></blockquote><p>By default, Keycloak sets up a &ldquo;Master&rdquo; Realm that can only be used to create other Realms.
 Let&rsquo;s create a Realm and call it &ldquo;demo&rdquo; by following the instructions outlined in <a href=https://www.keycloak.org/docs/latest/getting_started/#_create-realm>Creating a realm</a>.
-Once the Realm is created you should see something like this:</p>
-<p><img src=https://www.keycloak.org/docs/latest/getting_started/keycloak-images/demo-realm.png alt=demo-realm></p>
-<h3 id=create-a-client>Create a Client</h3>
-<blockquote>
-<p>In order for an application or service to utilize Keycloak it has to register a client in Keycloak.</p>
-<p>- <a href=https://www.keycloak.org/docs/latest/securing_apps/#_client_registration>Client Registration</a></p>
-</blockquote>
-<p>We&rsquo;ll have to create an OIDC client.
+Once the Realm is created you should see something like this:</p><p><img src=https://www.keycloak.org/docs/latest/getting_started/keycloak-images/demo-realm.png alt=demo-realm></p><h3 id=create-a-client>Create a Client</h3><blockquote><p>In order for an application or service to utilize Keycloak it has to register a client in Keycloak.</p><p>- <a href=https://www.keycloak.org/docs/latest/securing_apps/#_client_registration>Client Registration</a></p></blockquote><p>We&rsquo;ll have to create an OIDC client.
 Let&rsquo;s do so by following the instructions outlined in <a href=https://www.keycloak.org/docs/latest/server_admin/#oidc-clients>OIDC Clients</a>.
-It&rsquo;s a good idea to enter a &ldquo;Root URL&rdquo; as the resultant Client Settings page will fill out all the nuanced fields for you.</p>
-<p><img src=https://www.keycloak.org/docs/latest/server_admin/keycloak-images/add-client-oidc.png alt=sample_client></p>
-<p>In Client Settings, scroll down and ensure &ldquo;Direct Access Grants Enabled&rdquo; is toggled to &ldquo;On&rdquo; and change the &ldquo;Access Type&rdquo; to confidential, then click &ldquo;Save&rdquo;.
-You should now see a &ldquo;Credentials&rdquo; tab appear in the client like below (see <a href=https://www.keycloak.org/docs/latest/server_admin/#_client-credentials>Confidential Client Credentials</a>):</p>
-<p><img src=https://www.keycloak.org/docs/latest/server_admin/keycloak-images/client-credentials.png alt=credentials_tab></p>
-<p>Note the value in &ldquo;Secret&rdquo;, we&rsquo;re going to use that when performing our password grant.</p>
-<h3 id=create-a-user>Create a User</h3>
-<p>Next, create a user by following the instructions outlined in <a href=https://www.keycloak.org/docs/latest/getting_started/#creating-a-user>Creating a user</a>.</p>
-<p><img src=https://www.keycloak.org/docs/latest/getting_started/keycloak-images/add-user.png alt=sample_user></p>
-<p>Then give the user a password by filling out the form under the &ldquo;Credentials&rdquo; tab for the user.</p>
-<p><img src=https://www.keycloak.org/docs/latest/getting_started/keycloak-images/user-credentials.png alt=user_creds></p>
-<p>For demonstration purposes, I&rsquo;m opting to flip the &ldquo;Temporary&rdquo; switch to &ldquo;Off&rdquo;.</p>
-<p>You should then be able to log in by following the instructions outlined in <a href=https://www.keycloak.org/docs/latest/getting_started/#logging-into-the-account-console>Logging into the account console</a>.
-You should see something like this:</p>
-<p><img src=https://www.keycloak.org/docs/latest/getting_started/images/account-console.png alt=johndoe></p>
-<p>Verify that your user has access to your application by observing your client that you created in the list of &ldquo;Applications&rdquo;</p>
-<p><img src=../kubernetes_files/applications.png alt=applictions></p>
-<p>Note that &ldquo;myapp&rdquo; is in the above list of Applications.</p>
-<h3 id=testing-out-your-user>Testing out your User</h3>
-<p>Now make a Direct Grant as described in the <a href=https://www.keycloak.org/docs/latest/securing_apps/#_resource_owner_password_credentials_flow>Resource Owner Password Credentials</a>.
-Here is an example:</p>
-<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-zsh data-lang=zsh>curl --request POST <span style=color:#e6db74>&#39;https://keycloak.harrisonkiang.com/auth/realms/demo/protocol/openid-connect/token&#39;</span> <span style=color:#ae81ff>\
-</span><span style=color:#ae81ff></span>--header <span style=color:#e6db74>&#39;Content-Type: application/x-www-form-urlencoded&#39;</span> <span style=color:#ae81ff>\
-</span><span style=color:#ae81ff></span>--data-urlencode <span style=color:#e6db74>&#39;username=johndoe&#39;</span> <span style=color:#ae81ff>\
-</span><span style=color:#ae81ff></span>--data-urlencode <span style=color:#e6db74>&#39;password=johndoe&#39;</span> <span style=color:#ae81ff>\
-</span><span style=color:#ae81ff></span>--data-urlencode <span style=color:#e6db74>&#39;client_id=myapp&#39;</span> <span style=color:#ae81ff>\
-</span><span style=color:#ae81ff></span>--data-urlencode <span style=color:#e6db74>&#39;client_secret=90a47b27-6de6-43e9-a300-4eb02f18b447&#39;</span> <span style=color:#ae81ff>\
-</span><span style=color:#ae81ff></span>--data-urlencode <span style=color:#e6db74>&#39;grant_type=password&#39;</span>
-</code></pre></div><p>The <code>username</code> and <code>password</code> are that of the user, the <code>client_id</code> is the name of the client, and the <code>client_secret</code> is the value of &ldquo;Secret&rdquo; in the &ldquo;Credentials&rdquo; tab of the client.
-You should get back a response with an access token, refresh token, etc.</p>
-<h2 id=securing-your-application>Securing your application</h2>
-<h3 id=setting-up-the-gatekeeper-sidecar>Setting up the gatekeeper sidecar</h3>
-<p>We&rsquo;re going to use <a href=https://www.keycloak.org/docs/latest/securing_apps/#_keycloak_generic_adapter>Keycloak Gatekeeper</a>.
-It will be set up as a <a href=https://kubernetes.io/docs/concepts/workloads/pods/#how-pods-manage-multiple-containers>sidecar</a> in the same pod containing our application.</p>
-<p>Let&rsquo;s first create an application:</p>
-<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-zsh data-lang=zsh>helm create app
-</code></pre></div><p>The following files will be created:</p>
-<pre tabindex=0><code>app
+It&rsquo;s a good idea to enter a &ldquo;Root URL&rdquo; as the resultant Client Settings page will fill out all the nuanced fields for you.</p><p><img src=https://www.keycloak.org/docs/latest/server_admin/keycloak-images/add-client-oidc.png alt=sample_client></p><p>In Client Settings, scroll down and ensure &ldquo;Direct Access Grants Enabled&rdquo; is toggled to &ldquo;On&rdquo; and change the &ldquo;Access Type&rdquo; to confidential, then click &ldquo;Save&rdquo;.
+You should now see a &ldquo;Credentials&rdquo; tab appear in the client like below (see <a href=https://www.keycloak.org/docs/latest/server_admin/#_client-credentials>Confidential Client Credentials</a>):</p><p><img src=https://www.keycloak.org/docs/latest/server_admin/keycloak-images/client-credentials.png alt=credentials_tab></p><p>Note the value in &ldquo;Secret&rdquo;, we&rsquo;re going to use that when performing our password grant.</p><h3 id=create-a-user>Create a User</h3><p>Next, create a user by following the instructions outlined in <a href=https://www.keycloak.org/docs/latest/getting_started/#creating-a-user>Creating a user</a>.</p><p><img src=https://www.keycloak.org/docs/latest/getting_started/keycloak-images/add-user.png alt=sample_user></p><p>Then give the user a password by filling out the form under the &ldquo;Credentials&rdquo; tab for the user.</p><p><img src=https://www.keycloak.org/docs/latest/getting_started/keycloak-images/user-credentials.png alt=user_creds></p><p>For demonstration purposes, I&rsquo;m opting to flip the &ldquo;Temporary&rdquo; switch to &ldquo;Off&rdquo;.</p><p>You should then be able to log in by following the instructions outlined in <a href=https://www.keycloak.org/docs/latest/getting_started/#logging-into-the-account-console>Logging into the account console</a>.
+You should see something like this:</p><p><img src=https://www.keycloak.org/docs/latest/getting_started/images/account-console.png alt=johndoe></p><p>Verify that your user has access to your application by observing your client that you created in the list of &ldquo;Applications&rdquo;</p><p><img src=../kubernetes_files/applications.png alt=applictions></p><p>Note that &ldquo;myapp&rdquo; is in the above list of Applications.</p><h3 id=testing-out-your-user>Testing out your User</h3><p>Now make a Direct Grant as described in the <a href=https://www.keycloak.org/docs/latest/securing_apps/#_resource_owner_password_credentials_flow>Resource Owner Password Credentials</a>.
+Here is an example:</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-zsh data-lang=zsh><span style=display:flex><span>curl --request POST <span style=color:#e6db74>&#39;https://keycloak.harrisonkiang.com/auth/realms/demo/protocol/openid-connect/token&#39;</span> <span style=color:#ae81ff>\
+</span></span></span><span style=display:flex><span><span style=color:#ae81ff></span>--header <span style=color:#e6db74>&#39;Content-Type: application/x-www-form-urlencoded&#39;</span> <span style=color:#ae81ff>\
+</span></span></span><span style=display:flex><span><span style=color:#ae81ff></span>--data-urlencode <span style=color:#e6db74>&#39;username=johndoe&#39;</span> <span style=color:#ae81ff>\
+</span></span></span><span style=display:flex><span><span style=color:#ae81ff></span>--data-urlencode <span style=color:#e6db74>&#39;password=johndoe&#39;</span> <span style=color:#ae81ff>\
+</span></span></span><span style=display:flex><span><span style=color:#ae81ff></span>--data-urlencode <span style=color:#e6db74>&#39;client_id=myapp&#39;</span> <span style=color:#ae81ff>\
+</span></span></span><span style=display:flex><span><span style=color:#ae81ff></span>--data-urlencode <span style=color:#e6db74>&#39;client_secret=90a47b27-6de6-43e9-a300-4eb02f18b447&#39;</span> <span style=color:#ae81ff>\
+</span></span></span><span style=display:flex><span><span style=color:#ae81ff></span>--data-urlencode <span style=color:#e6db74>&#39;grant_type=password&#39;</span>
+</span></span></code></pre></div><p>The <code>username</code> and <code>password</code> are that of the user, the <code>client_id</code> is the name of the client, and the <code>client_secret</code> is the value of &ldquo;Secret&rdquo; in the &ldquo;Credentials&rdquo; tab of the client.
+You should get back a response with an access token, refresh token, etc.</p><h2 id=securing-your-application>Securing your application</h2><h3 id=setting-up-the-gatekeeper-sidecar>Setting up the gatekeeper sidecar</h3><p>We&rsquo;re going to use <a href=https://www.keycloak.org/docs/latest/securing_apps/#_keycloak_generic_adapter>Keycloak Gatekeeper</a>.
+It will be set up as a <a href=https://kubernetes.io/docs/concepts/workloads/pods/#how-pods-manage-multiple-containers>sidecar</a> in the same pod containing our application.</p><p>Let&rsquo;s first create an application:</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-zsh data-lang=zsh><span style=display:flex><span>helm create app
+</span></span></code></pre></div><p>The following files will be created:</p><pre tabindex=0><code>app
 ├── charts
 ├── Chart.yaml
 ├── templates
@@ -503,154 +238,100 @@ It will be set up as a <a href=https://kubernetes.io/docs/concepts/workloads/pod
 │   └── tests
 │       └── test-connection.yaml
 └── values.yaml
-</code></pre><p>We can get rid of the following in templates/:</p>
-<ul>
-<li>hpa.yaml</li>
-<li>tests/</li>
-</ul>
-<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-zsh data-lang=zsh>cd app/templates/
-rm -rf hpa.yaml tests/
-</code></pre></div><p>We&rsquo;re going to <a href=https://kubernetes.io/docs/tasks/configure-pod-container/configure-pod-configmap/>Configure a Pod to Use a ConfigMap</a> to store our Keycloak.</p>
-<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-yaml data-lang=yaml><span style=color:#75715e># app/templates/configmap.yaml</span>
-<span style=color:#f92672>data</span>:
-    <span style=color:#f92672>keycloak-gatekeeper.yaml</span>: |<span style=color:#e6db74>
-</span><span style=color:#e6db74>        # is the url for retrieve the OpenID configuration - normally the &lt;server&gt;/auth/realm/&lt;realm_name&gt;
-</span><span style=color:#e6db74>        discovery-url: {{ .Values.keycloak.discoveryUrl }}
-</span><span style=color:#e6db74>        # the client id for the &#39;client&#39; application
-</span><span style=color:#e6db74>        client-id: {{ .Values.keycloak.clientId }}
-</span><span style=color:#e6db74>        # the secret associated to the &#39;client&#39; application
-</span><span style=color:#e6db74>        client-secret: {{ .Values.keycloak.clientSecret }}
-</span><span style=color:#e6db74>        # enforces the cookie to be secure&#34;`
-</span><span style=color:#e6db74>        secure-cookie: false
-</span><span style=color:#e6db74>        # the interface definition you wish the proxy to listen, all interfaces is specified as &#39;:&lt;port&gt;&#39;, unix sockets as unix://&lt;REL_PATH&gt;|&lt;/ABS PATH&gt;
-</span><span style=color:#e6db74>        listen: :3000
-</span><span style=color:#e6db74>        # whether to enable refresh tokens
-</span><span style=color:#e6db74>        enable-refresh-tokens: true
-</span><span style=color:#e6db74>        # the redirection url, essentially the site url, note: /oauth/callback is added at the end
-</span><span style=color:#e6db74>        redirection-url: http://{{ get $hosts &#34;host&#34;}}
-</span><span style=color:#e6db74>        # the encryption key used to encode the session state
-</span><span style=color:#e6db74>        encryption-key: &#34;{{ randAlphaNum 32 }}&#34;
-</span><span style=color:#e6db74>        # the upstream endpoint which we should proxy request
-</span><span style=color:#e6db74>        upstream-url: http://127.0.0.1:80</span>        
-</code></pre></div><p>See <a href=https://www.keycloak.org/docs/latest/securing_apps/#configuration-options>Configuration options</a> for details on each config.
-We&rsquo;ll need to set some of the values we use in the above config.</p>
-<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-yaml data-lang=yaml><span style=color:#75715e># app/values.yaml</span>
-<span style=color:#f92672>keycloak</span>:
-  <span style=color:#f92672>clientId</span>: <span style=color:#ae81ff>app</span>
-  <span style=color:#f92672>clientSecret</span>: <span style=color:#ae81ff>90a47b27-6de6-43e9-a300-4eb02f18b447</span>
-  <span style=color:#f92672>discoveryUrl</span>: <span style=color:#ae81ff>https://keycloak.harrisonkiang.com/auth/realms/demo</span>
-</code></pre></div><p>The client secret is relatively safe to share, as the user will require valid credentials to access the protected resources in your app, which is the whole point of securing your app in the first place.</p>
-<p>I&rsquo;m using a TLS secret (see below):</p>
-<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-yaml data-lang=yaml><span style=color:#75715e># app/values.yaml</span>
-<span style=color:#f92672>ingress</span>:
-  <span style=color:#f92672>tls</span>:
-   - <span style=color:#f92672>secretName</span>: <span style=color:#ae81ff>harrisonkiang-dot-com-wildcard-tls</span>
-</code></pre></div>
-<div class="notices note"><p>The above TLS secret is not provided in the code samples at <a href=https://github.com/hkiang01/keycloak-demo>https://github.com/hkiang01/keycloak-demo</a>.
-You can configure your own <a href=https://kubernetes.io/docs/concepts/configuration/secret/#tls-secrets>TLS secrets</a> or else rely on the <a href=https://kubernetes.github.io/ingress-nginx/user-guide/tls/#default-ssl-certificate>Default SSL Certificate</a> created by <a href=https://kubernetes.github.io/ingress-nginx/>NGINX Ingress Controller</a>.</p>
-</div>
-<p>Of course we&rsquo;ll need to use said configmap:</p>
-<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-yaml data-lang=yaml><span style=color:#75715e># app/templates/deployment.yaml</span>
-      <span style=color:#f92672>containers</span>:
-        - <span style=color:#f92672>name</span>: <span style=color:#ae81ff>gatekeeper</span>
-          <span style=color:#f92672>image</span>: <span style=color:#ae81ff>quay.io/louketo/louketo-proxy:1.0.0</span>
-          <span style=color:#f92672>args</span>:
-          - --<span style=color:#ae81ff>config=/etc/config/keycloak-gatekeeper.yaml</span>
-          <span style=color:#f92672>volumeMounts</span>:
-          - <span style=color:#f92672>name</span>: <span style=color:#ae81ff>gatekeeper-config</span>
-            <span style=color:#f92672>mountPath</span>: <span style=color:#ae81ff>/etc/config</span>
-          <span style=color:#f92672>imagePullPolicy</span>: {{ <span style=color:#ae81ff>.Values.image.pullPolicy }}</span>
-          <span style=color:#f92672>ports</span>:
-          - <span style=color:#f92672>name</span>: <span style=color:#ae81ff>gatekeeper</span>
-            <span style=color:#f92672>containerPort</span>: <span style=color:#ae81ff>3000</span>
-            <span style=color:#f92672>protocol</span>: <span style=color:#ae81ff>TCP</span>
-        - <span style=color:#f92672>name</span>: {{ <span style=color:#ae81ff>.Chart.Name }}</span>
-          <span style=color:#f92672>securityContext</span>:
-            {{- <span style=color:#ae81ff>toYaml .Values.securityContext | nindent 12 }}</span>
-          <span style=color:#f92672>image</span>: <span style=color:#e6db74>&#34;{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}&#34;</span>
-          <span style=color:#f92672>imagePullPolicy</span>: {{ <span style=color:#ae81ff>.Values.image.pullPolicy }}</span>
-          <span style=color:#f92672>ports</span>:
-            - <span style=color:#f92672>name</span>: <span style=color:#ae81ff>http</span>
-              <span style=color:#f92672>containerPort</span>: <span style=color:#ae81ff>80</span>
-              <span style=color:#f92672>protocol</span>: <span style=color:#ae81ff>TCP</span>
-          <span style=color:#f92672>livenessProbe</span>:
-            <span style=color:#f92672>httpGet</span>:
-              <span style=color:#f92672>path</span>: <span style=color:#ae81ff>/</span>
-              <span style=color:#f92672>port</span>: <span style=color:#ae81ff>http</span>
-          <span style=color:#f92672>readinessProbe</span>:
-            <span style=color:#f92672>httpGet</span>:
-              <span style=color:#f92672>path</span>: <span style=color:#ae81ff>/</span>
-              <span style=color:#f92672>port</span>: <span style=color:#ae81ff>http</span>
-          <span style=color:#f92672>resources</span>:
-            {{- <span style=color:#ae81ff>toYaml .Values.resources | nindent 12 }}</span>
-      <span style=color:#f92672>volumes</span>:
-      - <span style=color:#f92672>name</span>: <span style=color:#ae81ff>gatekeeper-config</span>
-        <span style=color:#f92672>configMap</span>:
-          <span style=color:#f92672>name</span>: {{ <span style=color:#ae81ff>include &#34;app.fullname&#34; . }}-gatekeeper</span>
-</code></pre></div><h3 id=deploy-secured-app>Deploy secured app</h3>
-<p>Let&rsquo;s deploy</p>
-<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-zsh data-lang=zsh>helm -n keycloak upgrade --install app app
-</code></pre></div><p>Now let&rsquo;s make sure everything is ready</p>
-<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-zsh data-lang=zsh>helm -n keycloak get manifest app | kubectl -n keycloak get -f -
-NAME                 SECRETS   AGE
-serviceaccount/app   <span style=color:#ae81ff>1</span>         29m
-
-NAME                       DATA   AGE
-configmap/app-gatekeeper   <span style=color:#ae81ff>1</span>      29m
-
-NAME          TYPE        CLUSTER-IP       EXTERNAL-IP   PORT<span style=color:#f92672>(</span>S<span style=color:#f92672>)</span>   AGE
-service/app   ClusterIP   10.152.183.125   &lt;none&gt;        80/TCP    29m
-
-NAME                  READY   UP-TO-DATE   AVAILABLE   AGE
-deployment.apps/app   1/1     <span style=color:#ae81ff>1</span>            <span style=color:#ae81ff>1</span>           29m
-
-NAME                            CLASS    HOSTS                   ADDRESS     PORTS     AGE
-ingress.networking.k8s.io/app   &lt;none&gt;   app.harrisonkiang.com   127.0.0.1   80, <span style=color:#ae81ff>443</span>   29m
-</code></pre></div><p>and that the pod is up</p>
-<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-zsh data-lang=zsh>kubectl -n keycloak get pod -l<span style=color:#f92672>=</span>app.kubernetes.io/instance<span style=color:#f92672>=</span>app
-
-NAME                   READY   STATUS    RESTARTS   AGE
-app-78d9484d86-8hvsd   2/2     Running   <span style=color:#ae81ff>0</span>          31m
-</code></pre></div><p>2/2 means we&rsquo;re good to go.
-Now you should be able to <em>almost</em> log in as normal.</p>
-<h3 id=fixing-the-audience>Fixing the audience</h3>
-<p>You&rsquo;ll find that after trying to log in your app via the browser you won&rsquo;t get what you expect.
-This is due to the fact that you have to manually add your <code>client_id</code> to the audience field <code>aud</code> of the access token per <a href=https://stackoverflow.com/a/53627747>this SO post</a>, the important bit of which is in the snippet below:</p>
-<blockquote>
-<p>Configure audience in Keycloak</p>
-<ul>
-<li>Add realm or configure existing</li>
-<li>Add client my-app or use existing</li>
-<li>Goto to the newly added &ldquo;Client Scopes&rdquo; menu [1]
-<ul>
-<li>Add Client scope &lsquo;good-service&rsquo;</li>
-<li>Within the settings of the &lsquo;good-service&rsquo; goto Mappers tab
-<ul>
-<li>Create Protocol Mapper &lsquo;my-app-audience&rsquo;
-<ul>
-<li>Name: my-app-audience</li>
-<li>Choose Mapper type: Audience</li>
-<li>Included Client Audience: my-app</li>
-<li>Add to access token: on</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>Configure client my-app in the &ldquo;Clients&rdquo; menu
-<ul>
-<li>Client Scopes tab in my-app settings</li>
-<li>Add available client scopes &ldquo;good-service&rdquo; to assigned default client scopes</li>
-</ul>
-</li>
-</ul>
-</blockquote>
-<p>After following the above you should be able to successfully acces your application!</p>
-<h2 id=some-understanding>Some understanding</h2>
-<p>To understand the flow, let&rsquo;s examine how the traffic travels from the outside to the app with and without Keycloak.</p>
-<div class=mermaid align=left>
-graph LR
+</code></pre><p>We can get rid of the following in templates/:</p><ul><li>hpa.yaml</li><li>tests/</li></ul><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-zsh data-lang=zsh><span style=display:flex><span>cd app/templates/
+</span></span><span style=display:flex><span>rm -rf hpa.yaml tests/
+</span></span></code></pre></div><p>We&rsquo;re going to <a href=https://kubernetes.io/docs/tasks/configure-pod-container/configure-pod-configmap/>Configure a Pod to Use a ConfigMap</a> to store our Keycloak.</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-yaml data-lang=yaml><span style=display:flex><span><span style=color:#75715e># app/templates/configmap.yaml</span>
+</span></span><span style=display:flex><span><span style=color:#f92672>data</span>:
+</span></span><span style=display:flex><span>    <span style=color:#f92672>keycloak-gatekeeper.yaml</span>: |<span style=color:#e6db74>
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>        # is the url for retrieve the OpenID configuration - normally the &lt;server&gt;/auth/realm/&lt;realm_name&gt;
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>        discovery-url: {{ .Values.keycloak.discoveryUrl }}
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>        # the client id for the &#39;client&#39; application
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>        client-id: {{ .Values.keycloak.clientId }}
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>        # the secret associated to the &#39;client&#39; application
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>        client-secret: {{ .Values.keycloak.clientSecret }}
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>        # enforces the cookie to be secure&#34;`
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>        secure-cookie: false
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>        # the interface definition you wish the proxy to listen, all interfaces is specified as &#39;:&lt;port&gt;&#39;, unix sockets as unix://&lt;REL_PATH&gt;|&lt;/ABS PATH&gt;
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>        listen: :3000
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>        # whether to enable refresh tokens
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>        enable-refresh-tokens: true
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>        # the redirection url, essentially the site url, note: /oauth/callback is added at the end
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>        redirection-url: http://{{ get $hosts &#34;host&#34;}}
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>        # the encryption key used to encode the session state
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>        encryption-key: &#34;{{ randAlphaNum 32 }}&#34;
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>        # the upstream endpoint which we should proxy request
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>        upstream-url: http://127.0.0.1:80</span>        
+</span></span></code></pre></div><p>See <a href=https://www.keycloak.org/docs/latest/securing_apps/#configuration-options>Configuration options</a> for details on each config.
+We&rsquo;ll need to set some of the values we use in the above config.</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-yaml data-lang=yaml><span style=display:flex><span><span style=color:#75715e># app/values.yaml</span>
+</span></span><span style=display:flex><span><span style=color:#f92672>keycloak</span>:
+</span></span><span style=display:flex><span>  <span style=color:#f92672>clientId</span>: <span style=color:#ae81ff>app</span>
+</span></span><span style=display:flex><span>  <span style=color:#f92672>clientSecret</span>: <span style=color:#ae81ff>90a47b27-6de6-43e9-a300-4eb02f18b447</span>
+</span></span><span style=display:flex><span>  <span style=color:#f92672>discoveryUrl</span>: <span style=color:#ae81ff>https://keycloak.harrisonkiang.com/auth/realms/demo</span>
+</span></span></code></pre></div><p>The client secret is relatively safe to share, as the user will require valid credentials to access the protected resources in your app, which is the whole point of securing your app in the first place.</p><p>I&rsquo;m using a TLS secret (see below):</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-yaml data-lang=yaml><span style=display:flex><span><span style=color:#75715e># app/values.yaml</span>
+</span></span><span style=display:flex><span><span style=color:#f92672>ingress</span>:
+</span></span><span style=display:flex><span>  <span style=color:#f92672>tls</span>:
+</span></span><span style=display:flex><span>   - <span style=color:#f92672>secretName</span>: <span style=color:#ae81ff>harrisonkiang-dot-com-wildcard-tls</span>
+</span></span></code></pre></div><div class="notices note"><p>The above TLS secret is not provided in the code samples at <a href=https://github.com/hkiang01/keycloak-demo>https://github.com/hkiang01/keycloak-demo</a>.
+You can configure your own <a href=https://kubernetes.io/docs/concepts/configuration/secret/#tls-secrets>TLS secrets</a> or else rely on the <a href=https://kubernetes.github.io/ingress-nginx/user-guide/tls/#default-ssl-certificate>Default SSL Certificate</a> created by <a href=https://kubernetes.github.io/ingress-nginx/>NGINX Ingress Controller</a>.</p></div><p>Of course we&rsquo;ll need to use said configmap:</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-yaml data-lang=yaml><span style=display:flex><span><span style=color:#75715e># app/templates/deployment.yaml</span>
+</span></span><span style=display:flex><span>      <span style=color:#f92672>containers</span>:
+</span></span><span style=display:flex><span>        - <span style=color:#f92672>name</span>: <span style=color:#ae81ff>gatekeeper</span>
+</span></span><span style=display:flex><span>          <span style=color:#f92672>image</span>: <span style=color:#ae81ff>quay.io/louketo/louketo-proxy:1.0.0</span>
+</span></span><span style=display:flex><span>          <span style=color:#f92672>args</span>:
+</span></span><span style=display:flex><span>          - --<span style=color:#ae81ff>config=/etc/config/keycloak-gatekeeper.yaml</span>
+</span></span><span style=display:flex><span>          <span style=color:#f92672>volumeMounts</span>:
+</span></span><span style=display:flex><span>          - <span style=color:#f92672>name</span>: <span style=color:#ae81ff>gatekeeper-config</span>
+</span></span><span style=display:flex><span>            <span style=color:#f92672>mountPath</span>: <span style=color:#ae81ff>/etc/config</span>
+</span></span><span style=display:flex><span>          <span style=color:#f92672>imagePullPolicy</span>: {{ <span style=color:#ae81ff>.Values.image.pullPolicy }}</span>
+</span></span><span style=display:flex><span>          <span style=color:#f92672>ports</span>:
+</span></span><span style=display:flex><span>          - <span style=color:#f92672>name</span>: <span style=color:#ae81ff>gatekeeper</span>
+</span></span><span style=display:flex><span>            <span style=color:#f92672>containerPort</span>: <span style=color:#ae81ff>3000</span>
+</span></span><span style=display:flex><span>            <span style=color:#f92672>protocol</span>: <span style=color:#ae81ff>TCP</span>
+</span></span><span style=display:flex><span>        - <span style=color:#f92672>name</span>: {{ <span style=color:#ae81ff>.Chart.Name }}</span>
+</span></span><span style=display:flex><span>          <span style=color:#f92672>securityContext</span>:
+</span></span><span style=display:flex><span>            {{- <span style=color:#ae81ff>toYaml .Values.securityContext | nindent 12 }}</span>
+</span></span><span style=display:flex><span>          <span style=color:#f92672>image</span>: <span style=color:#e6db74>&#34;{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}&#34;</span>
+</span></span><span style=display:flex><span>          <span style=color:#f92672>imagePullPolicy</span>: {{ <span style=color:#ae81ff>.Values.image.pullPolicy }}</span>
+</span></span><span style=display:flex><span>          <span style=color:#f92672>ports</span>:
+</span></span><span style=display:flex><span>            - <span style=color:#f92672>name</span>: <span style=color:#ae81ff>http</span>
+</span></span><span style=display:flex><span>              <span style=color:#f92672>containerPort</span>: <span style=color:#ae81ff>80</span>
+</span></span><span style=display:flex><span>              <span style=color:#f92672>protocol</span>: <span style=color:#ae81ff>TCP</span>
+</span></span><span style=display:flex><span>          <span style=color:#f92672>livenessProbe</span>:
+</span></span><span style=display:flex><span>            <span style=color:#f92672>httpGet</span>:
+</span></span><span style=display:flex><span>              <span style=color:#f92672>path</span>: <span style=color:#ae81ff>/</span>
+</span></span><span style=display:flex><span>              <span style=color:#f92672>port</span>: <span style=color:#ae81ff>http</span>
+</span></span><span style=display:flex><span>          <span style=color:#f92672>readinessProbe</span>:
+</span></span><span style=display:flex><span>            <span style=color:#f92672>httpGet</span>:
+</span></span><span style=display:flex><span>              <span style=color:#f92672>path</span>: <span style=color:#ae81ff>/</span>
+</span></span><span style=display:flex><span>              <span style=color:#f92672>port</span>: <span style=color:#ae81ff>http</span>
+</span></span><span style=display:flex><span>          <span style=color:#f92672>resources</span>:
+</span></span><span style=display:flex><span>            {{- <span style=color:#ae81ff>toYaml .Values.resources | nindent 12 }}</span>
+</span></span><span style=display:flex><span>      <span style=color:#f92672>volumes</span>:
+</span></span><span style=display:flex><span>      - <span style=color:#f92672>name</span>: <span style=color:#ae81ff>gatekeeper-config</span>
+</span></span><span style=display:flex><span>        <span style=color:#f92672>configMap</span>:
+</span></span><span style=display:flex><span>          <span style=color:#f92672>name</span>: {{ <span style=color:#ae81ff>include &#34;app.fullname&#34; . }}-gatekeeper</span>
+</span></span></code></pre></div><h3 id=deploy-secured-app>Deploy secured app</h3><p>Let&rsquo;s deploy</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-zsh data-lang=zsh><span style=display:flex><span>helm -n keycloak upgrade --install app app
+</span></span></code></pre></div><p>Now let&rsquo;s make sure everything is ready</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-zsh data-lang=zsh><span style=display:flex><span>helm -n keycloak get manifest app | kubectl -n keycloak get -f -
+</span></span><span style=display:flex><span>NAME                 SECRETS   AGE
+</span></span><span style=display:flex><span>serviceaccount/app   <span style=color:#ae81ff>1</span>         29m
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>NAME                       DATA   AGE
+</span></span><span style=display:flex><span>configmap/app-gatekeeper   <span style=color:#ae81ff>1</span>      29m
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>NAME          TYPE        CLUSTER-IP       EXTERNAL-IP   PORT<span style=color:#f92672>(</span>S<span style=color:#f92672>)</span>   AGE
+</span></span><span style=display:flex><span>service/app   ClusterIP   10.152.183.125   &lt;none&gt;        80/TCP    29m
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>NAME                  READY   UP-TO-DATE   AVAILABLE   AGE
+</span></span><span style=display:flex><span>deployment.apps/app   1/1     <span style=color:#ae81ff>1</span>            <span style=color:#ae81ff>1</span>           29m
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>NAME                            CLASS    HOSTS                   ADDRESS     PORTS     AGE
+</span></span><span style=display:flex><span>ingress.networking.k8s.io/app   &lt;none&gt;   app.harrisonkiang.com   127.0.0.1   80, <span style=color:#ae81ff>443</span>   29m
+</span></span></code></pre></div><p>and that the pod is up</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-zsh data-lang=zsh><span style=display:flex><span>kubectl -n keycloak get pod -l<span style=color:#f92672>=</span>app.kubernetes.io/instance<span style=color:#f92672>=</span>app
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>NAME                   READY   STATUS    RESTARTS   AGE
+</span></span><span style=display:flex><span>app-78d9484d86-8hvsd   2/2     Running   <span style=color:#ae81ff>0</span>          31m
+</span></span></code></pre></div><p>2/2 means we&rsquo;re good to go.
+Now you should be able to <em>almost</em> log in as normal.</p><h3 id=fixing-the-audience>Fixing the audience</h3><p>You&rsquo;ll find that after trying to log in your app via the browser you won&rsquo;t get what you expect.
+This is due to the fact that you have to manually add your <code>client_id</code> to the audience field <code>aud</code> of the access token per <a href=https://stackoverflow.com/a/53627747>this SO post</a>, the important bit of which is in the snippet below:</p><blockquote><p>Configure audience in Keycloak</p><ul><li>Add realm or configure existing</li><li>Add client my-app or use existing</li><li>Goto to the newly added &ldquo;Client Scopes&rdquo; menu [1]<ul><li>Add Client scope &lsquo;good-service&rsquo;</li><li>Within the settings of the &lsquo;good-service&rsquo; goto Mappers tab<ul><li>Create Protocol Mapper &lsquo;my-app-audience&rsquo;<ul><li>Name: my-app-audience</li><li>Choose Mapper type: Audience</li><li>Included Client Audience: my-app</li><li>Add to access token: on</li></ul></li></ul></li></ul></li><li>Configure client my-app in the &ldquo;Clients&rdquo; menu<ul><li>Client Scopes tab in my-app settings</li><li>Add available client scopes &ldquo;good-service&rdquo; to assigned default client scopes</li></ul></li></ul></blockquote><p>After following the above you should be able to successfully acces your application!</p><h2 id=some-understanding>Some understanding</h2><p>To understand the flow, let&rsquo;s examine how the traffic travels from the outside to the app with and without Keycloak.</p><div class=mermaid align=left>graph LR
 outside-->ingress
 subgraph Kubernetes
 ingress-->service
@@ -659,11 +340,7 @@ service-->app
 subgraph Pod
 app
 end
-end
-</div>
-<p>Here&rsquo;s what it looks like with Keycloak</p>
-<div class=mermaid align=left>
-graph LR
+end</div><p>Here&rsquo;s what it looks like with Keycloak</p><div class=mermaid align=left>graph LR
 outside-->ingress
 subgraph Kubernetes
 ingress-->service
@@ -673,49 +350,21 @@ subgraph Pod
 gatekeeper
 gatekeeper-->app
 end
-end
-</div>
-<p>All traffic is gated via the gatekeeper, which ensures all requests are secure.
-If the credentials are invalid or expired, then the user will be redirected to log back in via Keycloak.</p>
-<p>If we look closer at the service, we&rsquo;ll see that the named <code>targetPort</code> points to the <code>gatekeeper</code> container in the pod:</p>
-<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-yaml data-lang=yaml><span style=color:#75715e># app/templates/service.yaml</span>
-    - <span style=color:#f92672>port</span>: {{ <span style=color:#ae81ff>.Values.service.port }}</span>
-      <span style=color:#f92672>targetPort</span>: <span style=color:#ae81ff>gatekeeper</span> <span style=color:#75715e># &lt;--- LOOK HERE</span>
-      <span style=color:#f92672>protocol</span>: <span style=color:#ae81ff>TCP</span>
-      <span style=color:#f92672>name</span>: <span style=color:#ae81ff>http</span>
-</code></pre></div><h2 id=next-steps>Next steps</h2>
-<ul>
-<li>Secure secrets in encrypted form using something like <a href=https://github.com/bitnami-labs/sealed-secrets>Sealed Secrets for Kubernetes</a></li>
-<li>Make Postgres highly available by using the <a href=https://artifacthub.io/packages/helm/bitnami/postgresql-ha>postgresql-ha</a> artifact</li>
-<li>Make your Keycloak instance highly available using <a href=https://www.keycloak.org/docs/latest/server_installation/#_clustering>Clustering</a>
-<ul>
-<li>Worth considering if every client accessing every secured application in your cluster is accessing your Keycloak instance</li>
-</ul>
-</li>
-</ul>
-<footer class=footline>
-</footer>
-</div>
-</div>
-<div id=navigation>
-<a class="nav nav-prev" href=/kubernetes/ title=Kubernetes> <i class="fa fa-chevron-left"></i></a>
-<a class="nav nav-next" href=/kubernetes/wildcard-certs/ title="Wildcard certs" style=margin-right:0><i class="fa fa-chevron-right"></i></a>
-</div>
-</section>
-<div style=left:-1000px;overflow:scroll;position:absolute;top:-1000px;border:none;box-sizing:content-box;height:200px;margin:0;padding:0;width:200px>
-<div style=border:none;box-sizing:content-box;height:200px;margin:0;padding:0;width:200px></div>
-</div>
-<script src=/js/clipboard.min.js?1642781214></script>
-<script src=/js/perfect-scrollbar.min.js?1642781214></script>
-<script src=/js/perfect-scrollbar.jquery.min.js?1642781214></script>
-<script src=/js/jquery.sticky.js?1642781214></script>
-<script src=/js/featherlight.min.js?1642781214></script>
-<script src=/js/highlight.pack.js?1642781214></script>
-<script>hljs.initHighlightingOnLoad()</script>
-<script src=/js/modernizr.custom-3.6.0.js?1642781214></script>
-<script src=/js/learn.js?1642781214></script>
-<script src=/js/hugo-learn.js?1642781214></script>
-<script src=/mermaid/mermaid.js?1642781214></script>
-<script>mermaid.initialize({startOnLoad:!0})</script>
-</body>
-</html>
+end</div><p>All traffic is gated via the gatekeeper, which ensures all requests are secure.
+If the credentials are invalid or expired, then the user will be redirected to log back in via Keycloak.</p><p>If we look closer at the service, we&rsquo;ll see that the named <code>targetPort</code> points to the <code>gatekeeper</code> container in the pod:</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-yaml data-lang=yaml><span style=display:flex><span><span style=color:#75715e># app/templates/service.yaml</span>
+</span></span><span style=display:flex><span>    - <span style=color:#f92672>port</span>: {{ <span style=color:#ae81ff>.Values.service.port }}</span>
+</span></span><span style=display:flex><span>      <span style=color:#f92672>targetPort</span>: <span style=color:#ae81ff>gatekeeper</span> <span style=color:#75715e># &lt;--- LOOK HERE</span>
+</span></span><span style=display:flex><span>      <span style=color:#f92672>protocol</span>: <span style=color:#ae81ff>TCP</span>
+</span></span><span style=display:flex><span>      <span style=color:#f92672>name</span>: <span style=color:#ae81ff>http</span>
+</span></span></code></pre></div><h2 id=next-steps>Next steps</h2><ul><li>Secure secrets in encrypted form using something like <a href=https://github.com/bitnami-labs/sealed-secrets>Sealed Secrets for Kubernetes</a></li><li>Make Postgres highly available by using the <a href=https://artifacthub.io/packages/helm/bitnami/postgresql-ha>postgresql-ha</a> artifact</li><li>Make your Keycloak instance highly available using <a href=https://www.keycloak.org/docs/latest/server_installation/#_clustering>Clustering</a><ul><li>Worth considering if every client accessing every secured application in your cluster is accessing your Keycloak instance</li></ul></li></ul><footer class=footline></footer></div></div><div id=navigation><a class="nav nav-prev" href=/kubernetes/ title=Kubernetes><i class="fa fa-chevron-left"></i></a>
+<a class="nav nav-next" href=/kubernetes/wildcard-certs/ title="Wildcard certs" style=margin-right:0><i class="fa fa-chevron-right"></i></a></div></section><div style=left:-1000px;overflow:scroll;position:absolute;top:-1000px;border:none;box-sizing:content-box;height:200px;margin:0;padding:0;width:200px><div style=border:none;box-sizing:content-box;height:200px;margin:0;padding:0;width:200px></div></div><script src=/js/clipboard.min.js?1690495561></script>
+<script src=/js/perfect-scrollbar.min.js?1690495561></script>
+<script src=/js/perfect-scrollbar.jquery.min.js?1690495561></script>
+<script src=/js/jquery.sticky.js?1690495561></script>
+<script src=/js/featherlight.min.js?1690495561></script>
+<script src=/js/highlight.pack.js?1690495561></script>
+<script>hljs.initHighlightingOnLoad()</script><script src=/js/modernizr.custom-3.6.0.js?1690495561></script>
+<script src=/js/learn.js?1690495561></script>
+<script src=/js/hugo-learn.js?1690495561></script>
+<script src=/mermaid/mermaid.js?1690495561></script>
+<script>mermaid.initialize({startOnLoad:!0})</script></body></html>
