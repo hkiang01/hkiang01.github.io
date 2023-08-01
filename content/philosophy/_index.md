@@ -34,20 +34,18 @@ A few things I believe are true
 9. If you can pass *\<insert regulation\>* audits and still get your job done, you're winning, especially if you can also squeeze in ad-hoc work items during your sprint in a *\<insert regulation\>* compliant fashion.
 
 
-10. Story estimations are only necessary to those who lack or who have never have had an understanding of the code base(s) they work with, or within large, centrally-planned companies where that is often the case (the planning committee can only have so much understanding).
+10. "Plans are useless, but planning is everything" - an [anonymous soldier](https://quoteinvestigator.com/2017/11/18/planning/). A great converstion on this topic is available at [Episode 336: Roadmap roadkill and returning to office - Soft Skills Engineering](https://softskills.audio/2022/12/26/episode-336-roadmap-roadkill-and-returning-to-office/)
 
-11. The planning committee rightfully deserves accurate and timely information to do their job, they're human too.
+11. Decision makers rightfully deserves accurate and timely information, and you should do everything resonably able to provide them with said information. It makes everyone's lives easier.
 
-12. Multiple sources of truth muddy the waters. A potential solution: a singular planning committee.
+12. Clearly communicating is imperitive. Pause and ask what the most valuable information is in a given context.
 
-13. There is a right balance w.r.t. the number of planning hours vs non-planning hours, error on the side of too many non-planning hours.
+13. A "Best Practice" often refers to the best way the team lead knows how to do something at that point in time. "Best Practices" should change when the team is aware of a demonstrated better way of doing something.
 
-14. A "Best Practice" often refers to the best way the team lead knows how to do something at that point in time. "Best Practices" should change when the team is aware of a demonstrated better way of doing something.
+14. "Best Practices" should then be documented for posterity.
 
-15. "Best Practices" should then be documented for posterity. 
+15. Always be learning
 
-16. Always be learning
-
-17. Posture! Your lower back should be flush with your chair.
+16. Posture! Your lower back should be flush with your chair.
 
 ![posture](https://media1.tenor.com/images/4349fd187ea1be3fc51eea762c074332/tenor.gif?itemid=12592177)
