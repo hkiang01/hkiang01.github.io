@@ -14,7 +14,7 @@ This looks much better in mobile vs desktop.
 
 A few things I believe are true
 
-1. Clearly communicating is imperitive. Pause and ask what the most valuable information is in a given context.
+1. Clearly communicating is imperative. Pause and ask what the most valuable information is in a given context.
 
 2. People rightfully deserves accurate and timely information, and you should do everything resonably able to provide them with said information. It makes everyone's lives easier.
 
